@@ -1,0 +1,188 @@
+
+.menu-sdw
+{
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset !important;
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset !important;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset !important;
+
+}
+
+.menu {
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  _webkit-box-shadow:inset 0 0 2000px rgba(255, 255, 255, .5);
+}
+@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  .menu {
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    _webkit-box-shadow:inset 0 0 2000px rgba(255, 255, 255, .5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+  }
+}
+.menu:before{
+  content: "";
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .3);
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  -ms-filter: blur(20px);
+  z-index: -1;
+}
+.header-section.abtCover{
+  background-image: url('../images/abt_img.jpg') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.Partners-Section{
+  margin: 50px 0;
+}
+.carousel {
+  background: #EEE;
+  margin-top: 20px;
+}
+
+.carousel-cell {
+  width: 20%;
+  height: 160px;
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+  border: solid 1px #bababa;
+}
+
+#cell1{
+  background-image: url('../images/partners/zenithbank_logo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#cell2{
+  background-image: url('../images/partners/UBA-logo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#cell3{
+  background-image: url('../images/partners/sterling_bank_logo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#cell4{
+  background-image: url('../images/partners/polaris_logo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#cell5{
+  background-image: url('../images/partners/naic_logo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#cell6{
+  background-image: url('../images/partners/paystack_logo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#cell7{
+  background-image: url('../images/partners/RIMA_logo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.carousel-cell.is-selected {
+  background-color: rgba(255,255,255, .8) !important;
+}
+button.flickity-button.flickity-prev-next-button.previous{
+  display: none;
+}
+button.flickity-button.flickity-prev-next-button.next{
+  display: none;
+}
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  /*content: counter(carousel-cell);*/
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+.flickity-page-dots{
+  display: none !important;
+}
+.d-none{
+  display: none;
+}
+.d-block{
+  display: block;
+}
+
+/* -----------FAQS ANSWERS--------*/
+
+.ans {
+padding: 5px;
+background: rgb(219, 219, 219);
+color: #606060;
+float: left;
+margin-right: 10px;
+}
+.div_content.grid{
+  max-width: 1200px;
+  width: 100%;
+}
+.terms-section{
+  width: 900px;
+  padding: 40px;
+  margin-bottom: 5%;
+  box-shadow: 0 0px 10px rgba(119, 119, 119, 0.38);
+  -webkit-box-shadow: 0 0px 10px rgba(119, 119, 119, 0.38);
+  -moz-box-shadow: 0 0px 10px rgba(119, 119, 119, 0.38);
+  z-index: 1020;
+  text-transform: capitalize !important;
+}
+.abt-terms{
+  text-align: left !important;
+  display: block !important;
+
+}
+.terms-div{
+  padding: 10px 0;
+  text-align: justify;
+}
+.terms-h1{
+  text-align: left !important;
+}
+.terms-div a{
+  text-decoration: none;
+  color: hsla(130.5194805194805, 75.49%, 40.00%, 1.00);
+  cursor: pointer;
+}
+.terms-div ul{
+  list-style: circle;
+}
+.login-section, .sign-section{
+  height: auto !important;
+  background: rgb(240, 240, 240);
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none; 
+  -ms-box-shadow: none; 
+}
+@media (max-width: 991px){
+  .nav-menu {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex: 0 auto;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    _webkit-box-shadow:inset 0 0 2000px rgba(255, 255, 255, .5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    background: transparent !important;
+  }
+}

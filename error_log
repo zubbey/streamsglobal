@@ -1,0 +1,262 @@
+[12-Apr-2019 19:06:17 UTC] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'zubbeydb'@'localhost' (using password: YES) in /home/wrykxd8njgml/public_html/config/db.php on line 5
+[12-Apr-2019 19:07:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[12-Apr-2019 19:17:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[12-Apr-2019 19:29:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[12-Apr-2019 19:33:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[12-Apr-2019 19:53:24 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[12-Apr-2019 19:53:31 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[12-Apr-2019 19:53:52 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[12-Apr-2019 19:54:03 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[12-Apr-2019 19:54:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[12-Apr-2019 19:56:44 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[12-Apr-2019 19:57:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[12-Apr-2019 19:57:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[12-Apr-2019 19:58:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[12-Apr-2019 19:58:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:63
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/sign-up.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 63
+[12-Apr-2019 20:06:38 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[12-Apr-2019 20:10:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:63
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/sign-up.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 63
+[12-Apr-2019 20:15:44 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:155
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 155
+[12-Apr-2019 20:17:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:155
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 155
+[12-Apr-2019 20:40:51 UTC] PHP Notice:  Undefined index: verified in /home/wrykxd8njgml/public_html/menu.home.php on line 3
+[12-Apr-2019 20:40:51 UTC] PHP Notice:  Undefined index: usersemail in /home/wrykxd8njgml/public_html/menu.home.php on line 6
+[12-Apr-2019 20:40:51 UTC] PHP Notice:  Undefined index: usersfname in /home/wrykxd8njgml/public_html/menu.home.php on line 74
+[12-Apr-2019 20:40:51 UTC] PHP Notice:  Undefined index: verified in /home/wrykxd8njgml/public_html/menu.home.php on line 83
+[12-Apr-2019 20:40:51 UTC] PHP Notice:  Undefined index: usersfname in /home/wrykxd8njgml/public_html/start.php on line 86
+[12-Apr-2019 22:41:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:155
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 155
+[13-Apr-2019 01:08:36 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[13-Apr-2019 01:09:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[13-Apr-2019 01:11:05 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_All() on boolean in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[13-Apr-2019 01:13:05 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on boolean in /home/wrykxd8njgml/public_html/controllers/authController.php:156
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[13-Apr-2019 01:23:05 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 155
+[13-Apr-2019 01:25:20 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 155
+[13-Apr-2019 01:42:28 UTC] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home/wrykxd8njgml/public_html/controllers/authController.php on line 157
+[13-Apr-2019 03:09:05 UTC] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home/wrykxd8njgml/public_html/controllers/authController.php on line 157
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 154
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 155
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 156
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 157
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 158
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 161
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Array to string conversion in /home/wrykxd8njgml/public_html/controllers/authController.php on line 161
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 162
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 163
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 164
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 165
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 166
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 167
+[13-Apr-2019 07:05:37 UTC] PHP Notice:  Undefined variable: user in /home/wrykxd8njgml/public_html/controllers/authController.php on line 168
+[13-Apr-2019 07:07:04 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:63
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/sign-up.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 63
+[13-Apr-2019 17:39:30 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[13-Apr-2019 17:39:41 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[13-Apr-2019 17:40:18 UTC] PHP Fatal error:  Class 'mysqli' not found in /home/wrykxd8njgml/public_html/config/db.php on line 5
+[13-Apr-2019 17:40:41 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[13-Apr-2019 18:04:48 UTC] PHP Notice:  Undefined variable: cPassword in /home/wrykxd8njgml/public_html/controllers/authController.php on line 36
+[14-Apr-2019 09:56:53 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection refused #111] in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(65): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/wrykxd8njgml/public_html/controllers/emailController.php(417): Swift_Mailer->send(Object(Swift_Message))
+#4 /home/wrykxd8njgml/public_html/controllers/authController.php(120): sendVerificationEmail('chibike@gmail.c...', 'dc5fe4d49d6a1b6...')
+#5 /home/wrykxd8njgml/public_htm in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[14-Apr-2019 09:59:06 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection refused #111] in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(65): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/wrykxd8njgml/public_html/controllers/emailController.php(417): Swift_Mailer->send(Object(Swift_Message))
+#4 /home/wrykxd8njgml/public_html/controllers/authController.php(120): sendVerificationEmail('chibike@gmail.c...', 'fe2ab3e595cdc1b...')
+#5 /home/wrykxd8njgml/public_htm in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[14-Apr-2019 10:13:32 UTC] PHP Notice:  Undefined variable: userEmail in /home/wrykxd8njgml/public_html/controllers/emailController.php on line 3
+[14-Apr-2019 10:13:32 UTC] PHP Notice:  Undefined variable: token in /home/wrykxd8njgml/public_html/controllers/emailController.php on line 182
+[14-Apr-2019 10:13:32 UTC] PHP Notice:  Undefined variable: token in /home/wrykxd8njgml/public_html/controllers/emailController.php on line 229
+[14-Apr-2019 11:28:29 UTC] PHP Fatal error:  Call to undefined function random_bytes() in /home/wrykxd8njgml/public_html/controllers/authController.php on line 70
+[14-Apr-2019 11:29:18 UTC] PHP Fatal error:  Call to undefined function random_bytes() in /home/wrykxd8njgml/public_html/controllers/authController.php on line 70
+[14-Apr-2019 11:44:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::get_result() in /home/wrykxd8njgml/public_html/controllers/authController.php:254
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 254
+[16-Apr-2019 04:44:10 UTC] PHP Notice:  Undefined index: email in /home/wrykxd8njgml/public_html/controllers/authController.php on line 57
+[16-Apr-2019 04:44:10 UTC] PHP Notice:  Undefined index: phone in /home/wrykxd8njgml/public_html/controllers/authController.php on line 61
+[16-Apr-2019 04:52:20 UTC] PHP Notice:  Undefined index: email in /home/wrykxd8njgml/public_html/controllers/authController.php on line 57
+[16-Apr-2019 04:52:20 UTC] PHP Notice:  Undefined index: phone in /home/wrykxd8njgml/public_html/controllers/authController.php on line 61
+[16-Apr-2019 04:52:37 UTC] PHP Notice:  Undefined index: email in /home/wrykxd8njgml/public_html/controllers/authController.php on line 57
+[16-Apr-2019 04:52:37 UTC] PHP Notice:  Undefined index: phone in /home/wrykxd8njgml/public_html/controllers/authController.php on line 61
+[16-Apr-2019 05:30:01 UTC] PHP Warning:  mysqli::__construct(): (HY000/1044): Access denied for user 'streams'@'localhost' to database 'streams-system' in /home/wrykxd8njgml/public_html/config/db.php on line 5
+[16-Apr-2019 06:02:25 UTC] PHP Notice:  Undefined variable: con in /home/wrykxd8njgml/public_html/controllers/authController.php on line 34
+[16-Apr-2019 06:02:25 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/controllers/authController.php on line 34
+[16-Apr-2019 07:26:59 UTC] PHP Notice:  Undefined variable: errors in /home/wrykxd8njgml/public_html/sign-up.php on line 61
+[16-Apr-2019 07:26:59 UTC] PHP Notice:  Undefined variable: firstname in /home/wrykxd8njgml/public_html/sign-up.php on line 72
+[16-Apr-2019 07:26:59 UTC] PHP Notice:  Undefined variable: lastname in /home/wrykxd8njgml/public_html/sign-up.php on line 76
+[16-Apr-2019 07:26:59 UTC] PHP Notice:  Undefined variable: email in /home/wrykxd8njgml/public_html/sign-up.php on line 80
+[16-Apr-2019 07:26:59 UTC] PHP Notice:  Undefined variable: phone in /home/wrykxd8njgml/public_html/sign-up.php on line 82
+[16-Apr-2019 07:27:42 UTC] PHP Notice:  Undefined variable: errors in /home/wrykxd8njgml/public_html/sign-up.php on line 56
+[16-Apr-2019 07:27:42 UTC] PHP Notice:  Undefined variable: firstname in /home/wrykxd8njgml/public_html/sign-up.php on line 67
+[16-Apr-2019 07:27:42 UTC] PHP Notice:  Undefined variable: lastname in /home/wrykxd8njgml/public_html/sign-up.php on line 71
+[16-Apr-2019 07:27:42 UTC] PHP Notice:  Undefined variable: email in /home/wrykxd8njgml/public_html/sign-up.php on line 75
+[16-Apr-2019 07:27:42 UTC] PHP Notice:  Undefined variable: phone in /home/wrykxd8njgml/public_html/sign-up.php on line 77
+[16-Apr-2019 07:28:25 UTC] PHP Notice:  Undefined variable: errors in /home/wrykxd8njgml/public_html/sign-up.php on line 56
+[16-Apr-2019 07:28:25 UTC] PHP Notice:  Undefined variable: firstname in /home/wrykxd8njgml/public_html/sign-up.php on line 67
+[16-Apr-2019 07:28:25 UTC] PHP Notice:  Undefined variable: lastname in /home/wrykxd8njgml/public_html/sign-up.php on line 71
+[16-Apr-2019 07:28:25 UTC] PHP Notice:  Undefined variable: email in /home/wrykxd8njgml/public_html/sign-up.php on line 75
+[16-Apr-2019 07:28:25 UTC] PHP Notice:  Undefined variable: phone in /home/wrykxd8njgml/public_html/sign-up.php on line 77
+[16-Apr-2019 07:28:28 UTC] PHP Notice:  Undefined variable: errors in /home/wrykxd8njgml/public_html/sign-up.php on line 56
+[16-Apr-2019 07:28:28 UTC] PHP Notice:  Undefined variable: firstname in /home/wrykxd8njgml/public_html/sign-up.php on line 67
+[16-Apr-2019 07:28:28 UTC] PHP Notice:  Undefined variable: lastname in /home/wrykxd8njgml/public_html/sign-up.php on line 71
+[16-Apr-2019 07:28:28 UTC] PHP Notice:  Undefined variable: email in /home/wrykxd8njgml/public_html/sign-up.php on line 75
+[16-Apr-2019 07:28:28 UTC] PHP Notice:  Undefined variable: phone in /home/wrykxd8njgml/public_html/sign-up.php on line 77
+[16-Apr-2019 07:28:30 UTC] PHP Notice:  Undefined variable: errors in /home/wrykxd8njgml/public_html/sign-up.php on line 56
+[16-Apr-2019 07:28:30 UTC] PHP Notice:  Undefined variable: firstname in /home/wrykxd8njgml/public_html/sign-up.php on line 67
+[16-Apr-2019 07:28:30 UTC] PHP Notice:  Undefined variable: lastname in /home/wrykxd8njgml/public_html/sign-up.php on line 71
+[16-Apr-2019 07:28:30 UTC] PHP Notice:  Undefined variable: email in /home/wrykxd8njgml/public_html/sign-up.php on line 75
+[16-Apr-2019 07:28:30 UTC] PHP Notice:  Undefined variable: phone in /home/wrykxd8njgml/public_html/sign-up.php on line 77
+[16-Apr-2019 07:28:32 UTC] PHP Notice:  Undefined variable: errors in /home/wrykxd8njgml/public_html/sign-up.php on line 56
+[16-Apr-2019 07:28:32 UTC] PHP Notice:  Undefined variable: firstname in /home/wrykxd8njgml/public_html/sign-up.php on line 67
+[16-Apr-2019 07:28:32 UTC] PHP Notice:  Undefined variable: lastname in /home/wrykxd8njgml/public_html/sign-up.php on line 71
+[16-Apr-2019 07:28:32 UTC] PHP Notice:  Undefined variable: email in /home/wrykxd8njgml/public_html/sign-up.php on line 75
+[16-Apr-2019 07:28:32 UTC] PHP Notice:  Undefined variable: phone in /home/wrykxd8njgml/public_html/sign-up.php on line 77
+[16-Apr-2019 07:28:56 UTC] PHP Notice:  Undefined variable: firstname in /home/wrykxd8njgml/public_html/sign-up.php on line 61
+[16-Apr-2019 07:28:56 UTC] PHP Notice:  Undefined variable: lastname in /home/wrykxd8njgml/public_html/sign-up.php on line 65
+[16-Apr-2019 07:28:56 UTC] PHP Notice:  Undefined variable: email in /home/wrykxd8njgml/public_html/sign-up.php on line 69
+[16-Apr-2019 07:28:56 UTC] PHP Notice:  Undefined variable: phone in /home/wrykxd8njgml/public_html/sign-up.php on line 71
+[16-Apr-2019 07:31:14 UTC] PHP Notice:  Undefined variable: conn in /home/wrykxd8njgml/public_html/sign-up.php on line 26
+[16-Apr-2019 07:31:14 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/sign-up.php on line 26
+[16-Apr-2019 07:31:14 UTC] PHP Notice:  Undefined variable: conn in /home/wrykxd8njgml/public_html/sign-up.php on line 28
+[16-Apr-2019 07:31:14 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/sign-up.php on line 28
+[16-Apr-2019 07:31:14 UTC] PHP Notice:  Undefined variable: conn in /home/wrykxd8njgml/public_html/sign-up.php on line 30
+[16-Apr-2019 07:31:14 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/sign-up.php on line 30
+[16-Apr-2019 07:31:14 UTC] PHP Notice:  Undefined variable: conn in /home/wrykxd8njgml/public_html/sign-up.php on line 32
+[16-Apr-2019 07:31:14 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/sign-up.php on line 32
+[16-Apr-2019 07:31:14 UTC] PHP Notice:  Undefined variable: conn in /home/wrykxd8njgml/public_html/sign-up.php on line 34
+[16-Apr-2019 07:31:14 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/sign-up.php on line 34
+[16-Apr-2019 07:31:14 UTC] PHP Notice:  Undefined variable: conn in /home/wrykxd8njgml/public_html/sign-up.php on line 39
+[16-Apr-2019 07:31:14 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/sign-up.php on line 39
+[16-Apr-2019 07:57:40 UTC] PHP Notice:  Undefined variable: con in /home/wrykxd8njgml/public_html/sign-up.php on line 27
+[16-Apr-2019 07:57:40 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/sign-up.php on line 27
+[16-Apr-2019 07:57:40 UTC] PHP Notice:  Undefined variable: con in /home/wrykxd8njgml/public_html/sign-up.php on line 29
+[16-Apr-2019 07:57:40 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/sign-up.php on line 29
+[16-Apr-2019 07:57:40 UTC] PHP Notice:  Undefined variable: con in /home/wrykxd8njgml/public_html/sign-up.php on line 31
+[16-Apr-2019 07:57:40 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/sign-up.php on line 31
+[16-Apr-2019 07:57:40 UTC] PHP Notice:  Undefined variable: con in /home/wrykxd8njgml/public_html/sign-up.php on line 35
+[16-Apr-2019 07:57:40 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/wrykxd8njgml/public_html/sign-up.php on line 35
+[16-Apr-2019 08:14:37 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home/wrykxd8njgml/public_html/controllers/authController.php:273
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/login.php(1): require_once()
+#1 {main}
+  thrown in /home/wrykxd8njgml/public_html/controllers/authController.php on line 273
+[16-Apr-2019 15:48:36 UTC] PHP Warning:  require_once(emailController.php): failed to open stream: No such file or directory in /home/wrykxd8njgml/public_html/sign-up.php on line 26
+[16-Apr-2019 15:48:36 UTC] PHP Fatal error:  require_once(): Failed opening required 'emailController.php' (include_path='.:/opt/alt/php70/usr/share/pear') in /home/wrykxd8njgml/public_html/sign-up.php on line 26
+[16-Apr-2019 20:28:58 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection refused #111] in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(65): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/wrykxd8njgml/public_html/controllers/emailController.php(418): Swift_Mailer->send(Object(Swift_Message))
+#4 /home/wrykxd8njgml/public_html/controllers/authController.php(128): sendVerificationEmail('com.zubbey@hotm...', 'aea6cd91c6cc570...')
+#5 /home/wrykxd8njgml/public_htm in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[16-Apr-2019 21:53:46 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection refused #111] in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(65): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/wrykxd8njgml/public_html/controllers/emailController.php(418): Swift_Mailer->send(Object(Swift_Message))
+#4 /home/wrykxd8njgml/public_html/controllers/authController.php(128): sendVerificationEmail('com.zubbey@hotm...', '6bde20ae83dc55d...')
+#5 /home/wrykxd8njgml/public_htm in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[16-Apr-2019 21:59:59 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection refused #111] in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(65): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/wrykxd8njgml/public_html/controllers/emailController.php(418): Swift_Mailer->send(Object(Swift_Message))
+#4 /home/wrykxd8njgml/public_html/controllers/authController.php(128): sendVerificationEmail('com.zubbey@hotm...', 'a4964c8f6ddef67...')
+#5 /home/wrykxd8njgml/public_htm in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[16-Apr-2019 23:21:53 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection refused #111] in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(65): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/wrykxd8njgml/public_html/controllers/emailController.php(418): Swift_Mailer->send(Object(Swift_Message))
+#4 /home/wrykxd8njgml/public_html/controllers/authController.php(128): sendVerificationEmail('zubyinnocent@gm...', '459f5eeb2f79f17...')
+#5 /home/wrykxd8njgml/public_htm in /home/wrykxd8njgml/public_html/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[19-Apr-2019 23:05:49 UTC] PHP Notice:  Undefined variable: email in /home/wrykxd8njgml/public_html/controllers/mailController.php on line 4
