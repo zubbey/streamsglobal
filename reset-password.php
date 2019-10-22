@@ -20,7 +20,7 @@
   <div class="header-section">
 
     <?php
-    require "menu.php";
+    require ('./menu.php');
     ?>
 
     <div class="div_grid">

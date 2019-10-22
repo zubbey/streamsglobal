@@ -1,9 +1,4 @@
-<?php
-require_once 'controllers/authController.php';
-?>
 <!DOCTYPE html>
-<!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Sun Mar 31 2019 17:13:26 GMT+0000 (UTC)  -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -25,12 +20,12 @@ require_once 'controllers/authController.php';
 <body class="body">
   <div class="header-section span">
 
-    <?php 
+    <?php
     if (isset($_SESSION['usersid'])) {
-      require "menu.home.php";
+      require ('./menu.home.php');
     }
     else {
-      require "menu.php";
+      require ('./menu.php');
     }
     ?>
 
@@ -196,5 +191,5 @@ require_once 'controllers/authController.php';
   </main>
 
   <?php
-  require "footer.php";
+  require ('./component/footer.php');
   ?>

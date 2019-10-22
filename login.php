@@ -1,4 +1,4 @@
-
+<?php
 if (isset($_SESSION['usersid'])) {
   header('location: start.php');
 }
@@ -19,7 +19,7 @@ if (isset($_SESSION['usersid'])) {
 
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Saira:100,200,300,regular,500,600,700,800,900"]  }});</script>
-  <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+  [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif]
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="images/favicon-32x32.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/ms-icon-256x256.png" rel="apple-touch-icon">
@@ -27,7 +27,7 @@ if (isset($_SESSION['usersid'])) {
 <body class="body">
   <div class="header-section login-section">
     <?php
-    require "menu.php";
+    require ('./menu.php');
     ?>
     <div class="div_grid">
       <div class="form-block w-form">
@@ -58,7 +58,7 @@ if (isset($_SESSION['usersid'])) {
           <input type="submit" name="login-btn" value="Secured Login" data-wait="please wait..." class="submit-button w-button">
         </form>
 
-        
+
       </div>
     </div>
     <div class="form-option">
@@ -69,5 +69,5 @@ if (isset($_SESSION['usersid'])) {
   </div>
 
   <?php
-  require "footer.php";
+  require ('./component/footer.php');
   ?>

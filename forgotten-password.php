@@ -21,7 +21,7 @@
 <div class="header-section">
 
 <?php
-require "menu.php";
+require ('./menu.php');
 ?>
 
 <div class="div_grid">
@@ -55,5 +55,5 @@ require "menu.php";
 </div>
 
 <?php
-require "footer.php";
+require ('./component/footer.php');
 ?>

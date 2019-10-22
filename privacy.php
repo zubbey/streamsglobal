@@ -1,9 +1,4 @@
-<?php
-require_once 'controllers/authController.php';
-?>
 <!DOCTYPE html>
-<!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Sun Mar 31 2019 17:13:26 GMT+0000 (UTC)  -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -17,7 +12,7 @@ require_once 'controllers/authController.php';
   <link href="css/custom.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Saira:100,200,300,regular,500,600,700,800,900"]  }});</script>
-  <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+  [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif]
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="images/favicon-32x32.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/ms-icon-256x256.png" rel="apple-touch-icon">
@@ -25,12 +20,12 @@ require_once 'controllers/authController.php';
 <body class="body">
   <div class="header-section span">
 
-    <?php 
+    <?php
     if (isset($_SESSION['usersid'])) {
-      require "menu.home.php";
+      require ('./menu.home.php');
     }
     else {
-      require "menu.php";
+      require ('./menu.php');
     }
     ?>
 
@@ -139,7 +134,7 @@ require_once 'controllers/authController.php';
         <div class="divider"></div>
 
         <div class="p-div terms-div">
-          Do Not Track ("DNT") is an optional browser setting that allows you to express your preferences regarding tracking by advertisers and other third parties. We do not use technology that recognizes DNT signals from your web browser. 
+          Do Not Track ("DNT") is an optional browser setting that allows you to express your preferences regarding tracking by advertisers and other third parties. We do not use technology that recognizes DNT signals from your web browser.
         </div>
         <h1 id="w-node-5fc5f41bd851-d3919dd7" class="paragraph-8 terms-h1">
           <strong class="">How We Use Information</strong>
@@ -238,7 +233,7 @@ require_once 'controllers/authController.php';
           <strong class="">How can I contact streamsglobal.com?</strong>
         </h1>
         <div class="divider"></div>
-        
+
         <div class="p-div terms-div">
           If you have any questions, comments, or concerns regarding these Terms or the Services, please contact us at streamsglobalmpc@gmail 09084045880
         </div>
@@ -247,5 +242,5 @@ require_once 'controllers/authController.php';
   </main>
 
   <?php
-  require "footer.php";
+  require ('./component/footer.php');
   ?>

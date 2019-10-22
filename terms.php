@@ -1,9 +1,4 @@
-<?php
-require_once 'controllers/authController.php';
-?>
 <!DOCTYPE html>
-<!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Sun Mar 31 2019 17:13:26 GMT+0000 (UTC)  -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -25,12 +20,12 @@ require_once 'controllers/authController.php';
 <body class="body">
   <div class="header-section span">
 
-    <?php 
+    <?php
     if (isset($_SESSION['usersid'])) {
-      require "menu.home.php";
+      require (./menu.home.php');
     }
     else {
-      require "menu.php";
+      require (./menu.php');
     }
     ?>
 
@@ -153,7 +148,7 @@ require_once 'controllers/authController.php';
         <div class="divider"></div>
 
         <div class="p-div terms-div">
-          There are no penalty or penalty fees as streams global cooperative only approves withdrals and item give collection on due dates. 
+          There are no penalty or penalty fees as streams global cooperative only approves withdrals and item give collection on due dates.
         </div>
         <h1 id="w-node-5fc5f41bd851-d3919dd7" class="paragraph-8 terms-h1">
           <strong class="">What are some restrictions on using the Services?</strong>
@@ -211,7 +206,7 @@ require_once 'controllers/authController.php';
         <div class="divider"></div>
 
         <div class="p-div terms-div">
-          You may stop using the services only at the end of the circle you subcribesd to If you do not use the Services for a certain period of time, applicable law may require us to report the funds in your Piggybank.ng Account as unclaimed property. If this occurs, we may try to locate you at the address shown in our records. We may also reach out to your nest of kin If we are unable to locate him or her ,then we  we may be required to deliver any funds in your streamsglobal Account to the cooperators bank slot for 5years, at the end if not claimed, remains in the cooperative fund. 
+          You may stop using the services only at the end of the circle you subcribesd to If you do not use the Services for a certain period of time, applicable law may require us to report the funds in your Piggybank.ng Account as unclaimed property. If this occurs, we may try to locate you at the address shown in our records. We may also reach out to your nest of kin If we are unable to locate him or her ,then we  we may be required to deliver any funds in your streamsglobal Account to the cooperators bank slot for 5years, at the end if not claimed, remains in the cooperative fund.
         </div>
         <h1 id="w-node-5fc5f41bd851-d3919dd7" class="paragraph-8 terms-h1">
           <strong class="">What about my privacy?</strong>
@@ -219,13 +214,13 @@ require_once 'controllers/authController.php';
         <div class="divider"></div>
 
         <div class="p-div terms-div">
-          Piggybank.ng takes the privacy of its users very seriously. You understand that by using the Services, you consent to the collection, use, storage, and disclosure of your information as set forth in these Terms and our Privacy Policy. 
+          Piggybank.ng takes the privacy of its users very seriously. You understand that by using the Services, you consent to the collection, use, storage, and disclosure of your information as set forth in these Terms and our Privacy Policy.
         </div>
         <h1 id="w-node-5fc5f41bd851-d3919dd7" class="paragraph-8 terms-h1">
           <strong class="">What else do I need to know about the Services?</strong>
         </h1>
         <div class="divider"></div>
-        
+
         <div class="p-div terms-div">
           Additional Terms. In conjunction with your access or use of the Services, you may be subject to additional terms, rules, policies, and conditions that are posted on the Website, including, but not limited to, terms and conditions for our referral or rewards programs (the “Additional Terms”), which are hereby incorporated by reference into these Terms. In the event of a conflict between any Additional Terms and these Terms, these Terms will control.
         </div>
@@ -285,5 +280,5 @@ require_once 'controllers/authController.php';
   </main>
 
   <?php
-  require "footer.php";
+  require ('./component/footer.php');
   ?>

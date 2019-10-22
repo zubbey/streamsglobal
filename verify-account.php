@@ -25,7 +25,7 @@ session_start();
 	<div class="header-section">
 
 		<?php
-		require "menu.php";
+		require ('./menu.php');
 		?>
 
 			<div class="div_grid">
@@ -51,5 +51,5 @@ session_start();
 		</div>
 
 <?php
-require "footer.php";
+require ('./component/footer.php');
 ?>

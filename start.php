@@ -1,5 +1,4 @@
-<?php require_once 'controllers/authController.php';
-
+<?php
 if (!isset($_SESSION['usersid'])) {
   header('location: login.php');
 }
@@ -42,12 +41,12 @@ if (isset($_GET['token'])) {
   <div class="header-section start-section">
 
 
-    <?php 
+    <?php
     if (isset($_SESSION['usersid'])) {
-      require "menu.home.php";
+      require ('./menu.home.php');
     }
     else {
-      require "menu.php";
+      require ('./menu.php');
     }
 
     ?>
@@ -79,7 +78,7 @@ if (isset($_GET['token'])) {
 
       ?>
       <div class="start-heading">
-        <?php 
+        <?php
         if (isset($_SESSION['usersid'])) {
           echo '<h1 class="heading-2 h1 h-start">Welcome Back '. ucwords($_SESSION['usersfname']) .'</h1>';
           echo '<h1 class="heading-2 h1 h3">Select Your Savings Plan.</h1>';
@@ -88,11 +87,11 @@ if (isset($_GET['token'])) {
           echo '<h1 class="heading-2 h1 h-start">You are not logged in.</h1>';
           echo '<h1 class="heading-2 h1 h3">Login to start Saving today.</h1>';
         }
-        
 
-        ?>      
+
+        ?>
         <p class="paragraph-2 plan-paragragh">A Steams Global account brings you a step closer to financial discipline. We make it easy to achieve your personal saving goals. Choose how you save.</p>
-    
+
       </div>
       <div class="row w-row">
         <div class="col w-col w-col-4">
@@ -161,5 +160,5 @@ if (isset($_GET['token'])) {
   </div>
 
   <?php
-  require "footer.php";
+  require ('./component/footer.php');
   ?>

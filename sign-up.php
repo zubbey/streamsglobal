@@ -1,4 +1,4 @@
-<?php require_once 'controllers/authController.php';
+<?php
 
 if (isset($_SESSION['usersid'])) {
   header('location: start.php');
@@ -26,7 +26,7 @@ if (isset($_SESSION['usersid'])) {
 <body>
   <div class="header-section sign-section">
     <?php
-    require "menu.php";
+    require ('./menu.php');
     ?>
     <div class="div_grid">
       <div class="form-block w-form">
@@ -74,5 +74,5 @@ if (isset($_SESSION['usersid'])) {
   </div>
 
   <?php
-  require "footer.php";
+  require ('./component/footer.php');
   ?>
