@@ -1,4 +1,3 @@
-<?php require_once 'controllers/authController.php';
 
 if (isset($_SESSION['usersid'])) {
   header('location: start.php');
