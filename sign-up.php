@@ -4,6 +4,7 @@ if (isset($_SESSION['usersid'])) {
   header('location: start.php');
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +59,8 @@ if (isset($_SESSION['usersid'])) {
           <input type="text" name="email" value="<?php echo $email;?>" class="text-field w-input">
           <label for="phone">Phone Number</label>
           <input type="text" name="phone" value="<?php echo $phone;?>" class="text-field w-input">
+          <label for="phone">Referrer Code (Optional)</label>
+          <input type="text" name="referrer" value="<?php echo $referrer;?>" class="text-field w-input">
           <label for="password">Password</label>
           <input type="password" name="password" class="text-field-2 w-input">
           <label for="password">Confirm Password</label>
