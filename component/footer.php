@@ -45,15 +45,13 @@
       </div>
     </div>
   </div>
-  <footer class="footer">
-    <p class="paragraph-6">© 2019 streams Global Cooperative, All Rights Reserved</p>
-  </footer>
-  
+
+  <?php require('mini-footer.php'); ?>
+
   <script src="https://d1tdp7z6w94jbb.cloudfront.net/js/jquery-3.3.1.min.js" type="text/javascript" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  
+
   <script src="js/webflow.js" type="text/javascript"></script>
   <script src="js/custom.js" type="text/javascript"></script>
   <script src="js/flickity-docs.min.js"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>
 </html>

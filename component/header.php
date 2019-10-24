@@ -27,24 +27,24 @@
 
   <div class="header-section">
 
-<?php 
+<?php
   if (isset($_SESSION['usersid'])) {
-    require "menu.home.php";
+    require ('menu.home.php');
   }
   else {
-    require "menu.php";
+    require ('menu.php');
   }
 ?>
 
 <div data-delay="5000" data-animation="slide" data-autoplay="1" data-hide-arrows="1" data-duration="500" data-infinite="1" class="slider3 w-slider">
-      
+
       <div id="content" class="mask w-slider-mask">
 
         <div class="slide1 w-slide">
           <div class="div_contain0">
             <h1 class="heading">SAVE AND INVEST,<br>THE SMART WAY.</h1>
             <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros </p>
-            <?php 
+            <?php
             if (isset($_SESSION['usersid'])) {
               echo "<a href='start.php' class='button w-button'>START SAVING <i class='fas fa-angle-right'></i></a>";
             }
@@ -53,8 +53,8 @@
             }
 
             ?>
-            
-          </div>      
+
+          </div>
         </div>
 
         <div class="slide2 w-slide">
@@ -62,7 +62,7 @@
           <div class="div_contain0">
             <h1 class="heading">START INVESTING,<br>FOR A BETTER FUTURE.</h1>
             <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, </p>
-            <?php 
+            <?php
             if (isset($_SESSION['usersid'])) {
               echo "<a href='start.php' class='button w-button'>START SAVING <i class='fas fa-angle-right'></i></a>";
             }
@@ -79,7 +79,7 @@
           <div class="div_contain0">
             <h1 class="heading">LET&#x27;S HELP YOU<br>STAY IN BUSINESS.</h1>
             <p class="paragraph p-span">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, </p>
-            <?php 
+            <?php
             if (isset($_SESSION['usersid'])) {
               echo "<a href='start.php' class='button w-button'>START SAVING <i class='fas fa-angle-right'></i></a>";
             }
@@ -92,7 +92,7 @@
         </div>
 
       </div>
-      
+
       <div class="left-arrow w-slider-arrow-left">
         <div class="icon-3 w-icon-slider-left"></div>
       </div>

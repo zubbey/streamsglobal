@@ -21,7 +21,7 @@
 <div class="header-section">
 
 <?php
-require ('./menu.php');
+require ('./component/menu.php');
 ?>
 
 <div class="div_grid">

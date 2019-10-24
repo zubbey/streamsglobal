@@ -44,7 +44,7 @@ if (isset($_SESSION['usersid'])) {
 
                             if ($imgRow['status'] == 0 ) {
                               echo '<img src="images/uploads/profile'.$_SESSION['usersid'].'.jpg?'.mt_rand().'" ait="Profile Avatar" style="border-radius: 50%;">';
-                            } else {                       
+                            } else {
                               echo '<img src="images/uploads/profiledefault.jpg" ait="Profile Avatar" style="border-radius: 50%;">';
                             }
                           }
@@ -75,10 +75,10 @@ if (isset($_SESSION['usersid'])) {
             <a href="start.php?logout=1" class="user-dropdown-link w-dropdown-link">Logout</a>
           </nav>
         </div>
+        <div class="menu-button w-nav-button">
+          <div class="icon-2 w-icon-nav-menu"></div>
+        </div>
       </nav>
-      <div class="menu-button w-nav-button">
-        <div class="icon-2 w-icon-nav-menu"></div>
-      </div>
     </div>
   </div>
 
