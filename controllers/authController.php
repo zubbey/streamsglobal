@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require ('config/db.php');
+require ('./config/db.php');
 
 
 // initializing variables
@@ -64,7 +64,7 @@ if (isset($_POST['signup-btn'])) {
 		$errors['password'] = "Ops! Your password did not match.";
 	}
 	//"SELECT * FROM users WHERE email=? LIMIT 1"
-	$emailQuery = "SELECT `*` FROM `users` WHERE `usersemail` = ? LIMIT 1";
+	$emailQuery = "SELECT `*` FROM `users` WHERE `email` = ? LIMIT 1";
 	$stmt = $conn->prepare($emailQuery);
 	$stmt->bind_param('s', $email);
 	$stmt->execute();
@@ -312,5 +312,44 @@ if (isset($_POST['upload-img-submit'])) {
 		header("Location: ../panels/settings.php?error=filenotallowed");
 		exit();
 	}
+
+}
+
+
+
+// Admin Create Ads
+
+// If upload button is clicked ...
+if (isset($_POST['upload'])) {
+	// Get image name
+	$image = $_FILES['image']['name'];
+	// Get text
+	$heading = mysqli_real_escape_string($conn, $_POST['heading']);
+	$body = mysqli_real_escape_string($conn, $_POST['body']);
+
+	// image file directory
+	$target = "images/".basename($image);
+
+	$sql = "INSERT into `adminAds` (image, heading, body) VALUES ('$image', '$heading', '$body')";
+	// execute query
+	mysqli_query($conn, $sql);
+
+	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+		header('location: admin.php?success=adcreated');
+	}else{
+		header('location: admin.php?error=notcreated');
+	}
+}
+
+// Admin Delete Ads
+
+if (isset($_GET['del_id'])){
+	$sql = "DELETE FROM `adminAds` WHERE `id` = '".$_GET['del_id']."'";
+	if (mysqli_query($conn, $sql)){
+		header('location: admin.php?warning=deleted');
+	} else {
+		header('location: admin.php?error=notdeleted');
+		die($sql);
+	};
 
 }

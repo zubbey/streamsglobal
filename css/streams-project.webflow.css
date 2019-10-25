@@ -389,7 +389,7 @@ li {
   .mask {
     opacity: 1;
   }
-  .slide1{
+  /* .slide1{
     margin-right: auto;
     margin-left: auto;
     background-image: url('../images/banner02.jpg');
@@ -397,7 +397,7 @@ li {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: scroll;
-  }
+  } */
 
   .slider3 {
     position: static;

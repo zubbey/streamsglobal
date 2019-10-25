@@ -979,7 +979,7 @@ textarea.w-select {
   text-align: left;
 }
 .w-slider-nav {
-  
+
   z-index: 2;
   top: auto;
   right: 0;
@@ -1086,7 +1086,6 @@ textarea.w-select {
   vertical-align: top;
   text-decoration: none;
   color: #222222;
-  padding: 20px;
   text-align: left;
   margin-left: auto;
   margin-right: auto;
@@ -1099,7 +1098,7 @@ textarea.w-select {
   user-select: none;
   display: inline-block;
   cursor: pointer;
-  padding-right: 40px;
+  padding-right: 20px;
 }
 .w-icon-dropdown-toggle {
   position: absolute;
@@ -1107,7 +1106,6 @@ textarea.w-select {
   right: 0;
   bottom: 0;
   margin: auto;
-  margin-right: 20px;
   width: 1em;
   height: 1em;
 }

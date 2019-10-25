@@ -51,7 +51,30 @@
   <script src="https://d1tdp7z6w94jbb.cloudfront.net/js/jquery-3.3.1.min.js" type="text/javascript" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
   <script src="js/webflow.js" type="text/javascript"></script>
-  <script src="js/custom.js" type="text/javascript"></script>
-  <script src="js/flickity-docs.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+
+    $('document').ready(function (){
+    	$('#ans1').on('click', function(){
+    		alert('work');
+    	})
+
+    	$('.carousel-inner .carousel-item:first-child').addClass('active').ready(() => {
+        $('.carousel').carousel();
+        $('.carousel').carousel({
+          interval: 2000
+        });
+      });
+    });
+
+    // var redElements = document.querySelectorAll('.home > .red');
+    // var first = redElements[0];
+    // var second = redElements[1];
+
+  </script>
 </body>
 </html>

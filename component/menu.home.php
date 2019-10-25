@@ -31,21 +31,21 @@ if (isset($_SESSION['usersid'])) {
 
                 <?php
 
-                        $sql = "SELECT * FROM users LIMIT 1;";
+                        $sql = "SELECT `*` FROM `users` LIMIT 1;";
                         $result = mysqli_query($conn, $sql);
 
                         if (mysqli_num_rows($result) > 0) {
                           if ($user = mysqli_fetch_assoc($result)) {
                            $id = $_SESSION['usersid'];
 
-                           $sqlImg = "SELECT * FROM profileimg WHERE userid='$id' LIMIT 1;";
+                           $sqlImg = "SELECT `*` FROM `profileimg` WHERE `userid` = '$id' LIMIT 1;";
                            $resultImg = mysqli_query($conn, $sqlImg);
                            while ($imgRow = mysqli_fetch_assoc($resultImg)){
 
                             if ($imgRow['status'] == 0 ) {
                               echo '<img src="images/uploads/profile'.$_SESSION['usersid'].'.jpg?'.mt_rand().'" ait="Profile Avatar" style="border-radius: 50%;">';
                             } else {
-                              echo '<img src="images/uploads/profiledefault.jpg" ait="Profile Avatar" style="border-radius: 50%;">';
+                              echo '<img src="https://i.imgur.com/gaJNXRO.png" ait="Profile Avatar" style="border-radius: 50%;">';
                             }
                           }
                         }
@@ -58,11 +58,9 @@ if (isset($_SESSION['usersid'])) {
             </div>
             <div class="icon w-icon-dropdown-toggle"></div>
           </div>
-          <nav class="dropdown-list w-dropdown-list user-dropdown-list">
+          <ul class="dropdown-list w-dropdown-list">
             <?php
-
-          //Hide if account not verified
-
+              //Hide if account not verified
             if (($_SESSION['verified'] == false)) {
               echo '<a style="display:none;" href="#" class="user-dropdown-link w-dropdown-link">Dashboard</a>
               <a style="display:none;" href="#" class="user-dropdown-link w-dropdown-link">Settings</a>';
@@ -73,7 +71,7 @@ if (isset($_SESSION['usersid'])) {
             ?>
 
             <a href="start.php?logout=1" class="user-dropdown-link w-dropdown-link">Logout</a>
-          </nav>
+          </ul>
         </div>
         <div class="menu-button w-nav-button">
           <div class="icon-2 w-icon-nav-menu"></div>

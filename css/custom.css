@@ -38,7 +38,6 @@
   margin: 50px 0;
 }
 .carousel {
-  background: #EEE;
   margin-top: 20px;
 }
 
@@ -116,7 +115,7 @@ button.flickity-button.flickity-prev-next-button.next{
   display: none !important;
 }
 .d-none{
-  display: none;
+  display: none !important;
 }
 .d-block{
   display: block;
@@ -170,8 +169,11 @@ margin-right: 10px;
   background: rgb(240, 240, 240);
   box-shadow: none;
   -webkit-box-shadow: none;
-  -moz-box-shadow: none; 
-  -ms-box-shadow: none; 
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+}
+.w-50{
+  max-width: 300px !important;
 }
 @media (max-width: 991px){
   .nav-menu {
