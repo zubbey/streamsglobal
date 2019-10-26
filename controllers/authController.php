@@ -351,5 +351,29 @@ if (isset($_GET['del_id'])){
 		header('location: admin.php?error=notdeleted');
 		die($sql);
 	};
+}
+
+// Admin Edit/Update Ads
+
+if (isset($_GET['edit_id'])){
+	$sql = "SELECT `*` FROM `adminAds` WHERE `id` = '".$_GET['edit_id']."'";
+	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_array($result);
+}
+// Update information
+if(isset($_POST['update_advert'])){
+	$heading = mysqli_real_escape_string($conn, $_POST['edit-heading']);
+	$body = mysqli_real_escape_string($conn, $_POST['edit-body']);
+
+	$update = "UPDATE `adminAds` SET `heading`= '$heading', `body`= '$body' WHERE `id` = '".$_GET['edit_id']."'";
+	if (mysqli_query($conn, $update)){
+		if (!isset($sql)) {
+	  	die("there was an error" .mysqli_connect_error());
+	  } else {
+			header('location: admin.php?success=adupdated');
+		}
+	} else{
+		header('location: admin.php?error=notupdated');
+	};
 
 }
