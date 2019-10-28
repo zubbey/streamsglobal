@@ -10,7 +10,7 @@ $firstname = "";
 $lastname = "";
 $email = "";
 $phone = "";
-$referrel ="";
+$referralcode = "";
 
 // veriable for login
 $emailPhone = "";
@@ -30,6 +30,9 @@ if (isset($_POST['signup-btn'])) {
 	$password = stripslashes($_REQUEST['password']);
 	$password = mysqli_real_escape_string($conn,$password);
 	$passwordConfirm = stripslashes($_REQUEST['passwordConfirm']);
+	$referralcode = stripslashes($_REQUEST['referralcode']);
+	$referralcode = mysqli_real_escape_string($conn,$referralcode);
+	$referralid = '';
 	$gender = '';
 	$DOB = '';
 	$address = '';
@@ -80,16 +83,17 @@ if (isset($_POST['signup-btn'])) {
 
     // If form submitted, insert values into the database.
 
-// 		$dateReg = date("Y-m-d H:i:s");
-        $password = password_hash($password, PASSWORD_DEFAULT);
+		$dateReg = date("Y-m-d H:i:s");
+    $password = password_hash($password, PASSWORD_DEFAULT);
 		$verified = 0;
 		$token = bin2hex(random_bytes(30));
+		$usertype = 0;
 
-        $query = "INSERT into `users` (fname, lname, email, password, phone, verified, token) VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$verified', '$token')";
+        $query = "INSERT into `users` (fname, lname, email, password, phone, verified, token, usertype, dateReg) VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$verified', '$token', '$usertype', '$dateReg')";
         $result = mysqli_query($conn,$query);
         if($result){
 
-            require_once ('mailController.php');
+      require_once ('mailController.php');
 
 			//INSERT INTO PROFILE IMAGE
 
@@ -117,6 +121,7 @@ if (isset($_POST['signup-btn'])) {
 			$_SESSION['usersphone'] = $phone;
 			$_SESSION['usersemail'] = $email;
 			$_SESSION['verified'] = $verified;
+			$_SESSION['usertype'] = $usertype;
 
 			//SESSION VARIABLE WITH NULL VALUE
 			$_SESSION['gender'] = $gender;
@@ -128,7 +133,7 @@ if (isset($_POST['signup-btn'])) {
 			$_SESSION['occupation'] = $occupation;
 			$_SESSION['nationality'] = $nationality;
 
-            require ('mailController.php');
+      require ('mailController.php');
 
 			// flash messages
 			$_SESSION['successaccount']= "Yay! your account was created successfully.";
@@ -177,6 +182,7 @@ if (isset($_POST['login-btn'])) {
 			$_SESSION['usersphone'] = $user['phone'];
 			$_SESSION['usersemail'] = $user['email'];
 			$_SESSION['verified'] = $user['verified'];
+			$_SESSION['usertype'] = $user['usertype'];
 
 			//SESSION VARIABLE WITH NULL VALUE
 			$_SESSION['gender'] = $user['gender'];
@@ -273,7 +279,6 @@ function verifyUser($token)
 
 //if click on upload images in profile settings
 
-
 if (isset($_POST['upload-img-submit'])) {
 	$id = $_SESSION['usersid'];
 	$file = $_FILES['file'];
@@ -326,11 +331,12 @@ if (isset($_POST['upload'])) {
 	// Get text
 	$heading = mysqli_real_escape_string($conn, $_POST['heading']);
 	$body = mysqli_real_escape_string($conn, $_POST['body']);
+	$creator = $_SESSION['usersfname'].' '.$_SESSION['userslname'];
 
 	// image file directory
 	$target = "images/".basename($image);
 
-	$sql = "INSERT into `adminAds` (image, heading, body) VALUES ('$image', '$heading', '$body')";
+	$sql = "INSERT into `adminAds` (image, heading, body, creator) VALUES ('$image', '$heading', '$body', '$creator')";
 	// execute query
 	mysqli_query($conn, $sql);
 

@@ -13,8 +13,9 @@ if (isset($_SESSION['usersid'])) {
   <meta content="Log into your Streamsglobal Account" property="og:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="fontawesome/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/streams-project.webflow.css" rel="stylesheet" type="text/css">
   <link href="css/custom.css" rel="stylesheet" type="text/css">
@@ -28,7 +29,7 @@ if (isset($_SESSION['usersid'])) {
 <body class="body">
   <div class="header-section login-section">
     <?php
-    require ('./component/menu.php');
+    // require ('./component/menu.php');
     ?>
     <div class="div_grid">
       <div class="form-block w-form">
@@ -56,7 +57,11 @@ if (isset($_SESSION['usersid'])) {
           <input type="text" name="emailPhone" value="<?php echo $emailPhone;?>" class="text-field w-input" autocomplete="on">
           <label for="password">Password</label>
           <input type="password" name="password" class="text-field-2 w-input" autocomplete="off">
-          <input type="submit" name="login-btn" value="Secured Login" data-wait="please wait..." class="submit-button w-button">
+          <div class="form-group">
+            <button type="submit" name="login-btn" data-wait="please wait..." class="btn btn-primary">
+              Secured Login <i class="fas fa-lock"></i>
+            </button>
+          </div>
         </form>
 
 
@@ -65,7 +70,7 @@ if (isset($_SESSION['usersid'])) {
     <div class="form-option">
       <a href="sign-up.php" class="form-link">Create new Account</a>
       <a href="forgotten-password.php" class="form-link">Forgot Password?</a>
-      <p class="paragraph-12">By clicking on Log In, you agree to our <a href="terms.php" class="form-footer">terms &amp; service</a> and <a href="privacy.php" class="form-footer">privacy policy</a></p>
+      <p class="paragraph-12">By clicking on Log In, you agree to our <a href="terms.php" target="_blank" class="form-footer">terms &amp; service</a> and <a href="privacy.php" target="_blank" class="form-footer">privacy policy</a></p>
     </div>
   </div>
 

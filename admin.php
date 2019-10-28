@@ -1,6 +1,13 @@
 <?php
   // Connect database admin php
   require_once ('./controllers/authController.php');
+
+  if (isset($_SESSION['usersid'])) {
+    if ($_SESSION['usertype'] == 0) {
+      header('location: login.php');
+    }
+  }
+    // you are Admin
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +39,7 @@
   if(isset($_GET['warning']) == 'deleted')
   {
     echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>";
-    echo "<strong>Deleted!</strong> You deleted an advert created by admin name.";
+    echo "<strong>Deleted!</strong> You have deleted this advert from the Database.";
     echo "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
       echo "<span aria-hidden='true'>&times;</span>";
     echo "</button>";
@@ -98,7 +105,7 @@
       	echo "<h5 class='card-title pt-3'>".$imgRow ['heading']."</h5>";
         echo "<hr class='my-2'>";
         echo "<p class='blockquote'>".$imgRow ['body']."</p>";
-        echo "<blockquote class='blockquote-footer'> Created by <cite title='Source Title'>Admin name here</cite></blockquote>";
+        echo "<blockquote class='blockquote-footer'> Created by <cite title='Source Title'>".$imgRow ['creator']."</cite></blockquote>";
 
         echo "<div class='row'>";
         echo "<div class='col'>";

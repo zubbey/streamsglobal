@@ -14,6 +14,8 @@ if (isset($_SESSION['usersid'])) {
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="fontawesome/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/streams-project.webflow.css" rel="stylesheet" type="text/css">
   <link href="css/custom.css" rel="stylesheet" type="text/css">
@@ -26,7 +28,7 @@ if (isset($_SESSION['usersid'])) {
 <body>
   <div class="header-section sign-section">
     <?php
-    require ('./component/menu.php');
+    //require ('./component/menu.php');
     ?>
     <div class="div_grid">
       <div class="form-block w-form">
@@ -44,12 +46,12 @@ if (isset($_SESSION['usersid'])) {
             </div>
           <?php endif; ?>
 
-          <div class="form-row w-row">
-            <div class="column-5 w-col w-col-6">
+          <div class="row">
+            <div class="col">
               <label for="fname">First Name</label>
               <input type="text" name="fname" value="<?php echo $firstname;?>" class="text-field w-input">
             </div>
-            <div class="column-6 w-col w-col-6">
+            <div class="col">
               <label for="Lname">Last Name</label>
               <input type="text" name="lname" value="<?php echo $lastname;?>" class="text-field w-input">
             </div>
@@ -58,19 +60,22 @@ if (isset($_SESSION['usersid'])) {
           <input type="text" name="email" value="<?php echo $email;?>" class="text-field w-input">
           <label for="phone">Phone Number</label>
           <input type="text" name="phone" value="<?php echo $phone;?>" class="text-field w-input">
-          <label for="phone">Referrel Code (Optional)</label>
-          <input type="text" name="referrel" value="<?php echo $referrel;?>" class="text-field w-input">
+          <label for="phone">Referral Code (Optional)</label>
+          <input type="text" name="referralcode" value="<?php echo $referralcode;?>" class="text-field w-input">
           <label for="password">Password</label>
           <input type="password" name="password" class="text-field-2 w-input">
           <label for="password">Confirm Password</label>
           <input type="password" name="passwordConfirm" class="text-field-2 w-input">
-          <input type="submit" name="signup-btn" value="Register" data-wait="please wait..." class="submit-button w-button">
+          <button type="submit" name="signup-btn" data-wait="please wait..." class="btn btn-primary">
+            Continue
+            <i class="fas fa-long-arrow-alt-right"></i>
+          </button>
         </form>
       </div>
 
       <div class="form-option">
         <p>Already Registered? <a href="login.php" class="form-link">Login</a></p>
-        <p class="paragraph-12">By clicking on Log In, you agree to our <a href="terms.php" class="form-footer">terms &amp; service</a> and <a href="privacy.php" class="form-footer">privacy policy</a></p>
+        <p class="paragraph-12">By clicking on continue, you agree to our <a href="terms.php" target="_blank" class="form-footer">terms &amp; service</a> and <a href="privacy.php" target="_blank" class="form-footer">privacy policy</a></p>
       </div>
     </div>
   </div>

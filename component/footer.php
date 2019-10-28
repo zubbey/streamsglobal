@@ -71,9 +71,21 @@
       });
     });
 
-    // var redElements = document.querySelectorAll('.home > .red');
-    // var first = redElements[0];
-    // var second = redElements[1];
+    jQuery(document).ready(function($){
+
+    $('.faqs-fliex').on('click',function(){
+
+    if($('.p-faqs').attr('data-click-state') == 1) {
+    $('.p-faqs').attr('data-click-state', 0)
+    $('.p-faqs').css('display', 'none')
+    } else {
+    $('.p-faqs').attr('data-click-state', 1)
+    $('.p-faqs').css('display', 'block')
+    }
+
+    });
+
+    });
 
   </script>
 </body>

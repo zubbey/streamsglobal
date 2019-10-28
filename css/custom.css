@@ -1,4 +1,9 @@
 
+.btn.btn-primary{
+  background: #2ab334;
+  border-color: #23930f;
+}
+
 .menu-sdw
 {
   box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset !important;
@@ -29,6 +34,27 @@
   -ms-filter: blur(20px);
   z-index: -1;
 }
+.navbar-light .navbar-toggler{
+  border-color: transparent;
+}
+input.form-control,input.form-control:focus {
+    border:none;
+    box-shadow: none;
+   -webkit-box-shadow: none;
+   -moz-box-shadow: none;
+   -moz-transition: none;
+   -webkit-transition: none;
+}
+.img-icon {
+  max-width: 35px;
+}
+#navbarDropdownMenuLink {
+  padding: 5px;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-right: .7rem;
+  padding-left: .7rem;
+}
 .header-section.abtCover{
   background-image: url('../images/abt_img.jpg') !important;
   background-size: cover;
@@ -36,9 +62,6 @@
 }
 .Partners-Section{
   margin: 50px 0;
-}
-.carousel {
-  margin-top: 20px;
 }
 
 .carousel-cell {
@@ -130,6 +153,10 @@ color: #606060;
 float: left;
 margin-right: 10px;
 }
+.p-faqs{
+display:none;
+}
+
 .div_content.grid{
   max-width: 1200px;
   width: 100%;
@@ -175,6 +202,25 @@ margin-right: 10px;
 .w-50{
   max-width: 300px !important;
 }
+.carousel-caption{
+  right: 0%;
+  bottom: 50px;
+  left:0%;
+  overflow: hidden;
+  z-index: 10;
+  color: #181519;
+  text-align: left;
+}
+.display-4 {
+  width: 50%;
+  color: #2ab334;
+  word-wrap: break-word;
+}
+.lead{
+  width: 50%;
+  word-wrap: break-word;
+}
+
 @media (max-width: 991px){
   .nav-menu {
     justify-content: space-between;
