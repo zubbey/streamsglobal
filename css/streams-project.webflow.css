@@ -923,7 +923,7 @@ background-color: #f7f7f7;*/
 }
 
 .footer {
-  position: static;
+  position: absolute;
   left: 0%;
   top: auto;
   right: 0%;
@@ -1241,7 +1241,7 @@ width: 100%;
     grid-auto-columns: 1fr;
     grid-column-gap: 13px;
     grid-row-gap: 16px;
-                                                                    grid-template-areas: ".";
+    grid-template-areas: ".";
     -ms-grid-columns: 0.75fr 13px 1fr;
     grid-template-columns: 0.75fr 1fr;
     -ms-grid-rows: auto;
@@ -1275,7 +1275,7 @@ width: 100%;
   }
 
   .text-field {
-    background-color: #f4f8fd;
+    background-color: #f8f9fa;
   }
 
   .text-field:focus {
@@ -1286,7 +1286,7 @@ width: 100%;
   }
 
   .text-field-2 {
-    background-color: #f4f8fd;
+    background-color: #f8f9fa;
   }
 
   .text-field-2:focus {

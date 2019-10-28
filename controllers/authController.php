@@ -139,7 +139,7 @@ if (isset($_POST['signup-btn'])) {
 			$_SESSION['successaccount']= "Yay! your account was created successfully.";
 			$_SESSION['success-message'] = "success";
 
-			header('location: start.php');
+			header('location: sign-up.php?success=step2');
 			exit();
 
         } else {
@@ -148,7 +148,10 @@ if (isset($_POST['signup-btn'])) {
 	}
 }
 
-
+// CODE TO RESEND EMAIL
+if (isset($_GET['step2'])){
+	require_once ('mailController.php');
+}
 // CODE IF CLICKED ON LOGIN
 
 if (isset($_POST['login-btn'])) {
@@ -267,7 +270,7 @@ function verifyUser($token)
 			$_SESSION['successverified'] = "Yay! Your email has been successfully verified.";
 			$_SESSION['success-message'] = "success";
 
-			header('location: start.php');
+			header('location: sign-up.php?success=step3');
 			exit();
 		}
 	} else{

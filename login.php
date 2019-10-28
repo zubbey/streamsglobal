@@ -26,13 +26,11 @@ if (isset($_SESSION['usersid'])) {
   <link href="images/favicon-32x32.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/ms-icon-256x256.png" rel="apple-touch-icon">
 </head>
-<body class="body">
-  <div class="header-section login-section">
-    <?php
-    // require ('./component/menu.php');
-    ?>
-    <div class="div_grid">
-      <div class="form-block w-form">
+<body class="body bg-light">
+  <div class="container">
+
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded">
         <form action="login.php" method="post" class="form">
           <h1 class="heading-6">Secure Login</h1>
           <p class="paragraph-11">Please Continue From Where You Left Off</p>
@@ -59,7 +57,7 @@ if (isset($_SESSION['usersid'])) {
           <input type="password" name="password" class="text-field-2 w-input" autocomplete="off">
           <div class="form-group">
             <button type="submit" name="login-btn" data-wait="please wait..." class="btn btn-primary">
-              Secured Login <i class="fas fa-lock"></i>
+              Secured Login  <i class="fas fa-lock"></i>
             </button>
           </div>
         </form>
@@ -67,13 +65,17 @@ if (isset($_SESSION['usersid'])) {
 
       </div>
     </div>
-    <div class="form-option">
-      <a href="sign-up.php" class="form-link">Create new Account</a>
-      <a href="forgotten-password.php" class="form-link">Forgot Password?</a>
-      <p class="paragraph-12">By clicking on Log In, you agree to our <a href="terms.php" target="_blank" class="form-footer">terms &amp; service</a> and <a href="privacy.php" target="_blank" class="form-footer">privacy policy</a></p>
+    <div class="row justify-content-center">
+      <div class="col-md-5 text-center">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-transparent">Not a Member?  <a href="sign-up.php" class="form-link"> Create new account</a></li>
+          <li class="list-group-item bg-transparent"><a href="forgotten-password.php" class="form-link">Forgot Password?</a></li>
+          <li class="list-group-item bg-transparent">By clicking on Log In, you agree to our <a href="terms.php" target="_blank" class="form-footer">terms &amp; service</a> and <a href="privacy.php" target="_blank" class="form-footer">privacy policy</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <?php
-  require ('./component/mini-footer.php');
+  require ('component/mini-footer.php');
   ?>

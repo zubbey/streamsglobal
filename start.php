@@ -5,10 +5,10 @@ if (!isset($_SESSION['usersid'])) {
   header('location: login.php');
 }
 
-if (isset($_GET['token'])) {
-  $token = $_GET['token'];
-  verifyUser($token);
-}
+// if (isset($_GET['token'])) {
+//   $token = $_GET['token'];
+//   verifyUser($token);
+// }
 
 ?>
 <!DOCTYPE html>
