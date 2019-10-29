@@ -1,8 +1,9 @@
 <?php
 
-require ('constants.php');
+//require ('constants.php');
+require ('jawsdb.php');
 
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+$conn = new mysqli($hostname, $username, $password, $database);
 
 if ($conn->connect_error) {
 	die('Database error: ' . $conn->connect_error);
