@@ -1,9 +1,9 @@
 <?php
 require_once ('./controllers/authController.php');
 
-if (isset($_SESSION['usersid'])) {
-  header('location: start.php');
-}
+// if (isset($_SESSION['usersid'])) {
+//   header('location: start.php');
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,9 +76,9 @@ if (isset($_SESSION['usersid'])) {
       echo "<div class='row justify-content-center mt-5'>";
       echo "<div class='col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
       echo "<h1 class='heading-6'>Make your entry payment</h1>";
-      echo "<p>". ucwords($_SESSION['usersfname']) ."you have to pay a membership fee of <strong>&#8358; 1,000 </strong>to activate your account</p>";
+      echo "<p>". ucwords($_SESSION['usersfname']) ."you have to pay a membership fee of <strong>&#8358;1,000 </strong>to activate your account</p>";
       echo "<ul class='list-group list-group-flush'>";
-      echo "<li class='list-group-item bg-transparent'><button type='button' name='entrypayment-btn' data-wait='please wait...' class='btn btn-primary'>Complete <i class='fas fa-check'></i></button></li>";
+      echo "<li class='list-group-item bg-transparent'><button type='button' name='entrypayment-btn' data-wait='please wait...' class='btn btn-primary btn-block'>Complete <i class='fas fa-check'></i></button></li>";
       echo "</ul>";
       echo "</div>";
       echo "</div>";
@@ -119,7 +119,7 @@ if (isset($_SESSION['usersid'])) {
       echo "<input type='password' name='password' class='text-field-2 w-input'>";
       echo "<label for='password'>Confirm Password</label>";
       echo "<input type='password' name='passwordConfirm' class='text-field-2 w-input'>";
-      echo "<button type='submit' name='signup-btn' data-wait='please wait...' class='btn btn-primary'>Continue<i class='fas fa-long-arrow-alt-right'></i></button>";
+      echo "<button type='submit' name='signup-btn' data-wait='please wait...' class='btn btn-primary btn-block'>Continue  <i class='fas fa-arrow-right'></i></button>";
       echo "</form>";
       echo "</div>";
       echo "</div>";

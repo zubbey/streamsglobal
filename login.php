@@ -56,7 +56,7 @@ if (isset($_SESSION['usersid'])) {
           <label for="password">Password</label>
           <input type="password" name="password" class="text-field-2 w-input" autocomplete="off">
           <div class="form-group">
-            <button type="submit" name="login-btn" data-wait="please wait..." class="btn btn-primary">
+            <button type="submit" name="login-btn" data-wait="please wait..." class="btn btn-primary btn-block">
               Secured Login  <i class="fas fa-lock"></i>
             </button>
           </div>

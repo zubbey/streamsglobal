@@ -2,7 +2,7 @@
 session_start();
 
 require ('./config/db.php');
-
+require_once ('./controllers/emailControl.php');
 
 // initializing variables
 $errors =  array();
@@ -81,22 +81,21 @@ if (isset($_POST['signup-btn'])) {
 
 	if (count($errors) === 0) {
 
-    // If form submitted, insert values into the database.
+		// If form submitted, insert values into the database.
 
 		$dateReg = date("Y-m-d H:i:s");
-    $password = password_hash($password, PASSWORD_DEFAULT);
+		$password = password_hash($password, PASSWORD_DEFAULT);
 		$verified = 0;
 		$token = bin2hex(random_bytes(30));
 		$usertype = 0;
 
-        $query = "INSERT into `users` (fname, lname, email, password, phone, verified, token, usertype, dateReg) VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$verified', '$token', '$usertype', '$dateReg')";
-        $result = mysqli_query($conn,$query);
-        if($result){
-
-      require_once ('mailController.php');
+		$query = "INSERT into `users` (fname, lname, email, password, phone, verified, token, usertype, dateReg) VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$verified', '$token', '$usertype', '$dateReg')";
+		$result = mysqli_query($conn,$query);
+		if($result){
+			//sendVerificationEmail($email, $token);
+			require_once ('PHPMailer.php');
 
 			//INSERT INTO PROFILE IMAGE
-
 			$sql = "SELECT `*` FROM `users` WHERE `email` = '$email' LIMIT 1";
 			$result = mysqli_query($conn, $sql);
 
@@ -133,7 +132,8 @@ if (isset($_POST['signup-btn'])) {
 			$_SESSION['occupation'] = $occupation;
 			$_SESSION['nationality'] = $nationality;
 
-      require ('mailController.php');
+			//require ('mailController.php');
+			sendVerificationEmail($email, $token);
 
 			// flash messages
 			$_SESSION['successaccount']= "Yay! your account was created successfully.";
@@ -142,16 +142,17 @@ if (isset($_POST['signup-btn'])) {
 			header('location: sign-up.php?success=step2');
 			exit();
 
-        } else {
+		} else {
 			$errors['db_error'] = "Ops! Database error : failed to register";
 		}
 	}
 }
 
 // CODE TO RESEND EMAIL
-if (isset($_GET['step2'])){
-	require_once ('mailController.php');
-}
+// if (isset($_GET['step2'])){
+// 	require_once ('mailController.php');
+// }
+
 // CODE IF CLICKED ON LOGIN
 
 if (isset($_POST['login-btn'])) {
@@ -221,7 +222,7 @@ if (isset($_GET['logout'])) {
 	unset($_SESSION['usersemail']);
 	unset($_SESSION['verified']);
 
-// UNSET SESSION VAIRABLE WITH NULL
+	// UNSET SESSION VAIRABLE WITH NULL
 	unset($_SESSION['gender']);
 	unset($_SESSION['DOB']);
 	unset($_SESSION['address']);
@@ -377,8 +378,8 @@ if(isset($_POST['update_advert'])){
 	$update = "UPDATE `adminAds` SET `heading`= '$heading', `body`= '$body' WHERE `id` = '".$_GET['edit_id']."'";
 	if (mysqli_query($conn, $update)){
 		if (!isset($sql)) {
-	  	die("there was an error" .mysqli_connect_error());
-	  } else {
+			die("there was an error" .mysqli_connect_error());
+		} else {
 			header('location: admin.php?success=adupdated');
 		}
 	} else{
