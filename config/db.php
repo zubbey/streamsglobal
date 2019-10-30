@@ -31,7 +31,7 @@ if ($WEBSITE_ENVIRONMENT =="Development") {
 	// $database 	= "heroku_8fb2f96e9786de5";
 
 	define("APP_ENVIRONMENT", "Production");
-	define("APP_BASE_URL", "http://www.streamsglobal.com");
+	define("APP_BASE_URL", "https://streamsglobal.herokuapp.com");
 	#error_reporting(0); // turn OFF showing errors
 	error_reporting(E_ALL ^ E_NOTICE); // turn ON showing errors
 }
