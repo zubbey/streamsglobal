@@ -19,7 +19,7 @@ if ($WEBSITE_ENVIRONMENT =="Development") {
 	error_reporting(E_ALL ^ E_NOTICE); // turn ON showing errors
 } else {
 
-	$host 		= "3.133.95.68";
+	$host 		= "ec2-3-133-95-68.us-east-2.compute.amazonaws.com";
 	$user 		= "root";
 	$password 	= "Inno070687";
 	$database 	= "streamsSystem";
