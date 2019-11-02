@@ -1,12 +1,10 @@
 <?php
-   $to_email = "com.zubbey@hotmail.com";
-   $subject = "Simple Email Test via PHP";
-   $body = "Hi,nn This is test email send by PHP Script";
-   $headers = "From: coloredigit@gmail.com";
+// the message
+$msg = "First line of text\nSecond line of text";
 
-   if ( mail($to_email, $subject, $body, $headers)) {
-      echo("Email successfully sent to $to_email...");
-   } else {
-      echo("Email sending failed...");
-   }
+// use wordwrap() if lines are longer than 70 characters
+$msg = wordwrap($msg,70);
+
+// send email
+mail("help@streamsglobal.com","testing from php mail function",$msg);
 ?>
