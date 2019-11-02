@@ -79,3 +79,5 @@ if (isset($_SESSION['usersid'])) {
   <?php
   require ('component/mini-footer.php');
   ?>
+</body>
+</html>

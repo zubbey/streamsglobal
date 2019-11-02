@@ -283,7 +283,11 @@ display:none;
 .progressBar li.active:after {
     background-color: #23930f;
 }
-
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 @media (max-width: 991px){
   .nav-menu {
     justify-content: space-between;
