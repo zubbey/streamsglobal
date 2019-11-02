@@ -1,40 +1,20 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+ini-set( 'display_errors', 1 );
+error_reporting( E_ALL );
 
-// Load Composer's autoloader
-require_once '../config/constants.php';
-require '../vendor/phpmailer/phpmailer/src/Exception.php';
-require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+$from = "help@streamsglobal.com";
+$to = "com.zubbey@hotmail.com";
 
-// Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer(true);
+$subject = "test from a live server";
+$message = "hello am a bot send from a live server";
+$headers = "From:" . $from;
 
-try {
-    //Server settings
-    $mail->SMTPDebug = 2;                                       // Enable verbose debug output
-    $mail->isSMTP();                                            // Set mailer to use SMTP
-    $mail->Host       = 'smtp@gmail.com';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = EMAIL;                     // SMTP username
-    $mail->Password   = PASSWORD;                               // SMTP password
-    $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption, `ssl` also accepted
-    $mail->Port       = 465;                                    // TCP port to connect to
+mail($to, $subject, $message, $headers);
 
-    //Recipients
-    $mail->setFrom(EMAIL, 'Alexa at Streams Global');
-    $mail->addAddress('com.zubbey@hotmail.com', 'Zubbey');     // Add a recipient
-    $mail->addReplyTo(EMAIL, 'Alexa');
+if(mail){
 
+echo" sent succesfully! ";
 
-    // Content
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Verify email address';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-
-    $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}else {
+echo" could not send mail";
 }
