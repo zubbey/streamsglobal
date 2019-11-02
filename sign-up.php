@@ -76,7 +76,7 @@ require_once ('./controllers/authController.php');
       echo "<div class='row justify-content-center mt-5'>";
       echo "<div class='col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
       echo "<h1 class='heading-6'>Make your entry payment</h1>";
-      echo "<p>". ucwords($_SESSION['usersfname']) ."you have to pay a membership fee of <strong>&#8358;1,000 </strong>to activate your account</p>";
+      echo "<p>Hello ". ucwords($_SESSION['usersfname']) .", you have to pay a membership fee of <strong>&#8358;1,000 </strong>to activate your account</p>";
       echo "<ul class='list-group list-group-flush'>";
       echo "<li class='list-group-item bg-transparent'><button type='button' name='entrypayment-btn' data-wait='please wait...' class='btn btn-primary btn-block'>Complete <i class='fas fa-check'></i></button></li>";
       echo "</ul>";
