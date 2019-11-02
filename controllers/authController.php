@@ -92,8 +92,8 @@ if (isset($_POST['signup-btn'])) {
 		$query = "INSERT into `users` (fname, lname, email, password, phone, verified, token, usertype, dateReg) VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$verified', '$token', '$usertype', '$dateReg')";
 		$result = mysqli_query($conn,$query);
 		if($result){
-			//sendVerificationEmail($email, $token);
-			require_once ('PHPMailer.php');
+
+			sendVerificationEmail($email, $token);
 
 			//INSERT INTO PROFILE IMAGE
 			$sql = "SELECT `*` FROM `users` WHERE `email` = '$email' LIMIT 1";
@@ -132,8 +132,7 @@ if (isset($_POST['signup-btn'])) {
 			$_SESSION['occupation'] = $occupation;
 			$_SESSION['nationality'] = $nationality;
 
-			//require ('mailController.php');
-			sendVerificationEmail($email, $token);
+			//sendVerificationEmail($email, $token);
 
 			// flash messages
 			$_SESSION['successaccount']= "Yay! your account was created successfully.";
