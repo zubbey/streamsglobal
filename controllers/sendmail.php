@@ -1,14 +1,12 @@
 <?php
-ini_set( 'display_errors', 1 );
-error_reporting( E_ALL );
+   $to_email = "com.zubbey@hotmail.com";
+   $subject = "Simple Email Test via PHP";
+   $body = "Hi,nn This is test email send by PHP Script";
+   $headers = "From: help@streamsglobal.com";
 
-$from = "help@streamsglobal.com";
-$to = "com.zubbey@hotmail.com";
-
-$subject = "test from a live server";
-$message = "hello am a bot send from a live server";
-$headers = "From:" . $from;
-
-mail($to, $subject, $message, $headers);
-
-echo" sent succesfully! ";
+   if ( mail($to_email, $subject, $body, $headers)) {
+      echo("Email successfully sent to $to_email...");
+   } else {
+      echo("Email sending failed...");
+   }
+?>
