@@ -7,6 +7,7 @@ function sendVerificationEmail($userEmail, $token){
   $message = "
   <!DOCTYPE html>
   <html>
+
   <head>
       <title>Verify | Streams Global</title>
       <link href='https://i.imgur.com/q6DcKop.png' rel='shortcut icon' type='image/x-icon'>
@@ -136,26 +137,30 @@ function sendVerificationEmail($userEmail, $token){
               </td>
           </tr>
           <tr>
-              <td bgcolor='#f4f4f4' align='center' style='padding: 0px 10px 0px 10px;'>
+              <td bgcolor='#ffffff' align='center' style='padding: 0px 10px 0px 10px;'>
                   <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                       <tr>
                           <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 20px 30px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                               <p style='margin: 0;'>We're excited to have you get started. First, you need to confirm your account. Just press the button below.</p>
                           </td>
                       </tr>
-                        <tr>
-                            <td bgcolor='#19b334' align='center' style='padding: 0px 10px 0px 10px;'>
-                                <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
-                                    <tr>
-                                        <td bgcolor='#ffffff' align='center' valign='top' style='padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;'>
-                                          <a href='http://streamsglobal.com/sign-up.php?success=step3&token=" . $token . "' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 3px; border: 1px solid #19b334; display: inline-block;'>
-                                            Confirm Account
-                                          </a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
+
+                      <tr>
+                          <td bgcolor='#ffffff' align='left'>
+                              <table width='100%' border='0' cellspacing='0' cellpadding='0'>
+                                  <tr>
+                                      <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 60px 30px;'>
+                                          <table border='0' cellspacing='0' cellpadding='0'>
+                                              <tr>
+                                                  <td align='center' style='border-radius: 5px;' bgcolor='#19b334'><a href='http://streamsglobal.com/sign-up.php?success=step3&token=" . $token . "' target='_blank' style='font-size: 20px; font-family: \"Saira\", Helvetica, Arial, sans-serif; background-color: #19b334; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 5px; border: 1px solid #19b334; display: inline-block;'>Confirm Account</a></td>
+                                              </tr>
+                                          </table>
+                                      </td>
+                                  </tr>
+                              </table>
+                          </td>
+                      </tr> <!-- COPY -->
+
                       <tr>
                           <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 0px 30px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                               <p style='margin: 0;'>If that doesn't work, copy and paste the following link in your browser:</p>
@@ -194,7 +199,9 @@ function sendVerificationEmail($userEmail, $token){
 
       </table>
   </body>
+
   </html>
+
   ";
   // Always set content-type when sending HTML email
   $headers = "MIME-Version: 1.0" . "\r\n";
