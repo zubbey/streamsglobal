@@ -128,7 +128,7 @@ require_once ('./controllers/authController.php');
       echo "<div class='col-md-5 text-center'>";
       echo "<ul class='list-group list-group-flush'>";
       echo "<li class='list-group-item bg-transparent'>Already Registered? <a href='login.php' class='form-link'>Login</a></li>";
-      echo "<li class='list-group-item bg-transparent'>By clicking on Log In, you agree to our <a href='terms.php' target='_blank' class='form-footer'>terms &amp; service</a> and <a href='privacy.php' target='_blank' class='form-footer'>privacy policy</a></li>";
+      echo "<li class='list-group-item bg-transparent py-5'>By clicking on Continue, you agree to our <a href='terms.php' target='_blank' class='form-footer'>terms &amp; service</a> and <a href='privacy.php' target='_blank' class='form-footer'>privacy policy</a></li>";
       echo "</ul>";
       echo "</div>";
       echo "</div>";
@@ -145,9 +145,11 @@ require_once ('./controllers/authController.php');
   <script>
   if (window.location.search.indexOf('step2') > -1) {
     $("ul li:nth-child(2)").addClass('active');
+    $("#footer").css('bottom', '0');
   } else if(window.location.search.indexOf('step3') > -1){
     $("ul li:nth-child(3)").addClass('active');
     $("ul li:nth-child(2)").addClass('active');
+    $("#footer").css('bottom', '0');
   }
 
   function msg(){
