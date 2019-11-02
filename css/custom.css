@@ -283,6 +283,10 @@ display:none;
 .progressBar li.active:after {
     background-color: #23930f;
 }
+.close-callback{
+  border: 1px solid rosybrown !important;
+  background-color: #f7e6e7 !important;
+}
 #footer {
   position: absolute;
   /* bottom: 0; */

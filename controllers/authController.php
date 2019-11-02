@@ -148,9 +148,9 @@ if (isset($_POST['signup-btn'])) {
 }
 
 // CODE TO RESEND EMAIL
-// if (isset($_GET['step2'])){
-// 	require_once ('mailController.php');
-// }
+if (isset($_GET['step2'])){
+	sendVerificationEmail($email, $token);
+}
 
 // CODE IF CLICKED ON LOGIN
 
@@ -267,7 +267,7 @@ function verifyUser($token)
 			$_SESSION['nationality'] = $user['nationality'];
 
 			// flash messages
-			$_SESSION['successverified'] = "Yay! Your email has been successfully verified.";
+			$_SESSION['successverified'] = "Yay! Your account has been verified successfully.";
 			$_SESSION['success-message'] = "success";
 
 			header('location: sign-up.php?success=step3');

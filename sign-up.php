@@ -27,6 +27,7 @@ require_once ('./controllers/authController.php');
   <link href="images/ms-icon-256x256.png" rel="apple-touch-icon">
 </head>
 <body class="body bg-light">
+  <script src="https://js.paystack.co/v1/inline.js"></script>
   <div class="container">
     <!-- Horizontal Steppers -->
     <div class="row">
@@ -74,11 +75,11 @@ require_once ('./controllers/authController.php');
     } else if(isset($_GET['success']) AND $_GET["success"]== 'step3')
     {
       echo "<div class='row justify-content-center mt-5'>";
-      echo "<div class='col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
-      echo "<h1 class='heading-6'>Make your entry payment</h1>";
+      echo "<div id='step3col' class='col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
+      echo "<h1 id='step3header' class='heading-6'>Make your entry payment</h1>";
       echo "<p>Hello ". ucwords($_SESSION['usersfname']) .", you have to pay a membership fee of <strong>&#8358;1,000 </strong>to activate your account</p>";
       echo "<ul class='list-group list-group-flush'>";
-      echo "<li class='list-group-item bg-transparent'><button type='button' name='entrypayment-btn' data-wait='please wait...' class='btn btn-primary btn-block'>Complete <i class='fas fa-check'></i></button></li>";
+      echo "<li class='list-group-item bg-transparent'><button type='button' onclick='payWithPaystack()' name='entrypayment-btn' data-wait='please wait...' class='btn btn-primary btn-block'>Complete <i class='fas fa-check'></i></button></li>";
       echo "</ul>";
       echo "</div>";
       echo "</div>";
@@ -150,12 +151,43 @@ require_once ('./controllers/authController.php');
     $("ul li:nth-child(3)").addClass('active');
     $("ul li:nth-child(2)").addClass('active');
     $("#footer").css('bottom', '0');
+  } else if(window.location.search.indexOf('closepayment') > -1){
+    $("#step3header").html('Please try again to complete your registration');
+    $("#step3col").addClass('close-callback');
   }
 
   function msg(){
     if (window.location.search.indexOf('step2') > -1){
       $("#emailMsg").removeClass('d-none');
     }
+  }
+
+  //PAYSTACK INTEGRATION
+  function payWithPaystack(){
+    var handler = PaystackPop.setup({
+      key: 'pk_test_02a7ea9bf16da92e8bfd82243e847b36c28a919a',
+      email: '<?php echo $_SESSION["usersemail"]; ?>',
+      amount: 100000,
+      currency: "NGN",
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+        custom_fields: [
+          {
+            display_name: "<?php echo $_SESSION['usersfname'].' '.$_SESSION['userslname']; ?>",
+            variable_name: "<?php echo $_SESSION['usersfname']; ?>",
+            value: "<?php echo $_SESSION['usersphone']; ?>"
+          }
+        ]
+      },
+      callback: function(response){
+        window.location.assign("http://streamsglobal.com/start.php?success="+response.reference);
+        //alert('success. transaction ref is ' + response.reference);
+      },
+      onClose: function(){
+        window.location.assign("http://streamsglobal.com/sign-up.php?success=step3&error=closepayment");
+      }
+    });
+    handler.openIframe();
   }
   </script>
 </body>
