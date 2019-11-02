@@ -1,5 +1,5 @@
 <?php
-ini-set( 'display_errors', 1 );
+ini_set( 'display_errors', 1 );
 error_reporting( E_ALL );
 
 $from = "help@streamsglobal.com";
@@ -11,10 +11,4 @@ $headers = "From:" . $from;
 
 mail($to, $subject, $message, $headers);
 
-if(mail){
-
 echo" sent succesfully! ";
-
-}else {
-echo" could not send mail";
-}
