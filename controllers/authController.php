@@ -164,22 +164,33 @@ if (isset($_POST['resendemail'])){
 	";
 }
 
+
 // CODE TO CREATE REFERRAL ID
-if(isset($_POST['createreferralID'])){
+function createreferralID(){
 
 	$referralid = bin2hex(random_bytes(6));
 	$id = $_SESSION['usersid'];
 
-	$sql = "SELECT `*` FROM `users` WHERE `referralid` = 'NULL' LIMIT 1";
+	$sql = "SELECT `*` FROM `users` WHERE `userid`='$id';";
 	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_assoc($result);
 
 	if (mysqli_num_rows($result) > 0) {
-		$user = mysqli_fetch_assoc($result);
-		$update_query = "UPDATE `users` SET `referralid` = '$referralid' WHERE `userid` = '$id'";
 
-		mysqli_query($conn, $update_query);
-		exit();
+			$sql = "UPDATE `users` SET `referralid` = '$referralid' WHERE `userid` = '$id';";
+			$result = mysqli_query($conn, $sql);
+
+			if ($result) {
+					header('location: start.php?success='.$referralid);
+					exit();
+			}
+			else {
+					//header("Location: settings.update.php?error=couldnotupdate");
+					exit();
+			}
+			mysql_close($conn);
 	}
+
 }
 
 // CODE IF CLICKED ON LOGIN

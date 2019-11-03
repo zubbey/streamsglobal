@@ -61,7 +61,10 @@ require_once ('./controllers/authController.php');
       echo "<h1 class='heading-6'>Verify your account</h1>";
       echo "<p>We sent a verification link to your email <strong>". $_SESSION['usersemail'] ."</strong>, check your email address to continue.</p>";
       echo "<ul class='list-group list-group-flush'>";
-      echo "<li class='list-group-item bg-transparent'>Didn't get the email? <button type='submit' name='resendemail' class='form-link'>Resend email</button>";
+      echo "<li class='list-group-item bg-transparent'>Didn't get the email?
+      <form action='sign-up.php' method='post'>
+      <button type='submit' name='resendemail' class='form-link'>Resend email</button>
+      </form>";
       echo "</ul>";
       echo "</div>";
       echo "</div>";
@@ -151,6 +154,10 @@ require_once ('./controllers/authController.php');
     $(".col-md-5").addClass('close-callback');
   }
 
+  function updatereferral(){
+    document.write(' <?php createreferralID(); ?> ');
+  }
+
   //PAYSTACK INTEGRATION
   function payWithPaystack(){
     var handler = PaystackPop.setup({
@@ -169,20 +176,8 @@ require_once ('./controllers/authController.php');
         ]
       },
       callback: function(response){
-
-        $.ajax({
-          type: 'POST',
-          data:'createreferralID',
-          dataType: "json",
-          url: 'sign-up.php',
-          success: function(data) {
-            prompt(data);
-            window.location.assign("http://streamsglobal.com/start.php?success="+response.reference);
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown) {
-            alert("some error");
-          }
-        });
+        updatereferral();
+        //window.location.assign("http://streamsglobal.com/start.php?success="+response.reference);
         //alert('success. transaction ref is ' + response.reference);
       },
       onClose: function(){
