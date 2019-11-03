@@ -42,15 +42,8 @@ require_once ('./controllers/authController.php');
       </div>
     </div>
 
-    <div id="emailMsg" class="d-none row mt-3">
-      <div class="col col-md-8 mx-auto">
-        <div class='alert alert-success alert-dismissible fade show' role='alert'>
-          <strong>Email Sent!</strong> please check your spam if you can't find the sent mail.
-          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-            <span aria-hidden='true'>&times;</span>
-          </button>
-        </div>
-      </div>
+    <div id="emailMsg" class=" row mt-3">
+      <?php echo $msg; ?>
     </div>
 
     <?php
@@ -68,15 +61,15 @@ require_once ('./controllers/authController.php');
       echo "<h1 class='heading-6'>Verify your account</h1>";
       echo "<p>We sent a verification link to your email <strong>". $_SESSION['usersemail'] ."</strong>, check your email address to continue.</p>";
       echo "<ul class='list-group list-group-flush'>";
-      echo "<li class='list-group-item bg-transparent'>Didn't get the email? <a href='sign-up.php?success=step2' onClick=msg() class='form-link'>Resend email</a></li>";
+      echo "<li class='list-group-item bg-transparent'>Didn't get the email? <button type='submit' name='resendemail' class='form-link'>Resend email</button>";
       echo "</ul>";
       echo "</div>";
       echo "</div>";
     } else if(isset($_GET['success']) AND $_GET["success"]== 'step3')
     {
       echo "<div class='row justify-content-center mt-5'>";
-      echo "<div id='step3col' class='col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
-      echo "<h1 id='step3header' class='heading-6'>Make your entry payment</h1>";
+      echo "<div class='col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
+      echo "<h1 class='heading-6'>Make your entry payment</h1>";
       echo "<p>Hello ". ucwords($_SESSION['usersfname']) .", you have to pay a membership fee of <strong>&#8358;1,000 </strong>to activate your account</p>";
       echo "<ul class='list-group list-group-flush'>";
       echo "<li class='list-group-item bg-transparent'><button type='button' onclick='payWithPaystack()' name='entrypayment-btn' data-wait='please wait...' class='btn btn-primary btn-block'>Complete <i class='fas fa-check'></i></button></li>";
@@ -151,15 +144,10 @@ require_once ('./controllers/authController.php');
     $("ul li:nth-child(3)").addClass('active');
     $("ul li:nth-child(2)").addClass('active');
     $("#footer").css('bottom', '0');
-  } else if(window.location.search.indexOf('closepayment') > -1){
-    $("#step3header").html('Please try again to complete your registration');
-    $("#step3col").addClass('close-callback');
   }
-
-  function msg(){
-    if (window.location.search.indexOf('step2') > -1){
-      $("#emailMsg").removeClass('d-none');
-    }
+  if(window.location.search.indexOf('closepayment') > -1){
+    $(".heading-6").html('Please try again to complete your registration');
+    $(".col-md-5").addClass('close-callback');
   }
 
   //PAYSTACK INTEGRATION
@@ -180,7 +168,20 @@ require_once ('./controllers/authController.php');
         ]
       },
       callback: function(response){
-        window.location.assign("http://streamsglobal.com/start.php?success="+response.reference);
+
+        $.ajax({
+          type: 'POST',
+          data:'createreferralID',
+          dataType: "json",
+          url: 'sign-up.php',
+          success: function(data) {
+            prompt(data);
+            window.location.assign("http://streamsglobal.com/start.php?success="+response.reference);
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert("some error");
+          }
+        });
         //alert('success. transaction ref is ' + response.reference);
       },
       onClose: function(){
@@ -190,5 +191,5 @@ require_once ('./controllers/authController.php');
     handler.openIframe();
   }
   </script>
-</body>
-</html>
+  </body>
+  </html>

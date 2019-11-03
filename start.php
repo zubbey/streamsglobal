@@ -68,11 +68,6 @@ if (!isset($_SESSION['usersid'])) {
         unset($_SESSION['successlogin']);
         unset($_SESSION['success-message']);
       }
-      if(isset($_SESSION['successverified'])){
-        echo '<div class="alert '.$_SESSION['success-message'].'"><div>'. $_SESSION['successverified'] .'</div></div>';
-        unset($_SESSION['successverified']);
-        unset($_SESSION['success-message']);
-      }
       if(isset($_SESSION['payment'])){
         echo '<div class="alert '.$_SESSION['warning-message'].'"><div>'. $_SESSION['payment'] .'</div></div>';
         unset($_SESSION['payment']);

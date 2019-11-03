@@ -15,6 +15,8 @@ $referralcode = "";
 // veriable for login
 $emailPhone = "";
 
+// message to reuse
+$msg = "";
 // CODE IF CLICKED ON REGISTER
 
 if (isset($_POST['signup-btn'])) {
@@ -148,8 +150,36 @@ if (isset($_POST['signup-btn'])) {
 }
 
 // CODE TO RESEND EMAIL
-if (isset($_GET['step2'])){
+if (isset($_POST['resendemail'])){
 	sendVerificationEmail($email, $token);
+	$msg = "
+	<div class='col col-md-8 mx-auto'>
+	<div class='alert alert-success alert-dismissible fade show' role='alert'>
+	<strong>Email Sent!</strong> please check your spam if you can't find the sent mail.
+	<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+	<span aria-hidden='true'>&times;</span>
+	</button>
+	</div>
+	</div>
+	";
+}
+
+// CODE TO CREATE REFERRAL ID
+if(isset($_POST['createreferralID'])){
+
+	$referralid = bin2hex(random_bytes(6));
+	$id = $_SESSION['usersid'];
+
+	$sql = "SELECT `*` FROM `users` WHERE `referralid` = 'NULL' LIMIT 1";
+	$result = mysqli_query($conn, $sql);
+
+	if (mysqli_num_rows($result) > 0) {
+		$user = mysqli_fetch_assoc($result);
+		$update_query = "UPDATE `users` SET `referralid` = '$referralid' WHERE `userid` = '$id'";
+
+		mysqli_query($conn, $update_query);
+		exit();
+	}
 }
 
 // CODE IF CLICKED ON LOGIN
