@@ -151,6 +151,9 @@ if (isset($_POST['signup-btn'])) {
 
 // CODE TO RESEND EMAIL
 if (isset($_POST['resendemail'])){
+
+	global $conn;
+
 	sendVerificationEmail($email, $token);
 	$msg = "
 	<div class='col col-md-8 mx-auto'>
@@ -162,12 +165,14 @@ if (isset($_POST['resendemail'])){
 	</div>
 	</div>
 	";
+	header('location: sign-up.php?success=step2');
+	exit();
 }
 
 
 // CODE TO CREATE REFERRAL ID
 function createreferralID(){
-
+	global $conn;
 	$referralid = bin2hex(random_bytes(6));
 	$id = $_SESSION['usersid'];
 
