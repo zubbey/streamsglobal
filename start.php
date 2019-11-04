@@ -10,26 +10,26 @@ require_once ('./controllers/authController.php');
 //   verifyUser($token);
 // }
 if(isset($_GET['success']) AND $_GET["success"]=='entryverified') {
-
+  
   $referralid = bin2hex(random_bytes(3));
   $id = $_SESSION['usersid'];
   echo $referralid;
-  $sql = "SELECT `*` FROM `users` WHERE `userid`='$id';";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_assoc($result);
 
-  if (mysqli_num_rows($result) > 0) {
+  $sql = "SELECT `*` FROM `users` WHERE `userid` = '$id'";
+	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_array($result);
 
-    $sql = "UPDATE `users` SET `referralid` = '$referralid' WHERE `userid` = '$id';";
-    $result = mysqli_query($conn, $sql);
+  $update = "UPDATE `users` SET `referralid`= '$referralid' WHERE `userid` = '$id'";
 
-    if($result){
-      echo "<script>alert('Referralid created.')</script>";
-    } else{
-      echo "<script>alert('Could not create Referralid.')</script>";
-    }
-    mysql_close($conn);
-  }
+  if (mysqli_query($conn, $update)){
+		if (!isset($sql)) {
+			die("there was an error" .mysqli_connect_error());
+		} else {
+			echo "<script>alert('Referralid created.')</script>";
+		}
+	} else{
+		echo "<script>alert('Could not Create Referralid.')</script>";
+	}
 }
 ?>
 <!DOCTYPE html>
