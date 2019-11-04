@@ -182,7 +182,7 @@ function createreferralID(){
 	$sql = "UPDATE users SET referralid='$referralid' WHERE id='$id'";
 
 	if ($conn->query($sql) === TRUE) {
-		echo "<script>alert('Referralid updated successfully.')</script>";
+		echo "Referralid updated successfully.";
 	} else {
 		echo "Error updating record: " . $conn->error;
 	}
