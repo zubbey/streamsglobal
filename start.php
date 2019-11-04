@@ -11,6 +11,8 @@ require_once ('./controllers/authController.php');
 // }
 if(isset($_GET['success']) AND $_GET["success"]=='entryverified') {
   
+  global $conn;
+
   $referralid = bin2hex(random_bytes(3));
   $id = $_SESSION['usersid'];
   echo $referralid;
