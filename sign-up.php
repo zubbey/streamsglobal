@@ -172,13 +172,8 @@ require_once ('./controllers/authController.php');
         ]
       },
       callback: function(response){
-
         //alert('success. transaction ref is ' + response.reference);
-        var updateReferral = document.write(' <?php createreferralID(); ?> ');
-        if (updateReferral) {
-          window.location.assign("http://streamsglobal.com/start.php?success=entryverified&referenceid="+response.reference);
-        }
-
+          window.location.assign("http://streamsglobal.com/start.php?success=entryverified&reference="+response.reference);
       },
       onClose: function(){
         window.location.assign("http://streamsglobal.com/sign-up.php?success=step3&error=closepayment");

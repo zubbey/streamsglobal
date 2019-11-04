@@ -180,12 +180,12 @@ function createreferralID(){
 	//echo $referralid;
 
 	$sql = "UPDATE users SET referralid='$referralid' WHERE id='$id'";
-
-	if ($conn->query($sql) === TRUE) {
-		echo "Referralid updated successfully.";
-	} else {
-		echo "Error updating record: " . $conn->error;
-	}
+	$conn->query($sql);
+	// if ($conn->query($sql) === TRUE) {
+	// 	echo "Referralid updated successfully.";
+	// } else {
+	// 	echo "Error updating record: " . $conn->error;
+	// }
 
 	$conn->close();
 

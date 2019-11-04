@@ -5,13 +5,13 @@ require_once ('./controllers/authController.php');
 //   header('location: login.php');
 // }
 
-// if (isset($_GET['entryverified'])) {
-//   $token = $_GET['entryverified'];
-//   verifyUser($token);
-// }
-// if(isset($_GET['success']) AND $_GET["success"]=='entryverified') {
-//   createreferralID();
-// }
+if (isset($_GET['reference'])) {
+  $reference = $_GET['reference'];
+
+  if(isset($_GET['success']) AND $_GET["success"] == 'entryverified' AND $_GET["reference"] == $reference) {
+    createreferralID();
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
