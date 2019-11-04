@@ -188,11 +188,11 @@ function createreferralID(){
 			$result = mysqli_query($conn, $sql);
 
 			if ($result) {
-					header('location: start.php?success=entryverified');
+					header('location: start.php?success=referralidcreated');
 					exit();
 			}
 			else {
-					header('location: sign-up.php?error=step3');
+					header('location: start.php?error=noreferralid');
 					exit();
 			}
 			mysql_close($conn);
