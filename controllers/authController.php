@@ -1,4 +1,5 @@
 <?php
+ini_set('error_reporting', E_ALL);
 session_start();
 
 require ('./config/db.php');
@@ -152,9 +153,8 @@ if (isset($_POST['signup-btn'])) {
 // CODE TO RESEND EMAIL
 if (isset($_POST['resendemail'])){
 
-	global $conn;
-
 	sendVerificationEmail($email, $token);
+	
 	$msg = "
 	<div class='col col-md-8 mx-auto'>
 	<div class='alert alert-success alert-dismissible fade show' role='alert'>
@@ -172,7 +172,9 @@ if (isset($_POST['resendemail'])){
 
 // CODE TO CREATE REFERRAL ID
 function createreferralID(){
+
 	global $conn;
+
 	$referralid = bin2hex(random_bytes(6));
 	$id = $_SESSION['usersid'];
 
@@ -186,11 +188,11 @@ function createreferralID(){
 			$result = mysqli_query($conn, $sql);
 
 			if ($result) {
-					header('location: start.php?success='.$referralid);
+					header('location: start.php?success=entryverified');
 					exit();
 			}
 			else {
-					//header("Location: settings.update.php?error=couldnotupdate");
+					header('location: sign-up.php?error=step3');
 					exit();
 			}
 			mysql_close($conn);

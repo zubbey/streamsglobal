@@ -42,7 +42,7 @@ require_once ('./controllers/authController.php');
       </div>
     </div>
 
-    <div id="emailMsg" class=" row mt-3">
+    <div id="emailMsg" class="row mt-3">
       <?php echo $msg; ?>
     </div>
 
