@@ -175,9 +175,9 @@ function createreferralID(){
 
 	global $conn;
 
-	$referralid = bin2hex(random_bytes(6));
+	$referralid = bin2hex(random_bytes(3));
 	$id = $_SESSION['usersid'];
-
+	//echo $referralid;
 	$sql = "SELECT `*` FROM `users` WHERE `userid`='$id';";
 	$result = mysqli_query($conn, $sql);
 	$row = mysqli_fetch_assoc($result);
@@ -187,13 +187,10 @@ function createreferralID(){
 			$sql = "UPDATE `users` SET `referralid` = '$referralid' WHERE `userid` = '$id';";
 			$result = mysqli_query($conn, $sql);
 
-			if ($result) {
-					header('location: start.php?success=referralidcreated');
-					exit();
-			}
-			else {
-					header('location: start.php?error=noreferralid');
-					exit();
+			if($result){
+				echo "<script>alert('Referralid created.')</script>";
+			} else{
+				echo "<script>alert('Could not create Referralid.')</script>";
 			}
 			mysql_close($conn);
 	}

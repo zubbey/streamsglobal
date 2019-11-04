@@ -1,18 +1,17 @@
 <?php
 require_once ('./controllers/authController.php');
 
-if (!isset($_SESSION['usersid'])) {
-  header('location: login.php');
-}
+// if (!isset($_SESSION['usersid'])) {
+//   header('location: login.php');
+// }
 
 // if (isset($_GET['entryverified'])) {
 //   $token = $_GET['entryverified'];
 //   verifyUser($token);
 // }
-if(isset($_GET['success']) AND $_GET["success"]=='entryverified'){
+if(isset($_GET['success']) AND $_GET["success"]=='entryverified') {
   createreferralID();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +57,7 @@ if(isset($_GET['success']) AND $_GET["success"]=='entryverified'){
     ?>
 
 
-    <div class="div_content start">
+    <div class="container">
       <?php
 
       if(isset($_SESSION['successaccount'])){
