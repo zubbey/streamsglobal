@@ -5,10 +5,13 @@ if (!isset($_SESSION['usersid'])) {
   header('location: login.php');
 }
 
-// if (isset($_GET['token'])) {
-//   $token = $_GET['token'];
+// if (isset($_GET['entryverified'])) {
+//   $token = $_GET['entryverified'];
 //   verifyUser($token);
 // }
+if(isset($_GET['success']) AND $_GET["success"]=='entryverified'){
+  createreferralID();
+}
 
 ?>
 <!DOCTYPE html>

@@ -154,10 +154,6 @@ require_once ('./controllers/authController.php');
     $(".col-md-5").addClass('close-callback');
   }
 
-  function updatereferral(){
-    document.write(' <?php createreferralID(); ?> ');
-  }
-
   //PAYSTACK INTEGRATION
   function payWithPaystack(){
     var handler = PaystackPop.setup({
@@ -176,8 +172,7 @@ require_once ('./controllers/authController.php');
         ]
       },
       callback: function(response){
-        updatereferral();
-        //window.location.assign("http://streamsglobal.com/start.php?success="+response.reference);
+        window.location.assign("http://streamsglobal.com/start.php?success=entryverified&referenceid="+response.reference);
         //alert('success. transaction ref is ' + response.reference);
       },
       onClose: function(){

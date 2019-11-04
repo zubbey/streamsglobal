@@ -154,7 +154,7 @@ if (isset($_POST['signup-btn'])) {
 if (isset($_POST['resendemail'])){
 
 	sendVerificationEmail($email, $token);
-	
+
 	$msg = "
 	<div class='col col-md-8 mx-auto'>
 	<div class='alert alert-success alert-dismissible fade show' role='alert'>
