@@ -171,14 +171,25 @@ if (isset($_POST['resendemail'])){
 
 
 // CODE TO CREATE REFERRAL ID
-// function createreferralID(){
-//
-// 	global $conn;
-//
-//
-// 	}
-//
-// }
+function createreferralID(){
+
+	global $conn;
+
+	$referralid = bin2hex(random_bytes(3));
+	$id = $_SESSION['usersid'];
+	echo $referralid;
+
+	$sql = "UPDATE users SET referralid='$referralid' WHERE id='$id'";
+
+	if ($conn->query($sql) === TRUE) {
+		echo "<script>alert('Referralid updated successfully.')</script>";
+	} else {
+		echo "Error updating record: " . $conn->error;
+	}
+
+	$conn->close();
+
+}
 
 // CODE IF CLICKED ON LOGIN
 

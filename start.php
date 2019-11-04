@@ -10,21 +10,7 @@ require_once ('./controllers/authController.php');
 //   verifyUser($token);
 // }
 if(isset($_GET['success']) AND $_GET["success"]=='entryverified') {
-
-  $referralid = bin2hex(random_bytes(3));
-  $id = $_SESSION['usersid'];
-  echo $referralid;
-
-  $sql = "UPDATE users SET referralid='$referralid' WHERE id='$id'";
-
-  if ($conn->query($sql) === TRUE) {
-    echo "<script>alert('Referralid updated successfully.')</script>";
-  } else {
-    echo "Error updating record: " . $conn->error;
-  }
-
-  $conn->close();
-
+  createreferralID();
 }
 ?>
 <!DOCTYPE html>
