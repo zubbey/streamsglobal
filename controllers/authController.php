@@ -177,7 +177,7 @@ function createreferralID(){
 
 	$referralid = bin2hex(random_bytes(3));
 	$id = $_SESSION['usersid'];
-	echo $referralid;
+	//echo $referralid;
 
 	$sql = "UPDATE users SET referralid='$referralid' WHERE id='$id'";
 

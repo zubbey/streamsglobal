@@ -9,9 +9,9 @@ require_once ('./controllers/authController.php');
 //   $token = $_GET['entryverified'];
 //   verifyUser($token);
 // }
-if(isset($_GET['success']) AND $_GET["success"]=='entryverified') {
-  createreferralID();
-}
+// if(isset($_GET['success']) AND $_GET["success"]=='entryverified') {
+//   createreferralID();
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
