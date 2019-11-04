@@ -10,28 +10,21 @@ require_once ('./controllers/authController.php');
 //   verifyUser($token);
 // }
 if(isset($_GET['success']) AND $_GET["success"]=='entryverified') {
-  
-  global $conn;
 
   $referralid = bin2hex(random_bytes(3));
   $id = $_SESSION['usersid'];
   echo $referralid;
 
-  $sql = "SELECT `*` FROM `users` WHERE `userid` = '$id'";
-	$result = mysqli_query($conn, $sql);
-	$row = mysqli_fetch_array($result);
+  $sql = "UPDATE users SET referralid='$referralid' WHERE id='$id'";
 
-  $update = "UPDATE `users` SET `referralid`= '$referralid' WHERE `userid` = '$id'";
+  if ($conn->query($sql) === TRUE) {
+    echo "<script>alert('Referralid updated successfully.')</script>";
+  } else {
+    echo "Error updating record: " . $conn->error;
+  }
 
-  if (mysqli_query($conn, $update)){
-		if (!isset($sql)) {
-			die("there was an error" .mysqli_connect_error());
-		} else {
-			echo "<script>alert('Referralid created.')</script>";
-		}
-	} else{
-		echo "<script>alert('Could not Create Referralid.')</script>";
-	}
+  $conn->close();
+
 }
 ?>
 <!DOCTYPE html>
