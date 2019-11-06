@@ -59,9 +59,6 @@
 <script>
 
 $('document').ready(function (){
-  $('#ans1').on('click', function(){
-    alert('work');
-  })
 
   $('.carousel-inner .carousel-item:first-child').addClass('active').ready(() => {
     $('.carousel').carousel();
@@ -77,21 +74,6 @@ $('document').ready(function (){
       $(this).remove();
     });
   }, 8000);
-});
-
-jQuery(document).ready(function($){
-
-  $('.faqs-fliex').on('click',function(){
-
-    if($('.p-faqs').attr('data-click-state') == 1) {
-      $('.p-faqs').attr('data-click-state', 0)
-      $('.p-faqs').css('display', 'none')
-    } else {
-      $('.p-faqs').attr('data-click-state', 1)
-      $('.p-faqs').css('display', 'block')
-    }
-
-  });
 
 });
 

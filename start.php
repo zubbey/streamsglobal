@@ -120,6 +120,43 @@ if (isset($_GET['reference'])) {
           </div>
         </div>
       </div>
+
+<!-- SECOND ROW FOR PLANS -->
+
+      <div class="row py-5">
+        <div class="col text-center">
+          <div class="card product">
+            <div class="card-body p-0">
+              <img src="images/land.jpg" alt="Land & Building Savings" class="image span">
+              <h1 class="h4 p-2">Land & Building Savings</h1>
+              <hr class='my-2'>
+              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col text-center">
+          <div class="card product">
+            <div class="card-body p-0">
+              <img src="images/cooperators.jpg" alt="Cooperators Bank" class="image span">
+              <h1 class="h4 p-2">Cooperators Bank</h1>
+              <hr class='my-2'>
+              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col text-center">
+          <div class="card product">
+            <div class="card-body p-0">
+              <img src="images/diaspora.jpg" alt="Diaspora Safe" class="image span">
+              <h1 class="h4 p-2">Diaspora Safe</h1>
+              <hr class='my-2'>
+              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

@@ -69,7 +69,10 @@ if (isset($_POST['signup-btn'])) {
 	if ($password !== $passwordConfirm) {
 		$errors['password'] = "Ops! Your password did not match.";
 	}
-	//"SELECT * FROM users WHERE email=? LIMIT 1"
+	if (strlen($referralcode) !== 6) {
+		$errors['referralcode'] = "Ops! Referral Code must be 6 characters.";
+	}
+	//CHECK IF EMAIL IS IN THE DATABASE
 	$emailQuery = "SELECT `*` FROM `users` WHERE `email` = ? LIMIT 1";
 	$stmt = $conn->prepare($emailQuery);
 	$stmt->bind_param('s', $email);
@@ -81,6 +84,29 @@ if (isset($_POST['signup-btn'])) {
 	if ($userCount > 0) {
 		$errors['email'] = "Ops! Email already exists";
 	}
+
+	//CHECK IF RERERRALCODE BELONGS TO A USER IN THE DATABASE
+//81924c
+	$sql = "SELECT `*` FROM `users` WHERE `referralid` = ? LIMIT 1";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('s', $referralcode);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$user = $result->fetch_assoc();
+	$stmt->close();
+
+	if ($user['referralid']){
+		echo "you are referred by: ".$user['fname'];
+	} else {
+		$errors['referralcode'] = "Ops! No user with this (".$referralcode.") Referral Code";
+	}
+	// if (mysqli_num_rows($result) > 0) {
+	// 	$user = mysqli_fetch_assoc($result);
+	// 	$referid = $user['id'];
+	// 	$referfname = $user['fname'];
+	// 	$referlname = $user['lname'];
+	// 	$referemail = $user['email'];
+	// }
 
 	if (count($errors) === 0) {
 		// If form submitted, insert values into the database.
@@ -176,16 +202,9 @@ function createreferralID(){
 
 	$referralid = bin2hex(random_bytes(3));
 	$id = $_SESSION['usersid'];
-	//echo $referralid;
 
 	$sql = "UPDATE users SET referralid='$referralid' WHERE id='$id'";
 	$conn->query($sql);
-	// if ($conn->query($sql) === TRUE) {
-	// 	echo "Referralid updated successfully.";
-	// } else {
-	// 	echo "Error updating record: " . $conn->error;
-	// }
-
 	$conn->close();
 
 }

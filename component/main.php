@@ -19,7 +19,7 @@
             <div class="py-2">
             <?php
             if (isset($_SESSION['usersid'])) {
-              echo "<a href='start/piggy' class='card-link'>Get Started</a>";
+              echo "<a href='plans/piggy' class='card-link'>Get Started</a>";
             }
             else {
               echo "<a href='login' class='card-link'>Get Started</a>";
@@ -40,7 +40,7 @@
             <div class="py-2">
             <?php
             if (isset($_SESSION['usersid'])) {
-              echo "<a href='start/saap' class='card-link'>Get Started</a>";
+              echo "<a href='plans/saap' class='card-link'>Get Started</a>";
             }
             else {
               echo "<a href='login' class='card-link'>Get Started</a>";
@@ -61,7 +61,7 @@
             <div class="py-2">
             <?php
             if (isset($_SESSION['usersid'])) {
-              echo "<a href='start/fixed' class='card-link'>Get Started</a>";
+              echo "<a href='plans/fixed' class='card-link'>Get Started</a>";
             }
             else {
               echo "<a href='login' class='card-link'>Get Started</a>";

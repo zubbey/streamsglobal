@@ -2,7 +2,7 @@
 if (isset($_SESSION['usersid'])) {
   if (($_SESSION['verified'] == 0)){
     echo '
-    <div style="width: 100%; height: auto; text-align: center; font-size: 15px; padding: 5px;" class="warning">
+    <div style="width: 100%; height: auto; text-align: center; font-size: 15px; padding: 5px;" class="alert-warning alert-dismissible"  role="alert">
     <p>We sent a verification link to your email <b>'. $_SESSION['usersemail'] .'</b>, verify your account to continue.</p>
     </div>
 
@@ -66,8 +66,8 @@ if (isset($_SESSION['usersid'])) {
             //Hide if account not verified
           if (($_SESSION['verified'] == 1)) {
             echo '
-            <a class="dropdown-item" href="#">DASHBOARD</a>
-            <a class="dropdown-item" href="#">ACCOUNT SETTINGS</a>
+            <a class="dropdown-item" href="user/dashboard">DASHBOARD</a>
+            <a class="dropdown-item" href="user/settings">ACCOUNT SETTINGS</a>
             ';
           }
           ?>
