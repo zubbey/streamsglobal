@@ -5,6 +5,7 @@
   <title>Verify | Streams Global</title>
   <link href='https://i.imgur.com/q6DcKop.png' rel='shortcut icon' type='image/x-icon'>
   <link href='https://i.imgur.com/q6DcKop.png' rel='apple-touch-icon'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
@@ -41,152 +42,62 @@
   }
 
   /* CLIENT-SPECIFIC STYLES */
-  body,
-  table,
-  td,
-  a {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+  *{font-family: \"Saira\", Helvetica, Arial, sans-serif}
+  .btn-primary{
+    background-color: #2ab334;
+    border: 1px solid #23930f;
+  }
+  .btn-primary:hover{
+    background-color: #23930f;
   }
 
-  table,
-  td {
-    mso-table-lspace: 0pt;
-    mso-table-rspace: 0pt;
+  h6 {
+    font-size: 14px;
+    font-family: \"Saira\", Helvetica, Arial, sans-serif;
   }
-
-  img {
-    -ms-interpolation-mode: bicubic;
+  .footer-copyright{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin:auto;
   }
+  @media (min-width: 320px) and (max-width: 767.98px) {
+    .btn{font-size: .7rem;}
+    small.text-muted{font-size: .7rem;}
+    p.text-muted {font-size: .7rem;}
 
-  /* RESET STYLES */
-  img {
-    border: 0;
-    height: auto;
-    line-height: 100%;
-    outline: none;
-    text-decoration: none;
-  }
-
-  table {
-    border-collapse: collapse !important;
-  }
-
-  body {
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-  }
-
-  /* iOS BLUE LINKS */
-  a[x-apple-data-detectors] {
-    color: inherit !important;
-    text-decoration: none !important;
-    font-size: inherit !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-    line-height: inherit !important;
-  }
-
-  /* MOBILE STYLES */
-  @media screen and (max-width:600px) {
-    h1 {
-      font-size: 32px !important;
-      line-height: 32px !important;
-    }
-  }
-
-  /* ANDROID CENTER FIX */
-  div[style*='margin: 16px 0;'] {
-    margin: 0 !important;
   }
   </style>
 </head>
 
-<body style='background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;'>
-  <!-- HIDDEN PREHEADER TEXT -->
-  <div style='display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: \"Saira\", Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;'> We're thrilled to have you here! Get ready to dive into your new account. </div>
-  <table border='0' cellpadding='0' cellspacing='0' width='100%'>
-    <!-- LOGO -->
-    <tr>
-      <td bgcolor='#19b334' align='center'>
-        <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 800px;'>
-          <tr>
-            <td align='center' valign='top' style='padding: 40px 10px 40px 10px;'> </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td bgcolor='#19b334' align='center' style='padding: 0px 10px 0px 10px;'>
-        <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 800px;'>
-          <tr>
-            <td bgcolor='#ffffff' align='center' valign='top' style='padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;'>
-              <img src=' https://i.imgur.com/Ev3V4AY.png' width='125' height='120' style='display: block; border: 0px;' /><h1 style='font-size: 48px; font-weight: 700; margin: 2;'>Welcome!</h1>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td bgcolor='#ffffff' align='center' style='padding: 0px 10px 0px 10px;'>
-        <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 800px;'>
-          <tr>
-            <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 20px 30px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-              <p style='margin: 0;'>We're excited to have you get started. First, you need to confirm your account. Just press the button below.</p>
-            </td>
-          </tr>
-
-          <tr>
-
-            <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 60px 30px;'>
-              <table width='100%' border='0' cellspacing='0' cellpadding='0'>
-                <tr>
-                  <td align='center' style='border-radius: 5px;' bgcolor='#19b334'><a href='http://streamsglobal.com/sign-up.php?success=step3&token=" . $token . "' target='_blank' style='font-size: 20px; font-family: \"Saira\", Helvetica, Arial, sans-serif; background-color: #19b334; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 5px; border: 1px solid #19b334; display: inline-block;'>Confirm Account</a></td>
-                </tr>
-              </table>
-            </td>
-
-          </tr> <!-- COPY -->
-
-          <tr>
-            <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 0px 30px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-              <p style='margin: 0;'>If that doesn't work, copy and paste the following link in your browser:</p>
-            </td>
-          </tr> <!-- COPY -->
-          <tr>
-            <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 20px 30px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-              <p style='margin: 0;'><a href='http://streamsglobal.com/sign-up.php?success=step3&token=" . $token . "' target='_blank' style='color: #19b334;'>http://streamsglobal.com/sign-up.php?success=step3&token=" . $token . "</a></p>
-            </td>
-          </tr>
-          <tr>
-            <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 20px 30px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-              <p style='margin: 0;'>If you have any questions, just reply to this email—we're always happy to help out.</p>
-            </td>
-          </tr>
-          <tr>
-            <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-              <p style='margin: 0;'>Cheers,<br>Streamsglobal Team</p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td bgcolor='#f4f4f4' align='center' style='padding: 30px 10px 0px 10px;'>
-        <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 800px;'>
-          <tr>
-            <td bgcolor='#FFECD1' align='center' style='padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-              <h2 style='font-size: 20px; font-weight: 400; color: #111111; margin: 0;'>Need more help?</h2>
-              <p style='margin: 0;'><a href='http://streamsglobal.com/faqs.php' target='_blank' style='color: #19b334;'>We&rsquo;re here to help you out</a></p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-
-  </table>
+<body class='bg-light'>
+  <div class='container'>
+    <div class='row my-5'>
+      <div class='col'>
+        <div class='card'>
+          <div class='card-header d-flex justify-content-between my-auto'>
+            <h5>Justin Okoro 	 <small class='text-muted'>&lt;justin@gmail.com&gt;</small> </h5>
+            <img src='https://i.imgur.com/gaJNXRO.png' width='32' height='32' class='img-responsive rounded-circle' alt='profile image'>
+          </div>
+          <div class='card-body'>
+            <h5 class='card-title'>Micheal Fred has been referred by justin</h5>
+            <div class='card-title'><smail>Referral Code: </small><span class='h3 font-weight-normal'>9offc0</span></div>
+            <p class='card-text text-muted'>please comfirm if Micheal fred is fully registered.</p>
+            <div class='d-flex justify-content-between my-auto'>
+            <a href='http://streamsglobal.com/admin#users' class='btn btn-primary'>View Profile</a>
+            <small class='text-muted'>Referred Date: Nov 9, 2019.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class='footer-copyright text-center py-3 bg-white'>
+    <p class='text-muted'>© 2019 <a href='index' class='text-muted'>Streams Global Cooperative</a>, All Rights Reserved</p>
+  </footer>
+  <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 </body>
-
 </html>

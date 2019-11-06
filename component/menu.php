@@ -1,7 +1,7 @@
 <div class ="container">
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light py-2">
     <a class="navbar-brand" href="index">
-      <img src="images/H-Logo_Color.png" width="255" height="32" class="d-inline-block align-top" alt="Streamsglobal">
+      <img src="images/H-Logo_Color.png" class="d-inline-block align-top img-responsive" alt="Streamsglobal">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

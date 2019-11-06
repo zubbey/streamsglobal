@@ -96,22 +96,24 @@ if (isset($_POST['signup-btn'])) {
 	$stmt->close();
 
 	if ($user['referralid']){
-		echo "you are referred by: ".$user['fname'];
+		$userdata = array(
+				'referraluserid' => $user['id'],
+        'referralfname' => $user['fname'],
+        'referrallname' => $user['lname'],
+        'referralemail' => $user['email'],
+        'referralcode' => $user['referralid'],
+        'userfname' => $firstname,
+        'userlname' => $lastname,
+        'datereferred' => date("Y-m-d")
+    );
 	} else {
-		$errors['referralcode'] = "Ops! No user with this (".$referralcode.") Referral Code";
+		$errors['noreferralcode'] = "Ops! No user with this (".$referralcode.") Referral Code";
 	}
-	// if (mysqli_num_rows($result) > 0) {
-	// 	$user = mysqli_fetch_assoc($result);
-	// 	$referid = $user['id'];
-	// 	$referfname = $user['fname'];
-	// 	$referlname = $user['lname'];
-	// 	$referemail = $user['email'];
-	// }
 
 	if (count($errors) === 0) {
 		// If form submitted, insert values into the database.
 
-		$dateReg = date("Y-m-d H:i:s");
+		$dateReg = date("Y-m-d");
 		$password = password_hash($password, PASSWORD_DEFAULT);
 		$verified = 0;
 		$token = bin2hex(random_bytes(30));
@@ -122,6 +124,7 @@ if (isset($_POST['signup-btn'])) {
 		if($result){
 
 			sendVerificationEmail($email, $token);
+			sendreferralEmail($userdata);
 
 			//INSERT INTO PROFILE IMAGE
 			$sql = "SELECT `*` FROM `users` WHERE `email` = '$email' LIMIT 1";

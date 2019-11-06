@@ -207,3 +207,126 @@ function sendVerificationEmail($userEmail, $token){
 
   mail($to,$subject,$message,$headers);
 }
+
+
+
+// SEND EMAIL TO ADMIN IF A USER PASS A REFERRALCODE
+//$userdata['referralfname']
+function sendreferralEmail($userdata){
+  $to = "com.zubbey@hotmail.com";
+  $subject = "Verify your Streamsglobal Account";
+
+  $message = "
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <title>Referral | Streams Global</title>
+    <link href='https://i.imgur.com/q6DcKop.png' rel='shortcut icon' type='image/x-icon'>
+    <link href='https://i.imgur.com/q6DcKop.png' rel='apple-touch-icon'>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <style type='text/css'>
+    @media screen {
+      @import url('https://fonts.googleapis.com/css?family=Saira&display=swap');
+      @font-face {
+        font-family: \"Saira\";
+        font-style: normal;
+        font-weight: 400;
+        src: local('Saira Regular'), local('Saira-Regular'), url(https://fonts.googleapis.com/css?family=Saira:400,500,600,700,800&display=swap) format('woff');
+      }
+
+      @font-face {
+        font-family: \"Saira\";
+        font-style: normal;
+        font-weight: 700;
+        src: local('Saira Bold'), local('Saira-Bold'), url(https://fonts.googleapis.com/css?family=Saira:400,500,600,700,800&display=swap) format('woff');
+      }
+
+      @font-face {
+        font-family: \"Saira\";
+        font-style: italic;
+        font-weight: 400;
+        src: local('Saira Italic'), local('Saira-Italic'), url(https://fonts.googleapis.com/css?family=Saira:400,500,600,700,800&display=swap) format('woff');
+      }
+
+      @font-face {
+        font-family: \"Saira\";
+        font-style: italic;
+        font-weight: 700;
+        src: local('Saira Bold Italic'), local('Saira-BoldItalic'), url(https://fonts.googleapis.com/css?family=Saira:400,500,600,700,800&display=swap) format('woff');
+      }
+    }
+
+    /* CLIENT-SPECIFIC STYLES */
+    *{font-family: \"Saira\", Helvetica, Arial, sans-serif}
+    .btn-primary{
+      background-color: #2ab334;
+      border: 1px solid #23930f;
+    }
+    .btn-primary:hover{
+      background-color: #23930f;
+    }
+
+    h6 {
+      font-size: 14px;
+      font-family: \"Saira\", Helvetica, Arial, sans-serif;
+    }
+    .footer-copyright{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      margin:auto;
+    }
+    @media (min-width: 320px) and (max-width: 767.98px) {
+      .btn{font-size: .7rem;}
+      small.text-muted{font-size: .7rem;}
+      p.text-muted {font-size: .7rem;}
+
+    }
+    </style>
+  </head>
+
+  <body class='bg-light'>
+    <div class='container'>
+      <div class='row my-5'>
+        <div class='col'>
+          <div class='card'>
+            <div class='card-header d-flex justify-content-between my-auto'>
+              <h5>".$userdata['referralfname']."' '".$userdata['referrallname']." 	 <small class='text-muted'>&lt;".$userdata['referralemail']."&gt;</small> </h5>
+              <img src='https://i.imgur.com/gaJNXRO.png' width='32' height='32' class='img-responsive rounded-circle' alt='profile image'>
+            </div>
+            <div class='card-body'>
+              <h5 class='card-title'>".$userdata['userfname']."' '".$userdata['userlname']." has been referred by ".$userdata['referralfname']."' '".$userdata['referrallname']."</h5>
+              <div class='card-title'><smail>Referral Code: </small><span class='h3 font-weight-normal'>".$userdata['referralcode']."</span></div>
+              <p class='card-text text-muted'>please comfirm if ".$userdata['userfname']." fred is fully registered.</p>
+              <div class='d-flex justify-content-between my-auto'>
+              <a href='http://streamsglobal.com/admin#users' class='btn btn-primary'>View Profile</a>
+              <small class='text-muted'>".$userdata['datereferred'].".</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class='footer-copyright text-center py-3 bg-white'>
+      <p class='text-muted'>© 2019 <a href='index' class='text-muted'>Streams Global Cooperative</a>, All Rights Reserved</p>
+    </footer>
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  </body>
+  </html>
+  ";
+  // Always set content-type when sending HTML email
+  $headers = "MIME-Version: 1.0" . "\r\n";
+  $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+  // More headers
+  $headers .= 'From: <admin@streamsglobal.com>' . "\r\n";
+
+  mail($to,$subject,$message,$headers);
+}

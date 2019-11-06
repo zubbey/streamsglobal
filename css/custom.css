@@ -40,6 +40,7 @@ body{
   -ms-filter: blur(20px);
   z-index: -1;
 }
+.navbar{padding: 0;}
 .navbar-light .navbar-toggler{
   border-color: transparent;
 }
