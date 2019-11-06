@@ -1,9 +1,9 @@
 <?php
 require_once ('./controllers/authController.php');
 
-// if (!isset($_SESSION['usersid'])) {
-//   header('location: login.php');
-// }
+if (!isset($_SESSION['usersid'])) {
+  header('location: login');
+}
 
 if (isset($_GET['reference'])) {
   $reference = $_GET['reference'];
@@ -34,128 +34,94 @@ if (isset($_GET['reference'])) {
 </head>
 
 <body class="body">
-
-  <style>
-
-  </style>
-
-  <div data-w-id="54b3b754-1c54-b11b-7e2d-95377a4d5c7b" class="preloader">
-    <img src="images/Preloader.svg" width="120" alt="Loading...">
-  </div>
-
-  <div class="header-section start-section">
-
-
-    <?php
-    if (isset($_SESSION['usersid'])) {
-      require ('./component/menu.home.php');
-    }
-    else {
-      require ('./component/menu.php');
-    }
-    ?>
-
-
-    <div class="container">
-      <?php
-
-      if(isset($_SESSION['successaccount'])){
-        echo '<div class="alert '.$_SESSION['success-message'].'"><div>'. $_SESSION['successaccount'] .'</div></div>';
-        unset($_SESSION['successaccount']);
-        unset($_SESSION['success-message']);
-      }
-      if(isset($_SESSION['successlogin'])){
-        echo '<div class="alert '.$_SESSION['success-message'].'"><div>'. $_SESSION['successlogin'] .'</div></div>';
-        unset($_SESSION['successlogin']);
-        unset($_SESSION['success-message']);
-      }
-      if(isset($_SESSION['payment'])){
-        echo '<div class="alert '.$_SESSION['warning-message'].'"><div>'. $_SESSION['payment'] .'</div></div>';
-        unset($_SESSION['payment']);
-        unset($_SESSION['warning-message']);
-      }
-
-      ?>
-      <div class="start-heading">
+  <?php
+  if (isset($_SESSION['usersid'])) {
+    require ('./component/menu.home.php');
+  }
+  else {
+    require ('./component/menu.php');
+  }
+  ?>
+  <div class="container">
+    <div class="row">
+      <div class="col">
         <?php
-        if (isset($_SESSION['usersid'])) {
-          echo '<h1 class="heading-2 h1 h-start">Welcome Back '. ucwords($_SESSION['usersfname']) .'</h1>';
-          echo '<h1 class="heading-2 h1 h3">Select Your Savings Plan.</h1>';
-        }
-        else {
-          echo '<h1 class="heading-2 h1 h-start">You are not logged in.</h1>';
-          echo '<h1 class="heading-2 h1 h3">Login to start Saving today.</h1>';
-        }
 
+        if(isset($_SESSION['successaccount'])){
+          echo '
+          <div id="alert" class="alert alert-success alert-dismissable flyover flyover-centered" role="alert">
+          <h4 class="alert-heading">Congrats! '.ucwords($_SESSION['usersfname']).'</h4>
+          <p>'. $_SESSION['successaccount'] .'</p>
+          <hr>
+          <p class="mb-0">Select a plan to start your saving.</p>
+          </div>
+          ';
+          unset($_SESSION['successaccount']);
+        }
+        if(isset($_SESSION['successlogin'])){
+          echo '
+          <div id="alert" class="alert alert-success alert-dismissable flyover flyover-centered" role="alert">
+          <h4 class="alert-heading">Welcome back '.ucwords($_SESSION['usersfname']).'</h4>
+          <p>'. $_SESSION['successlogin'] .'</p>
+          </div>
+          ';
+          unset($_SESSION['successlogin']);
+        }
+        // if(isset($_SESSION['payment'])){
+        //   echo '<div class="alert '.$_SESSION['warning-message'].'"><div>'. $_SESSION['payment'] .'</div></div>';
+        //   unset($_SESSION['payment']);
+        //   unset($_SESSION['warning-message']);
+        // }
 
         ?>
-        <p class="paragraph-2 plan-paragragh">A Steams Global account brings you a step closer to financial discipline. We make it easy to achieve your personal saving goals. Choose how you save.</p>
-
       </div>
-      <div class="row w-row">
-        <div class="col w-col w-col-4">
-          <img src="images/piggy_bg.png" width="472" height="121" alt="" class="image span">
-          <h1 class="heading-3">Piggy Wallet</h1>
-          <p class="paragraph-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-          <a href="start/piggy-wallet.php" class="link">Get Started</a>
-        </div>
-        <div class="col w-col w-col-4">
-          <img src="images/SAAP.png" width="472" height="121" alt="" class="image span">
-          <h1 class="heading-3">SAAP</h1>
-          <p class="paragraph-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-          <a href="start/saap.php" class="link">Get Started</a>
-        </div>
-        <div class="col w-col w-col-4">
-          <img src="images/fixed_bg.png" width="472" height="121" alt="" class="image span">
-          <h1 class="heading-3">Fixed Savings</h1>
-          <p class="paragraph-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-          <a href="start/fixed-savings.php" class="link">Get Started</a>
-        </div>
-      </div>
-
-      <div class="row w-row">
-        <div class="col w-col w-col-4">
-          <img src="images/Loan.png" width="472" height="121" srcset="images/Loan-p-500.png 500w, images/Loan.png 706w" sizes="(max-width: 479px) 14vw, (max-width: 767px) 16vw, (max-width: 991px) 23vw, 27vw" alt="" class="image span">
-          <h1 class="heading-3">Loans</h1>
-          <p class="paragraph-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-          <a href="start/loans.php" class="link">Get Started</a>
-        </div>
-        <div class="col w-col w-col-4">
-          <img src="images/School.png" width="472" height="121" alt="" class="image span">
-          <h1 class="heading-3">90Days School Fees Thrift</h1>
-          <p class="paragraph-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-          <a href="start/school-fees.php" class="link">Get Started</a>
-        </div>
-        <div class="col w-col w-col-4">
-          <img src="images/Rent.png" width="472" height="121" srcset="images/Rent-p-500.png 500w, images/Rent.png 706w" sizes="(max-width: 479px) 14vw, (max-width: 767px) 16vw, (max-width: 991px) 23vw, 27vw" alt="" class="image span">
-          <h1 class="heading-3">Rent Savings</h1>
-          <p class="paragraph-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-          <a href="start/rents.php" class="link">Get Started</a>
-        </div>
-      </div>
-
-      <div class="row w-row">
-        <div class="col w-col w-col-4">
-          <img src="images/Building.png" width="472" height="121" alt="" class="image span">
-          <h1 class="heading-3">Land,House &amp; Building Savings</h1>
-          <p class="paragraph-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-          <a href="start/buildings.php" class="link">Get Started</a>
-        </div>
-        <div class="col w-col w-col-4">
-          <img src="images/Cooperator.png" width="472" height="121" srcset="images/Cooperator-p-500.png 500w, images/Cooperator.png 706w" sizes="(max-width: 479px) 14vw, (max-width: 767px) 16vw, (max-width: 991px) 23vw, 27vw" alt="" class="image span">
-          <h1 class="heading-3">Cooperators Bank</h1>
-          <p class="paragraph-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-          <a href="start/Cooperators.php" class="link">Get Started</a>
-        </div>
-        <div class="col w-col w-col-4">
-          <img src="images/Diaspora.png" width="472" height="121" alt="" class="image span">
-          <h1 class="heading-3">Diaspora Safe</h1>
-          <p class="paragraph-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-          <a href="start/diaspora-safe.php" class="link">Get Started</a>
-        </div>
-      </div>
-
     </div>
+
+    <div class="row text-center mt-5 mx-auto d-flex justify-content-center">
+      <div class="col-sm-7">
+        <h1 class="display-4 font-weight-bold">Select Your Savings Plan.</h1>
+        <p class="lead">A Steams Global account brings you a step closer to financial discipline. We make it easy to achieve your personal saving goals. Choose how you save.</p>
+        <hr class="my-4">
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row py-5">
+        <div class="col text-center">
+          <div class="card product">
+            <div class="card-body p-0">
+              <img src="images/piggy.jpg" alt="Piggy Wallet image" class="image span">
+              <h1 class="h4 p-2">Piggy Wallet</h1>
+              <hr class='my-2'>
+              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col text-center">
+          <div class="card product">
+            <div class="card-body p-0">
+              <img src="images/saap.jpg" alt="" class="image span">
+              <h1 class="h4 p-2">SAAP</h1>
+              <hr class='my-2'>
+              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col text-center">
+          <div class="card product">
+            <div class="card-body p-0">
+              <img src="images/fixed.jpg" alt="" class="image span">
+              <h1 class="h4 p-2">Fixed Savings</h1>
+              <hr class='my-2'>
+              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <?php

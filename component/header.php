@@ -29,8 +29,6 @@
     require ('menu.php');
   }
 
-
-
 ?>
 <div class='bd-example'>
   <div id='carouselExampleCaptions' class='carousel slide' data-ride='carousel'>
@@ -42,14 +40,18 @@
         echo "<div class='carousel-item'>";
           echo "<img src='images/".$imgRow ['image']."' class='d-block w-100' alt='Streamsglobal adverts images'>";
           echo "<div class='container carousel-caption'>";
-            echo "<h5 class='display-4 font-weight-bold'>".$imgRow ['heading']."</h5>";
+          echo "<div class='row'>";
+            echo "<div class='col-sm-7'>";
+            echo "<h5 class='display-4 font-weight-bold text-uppercase'>".$imgRow ['heading']."</h5>";
             echo "<p class='lead'>".$imgRow ['body']."</p>";
             if (isset($_SESSION['usersid'])) {
-              echo "<button type='button' class='btn btn-primary' onclick='window.location='start.php';'>GET STARTED</button>";
+              echo "<a class='btn btn-primary  text-white p-2' href='start'>GET STARTED</a>";
             }
             else {
-              echo "<button type='button' class='btn btn-primary' onclick='window.location='login.php';'>JOIN US TODAY</button>";
+              echo "<a class='btn btn-primary text-white p-2' href='sign-up'>JOIN US TODAY</a>";
             }
+            echo "</div>";
+            echo "</div>";
           echo "</div>";
         echo "</div>";
       }

@@ -83,7 +83,6 @@ if (isset($_POST['signup-btn'])) {
 	}
 
 	if (count($errors) === 0) {
-
 		// If form submitted, insert values into the database.
 
 		$dateReg = date("Y-m-d H:i:s");
@@ -138,7 +137,7 @@ if (isset($_POST['signup-btn'])) {
 			//sendVerificationEmail($email, $token);
 
 			// flash messages
-			$_SESSION['successaccount']= "Yay! your account was created successfully.";
+			$_SESSION['successaccount']= "your account was created successfully and your entry payment was successfully.";
 			$_SESSION['success-message'] = "success";
 
 			header('location: sign-up.php?success=step2');
@@ -237,7 +236,7 @@ if (isset($_POST['login-btn'])) {
 			$_SESSION['nationality'] = $user['nationality'];
 
 			// flash messages
-			$_SESSION['successlogin']= "Yay! you are now logged in.";
+			$_SESSION['successlogin']= "you're logged in.";
 			$_SESSION['success-message'] = "success";
 
 			header('location: start.php');

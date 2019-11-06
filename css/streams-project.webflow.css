@@ -1,8 +1,10 @@
 .success{
+  position: fixed;
   background-color: #b5ffb6;
+  border: 1px solid #85dc68;
   display: -ms-flexbox;
   display: block;
-  padding: 10px;
+  padding: 20px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -139,8 +141,8 @@ li {
 }
 
 .plan-content-section {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  /* padding-top: 60px;
+  padding-bottom: 60px; */
   background-color: #f4f8fd;
 }
 
@@ -150,8 +152,6 @@ li {
 }
 
 .ads-section {
-  height: auto;
-  margin-top: 0px;
   background-color: #f8fff7;
   box-shadow:inset 0 0 100px hsla(131, 75%, 40%, 0.12);
   -webkit-box-shadow:inset 0 0 100px hsla(131, 75%, 40%, 0.12);
@@ -242,32 +242,6 @@ li {
   background-color: hsla(130.5194805194805, 75.49%, 40.00%, 1.00);
 }
 
-/* .nav {
-  display: flex;
-  width: 100%;
-  margin-top: 0px;
-  padding: 10px 20px;
-  justify-content: flex-start;
-  align-items: stretch;
-  font-family: Saira, sans-serif;
-  color: #000;
-  font-size: 13px;
-  text-decoration: none;
-} */
-
-/* .nav:hover {
-  background-color: hsla(0, 0%, 100%, .33);
-}
-
-.nav:focus {
-  background-color: rgba(0, 0, 0, .41);
-} */
-
-/*.nav.w--current {
-  padding: 10px 20px;
-  background-color: rgba(0, 0, 0, .33);
-  color: #fff;
-  }*/
   .nav.w--current {
     padding: 10px 20px;
     border-bottom: 4px solid #000000;

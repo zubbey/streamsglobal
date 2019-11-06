@@ -42,7 +42,7 @@ require_once ('./controllers/authController.php');
       </div>
     </div>
 
-    <div id="emailMsg" class="row mt-3">
+    <div class="row mt-3">
       <?php echo $msg; ?>
     </div>
 
@@ -82,19 +82,17 @@ require_once ('./controllers/authController.php');
     }else{
       echo "<div class='row justify-content-center mt-5'>";
       echo "<div class='col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded'>";
-
-      echo "<form action='sign-up.php' method='post' name='registration' class='form'>";
-      echo "<h1 class='heading-6'>Create New Account</h1>";
-      echo "<p class='paragraph-11'>Please Continue From Where You Left Off</p>";
-
       //messages displays here
       if(count($errors) > 0){
-        echo "<div class='error'>";
+        echo "<div class='alert alert-danger' role='alert'>";
         foreach ($errors as $error){
-          echo "<div>". $error ."</div>";
+          echo "<p>". $error ."</p>";
         }
         echo "</div>";
       }
+      echo "<form action='sign-up.php' method='post' name='registration' class='form'>";
+      echo "<h1 class='heading-6'>Create New Account</h1>";
+      echo "<p class='paragraph-11'>Please Continue From Where You Left Off</p>";
 
       echo "<div class='row'>";
       echo "<div class='col'>";
@@ -141,6 +139,16 @@ require_once ('./controllers/authController.php');
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
+
+  // AUTO DISAPPEAR ALERT
+
+  // window.setTimeout(function() {
+  //   $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+  //     $(this).remove();
+  //   });
+  // }, 8000);
+
+
   if (window.location.search.indexOf('step2') > -1) {
     $("ul li:nth-child(2)").addClass('active');
     $("#footer").css('bottom', '0');
@@ -173,7 +181,7 @@ require_once ('./controllers/authController.php');
       },
       callback: function(response){
         //alert('success. transaction ref is ' + response.reference);
-          window.location.assign("http://streamsglobal.com/start.php?success=entryverified&reference="+response.reference);
+        window.location.assign("http://streamsglobal.com/start.php?success=entryverified&reference="+response.reference);
       },
       onClose: function(){
         window.location.assign("http://streamsglobal.com/sign-up.php?success=step3&error=closepayment");
@@ -182,5 +190,5 @@ require_once ('./controllers/authController.php');
     handler.openIframe();
   }
   </script>
-  </body>
-  </html>
+</body>
+</html>

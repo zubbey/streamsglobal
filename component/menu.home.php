@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['usersid'])) {
-  if (($_SESSION['verified'] == false)){
+  if (($_SESSION['verified'] == 0)){
     echo '
     <div style="width: 100%; height: auto; text-align: center; font-size: 15px; padding: 5px;" class="warning">
     <p>We sent a verification link to your email <b>'. $_SESSION['usersemail'] .'</b>, verify your account to continue.</p>
@@ -13,9 +13,9 @@ if (isset($_SESSION['usersid'])) {
 }
 ?>
 
-<div class ="container">
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="index.php">
+<div class ="bg-white w-100">
+  <nav class="container navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="index">
       <img src="images/H-Logo_Color.png" width="255" height="32" class="d-inline-block align-top" alt="Streamsglobal">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,13 +24,13 @@ if (isset($_SESSION['usersid'])) {
   <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="start.php">PLANS <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="start">PLANS <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="faqs.php">FAQS</a>
+        <a class="nav-link" href="faqs">FAQS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="about.php">ABOUT</a>
+        <a class="nav-link" href="about">ABOUT</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,15 +64,15 @@ if (isset($_SESSION['usersid'])) {
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <?php
             //Hide if account not verified
-          if (($_SESSION['verified'] == true)) {
+          if (($_SESSION['verified'] == 1)) {
             echo '
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">DASHBOARD</a>
+            <a class="dropdown-item" href="#">ACCOUNT SETTINGS</a>
             ';
           }
           ?>
 
-          <a class="dropdown-item" href="start.php?logout=1">LOGOUT</a>
+          <a class="dropdown-item" href="start.php?logout=1">SIGN OUT</a>
         </div>
       </li>
     </ul>
