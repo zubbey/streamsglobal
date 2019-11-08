@@ -86,6 +86,9 @@ if (isset($_POST['save-changes'])){
 
 	if ($emailResult == 0) {
 			$row = mysqli_fetch_assoc($emailResult);
+
+			$_SESSION['usersemail'] = $_POST['email'];
+			
 			sendemailUpdate($email, $row['token']);
 
 			$update = mysqli_query($conn, "UPDATE `users` SET `verified`= 0 WHERE `id` = '$id'");
