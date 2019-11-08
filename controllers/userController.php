@@ -93,15 +93,17 @@ if (isset($_POST['save-changes'])){
 
 	if (mysqli_num_rows($emailResult) == 0) {
 			$user = mysqli_fetch_assoc($emailResult);
-
 			$token = $row['token'];
-			sendemailUpdate($email, $token);
 
-			$update = mysqli_query($conn, "UPDATE `users` SET `verified`= 0 WHERE `id` = '$id'");
+			$update = mysqli_query($conn, "UPDATE `users` SET `verified`= 0, `email`= '$email' WHERE `id` = '$id'");
 
-			$_SESSION['usersemail'] = $_POST['email'];
-			header('location: settings?success=emailchanged&email='.$email);
-			exit();
+			if($update){
+
+				$_SESSION['usersemail'] = $_POST['email'];
+				sendemailUpdate($email, $token);
+				header('location: settings?success=emailchanged&email='.$email);
+				exit();
+			}
 	}
 
 		$sql_check = mysqli_query($conn, "SELECT `*` FROM `users` WHERE `id` = '$id' LIMIT 1");
