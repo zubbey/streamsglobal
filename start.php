@@ -12,6 +12,11 @@ if (isset($_GET['reference'])) {
     createreferralID();
   }
 }
+
+if (isset($_GET['token'])) {
+  $token = $_GET['token'];
+  verifyusernewEmail($token);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +55,7 @@ if (isset($_GET['reference'])) {
         if(isset($_SESSION['successaccount'])){
           echo '
           <div id="alert" class="alert alert-success alert-dismissable flyover flyover-centered" role="alert">
-          <h4 class="alert-heading">Congrats! '.ucwords($_SESSION['usersfname']).'</h4>
+          <h5 class="alert-heading">Congrats! '.ucwords($_SESSION['usersfname']).'</h5>
           <p>'. $_SESSION['successaccount'] .'</p>
           <hr>
           <p class="mb-0">Select a plan to start your saving.</p>
@@ -61,7 +66,7 @@ if (isset($_GET['reference'])) {
         if(isset($_SESSION['successlogin'])){
           echo '
           <div id="alert" class="alert alert-success alert-dismissable flyover flyover-centered" role="alert">
-          <h4 class="alert-heading">Welcome back '.ucwords($_SESSION['usersfname']).'</h4>
+          <h5 class="alert-heading">Welcome back '.ucwords($_SESSION['usersfname']).'</h5>
           <p>'. $_SESSION['successlogin'] .'</p>
           </div>
           ';

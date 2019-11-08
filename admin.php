@@ -2,10 +2,8 @@
   // Connect database admin php
   require_once ('./controllers/authController.php');
 
-  if (isset($_SESSION['usersid'])) {
-    if ($_SESSION['usertype'] == 0) {
-      header('location: login.php');
-    }
+  if (isset($_SESSION['usersid']) && $_SESSION['usertype'] == 0) {
+      header('location: login');
   }
     // you are Admin
 ?>

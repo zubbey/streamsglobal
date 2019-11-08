@@ -3,7 +3,7 @@ if (isset($_SESSION['usersid'])) {
   if (($_SESSION['verified'] == 0)){
     echo '
     <div style="width: 100%; height: auto; text-align: center; font-size: 15px; padding: 5px;" class="alert-warning alert-dismissible"  role="alert">
-    <p>We sent a verification link to your email <b>'. $_SESSION['usersemail'] .'</b>, verify your account to continue.</p>
+    <p>We sent a verification link to your email <b>'. $_SESSION['usersemail'] .'</b>, Didnt get the email? <a href="sign-up?success=step2&resendemail=1">Resend Email</a>.</p>
     </div>
 
     <style>
@@ -16,7 +16,7 @@ if (isset($_SESSION['usersid'])) {
 <div class ="bg-white w-100">
   <nav class="container navbar navbar-expand-lg navbar-light py-2">
     <a class="navbar-brand" href="index">
-      <img src="images/H-Logo_Color.png" width="255" height="32" class="d-inline-block align-top img-responsive" alt="Streamsglobal">
+      <img src="images/H-Logo_Color.png" width="100%" class="d-inline-block align-top img-responsive" alt="Streamsglobal">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -66,13 +66,13 @@ if (isset($_SESSION['usersid'])) {
             //Hide if account not verified
           if (($_SESSION['verified'] == 1)) {
             echo '
-            <a class="dropdown-item" href="user/dashboard">DASHBOARD</a>
-            <a class="dropdown-item" href="user/settings">ACCOUNT SETTINGS</a>
+            <a class="dropdown-item" href="user/dashboard">Dashboard</a>
+            <a class="dropdown-item" href="user/settings">Account Settings</a>
             ';
           }
           ?>
 
-          <a class="dropdown-item" href="start.php?logout=1">SIGN OUT</a>
+          <a class="dropdown-item" href="start.php?logout=1">Sign out</a>
         </div>
       </li>
     </ul>

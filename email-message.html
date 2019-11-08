@@ -2,10 +2,10 @@
 <html>
 
 <head>
-  <title>Verify | Streams Global</title>
+  <title>Email | Streams Global</title>
   <link href='https://i.imgur.com/q6DcKop.png' rel='shortcut icon' type='image/x-icon'>
   <link href='https://i.imgur.com/q6DcKop.png' rel='apple-touch-icon'>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
   <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
@@ -43,9 +43,174 @@
 
   /* CLIENT-SPECIFIC STYLES */
   *{font-family: \"Saira\", Helvetica, Arial, sans-serif}
+  .bg-light {
+
+  }
+  body {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #f8f9fa!important;
+  }
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .my-5 {
+    margin-bottom: 3rem!important;
+  }
+  .my-5 {
+    margin-top: 3rem!important;
+  }
+  .row {
+    /* display: -ms-flexbox; */
+    display: flex;
+    /* -ms-flex-wrap: wrap; */
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  .col {
+    /* -ms-flex-preferred-size: 0; */
+    flex-basis: 0;
+    /* -ms-flex-positive: 1; */
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  .col{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .card {
+    position: relative;
+    /* display: -ms-flexbox; */
+    display: flex;
+    /* -ms-flex-direction: column; */
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+  }
+  .card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+  }
+  .justify-content-between {
+    /* -ms-flex-pack: justify!important; */
+    justify-content: space-between!important;
+  }
+  .d-flex {
+    /* display: -ms-flexbox!important; */
+    display: flex!important;
+  }
+  .card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+  }
+  .card-body {
+    /* -ms-flex: 1 1 auto; */
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
+  .card-title {
+    margin-bottom: .75rem;
+  }
+  img.img-responsive.rounded-circle {
+    border-radius: 50px;
+  }
+  h5 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.2;
+    display:block;
+    margin: 0;
+    /* margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px; */
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  .font-weight-normal {
+    font-weight: 400!important;
+  }
+  .text-muted {
+    color: #6c757d!important;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: block;
+    /* margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px; */
+  }
+  .my-auto {
+    margin-bottom: auto!important;
+  }
+  .my-auto {
+    margin-top: auto!important;
+  }
+  div {
+    display: block;
+  }
+  .btn {
+    display: inline-block;
+    font-weight: 400;
+    /* color: #212529; */
+    text-align: center;
+    vertical-align: middle;
+    /* -webkit-user-select: none; */
+    /* -moz-user-select: none; */
+    /* -ms-user-select: none; */
+    user-select: none;
+    /* background-color: transparent; */
+    /* border: 1px solid transparent; */
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  a {
+    /* color: #007bff; */
+    text-decoration: none;
+    /* background-color: transparent; */
+  }
+  small {
+    font-size: 80%;
+    font-weight: 400;
+  }
+  .text-center {
+    text-align: center!important;
+  }
+  .py-3 {
+    padding-bottom: 1rem!important;
+  }
+  .py-3 {
+    padding-top: 1rem!important;
+  }
+  .bg-white {
+    background-color: #fff!important;
+  }
   .btn-primary{
     background-color: #2ab334;
     border: 1px solid #23930f;
+    color: #fff;
   }
   .btn-primary:hover{
     background-color: #23930f;
@@ -60,6 +225,26 @@
     bottom: 0;
     width: 100%;
     margin:auto;
+  }
+  @media (min-width: 1200px){
+    .container {
+      max-width: 1140px;
+    }
+  }
+  @media (min-width: 992px){
+    .container {
+      max-width: 960px;
+    }
+  }
+  @media (min-width: 768px){
+    .container {
+      max-width: 720px;
+    }
+  }
+  @media (min-width: 576px){
+    .container {
+      max-width: 540px;
+    }
   }
   @media (min-width: 320px) and (max-width: 767.98px) {
     .btn{font-size: .7rem;}
@@ -82,22 +267,22 @@
           <div class='card-body'>
             <h5 class='card-title'>Micheal Fred has been referred by justin</h5>
             <div class='card-title'><smail>Referral Code: </small><span class='h3 font-weight-normal'>9offc0</span></div>
-            <p class='card-text text-muted'>please comfirm if Micheal fred is fully registered.</p>
-            <div class='d-flex justify-content-between my-auto'>
-            <a href='http://streamsglobal.com/admin#users' class='btn btn-primary'>View Profile</a>
-            <small class='text-muted'>Referred Date: Nov 9, 2019.</small>
+              <p class='card-text text-muted'>please comfirm if Micheal fred is fully registered.</p>
+              <div class='d-flex justify-content-between my-auto'>
+                <a href='http://streamsglobal.com/admin#users' class='btn btn-primary'>View Profile</a>
+                <small class='text-muted'>Referred Date: Nov 9, 2019.</small>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <footer class='footer-copyright text-center py-3 bg-white'>
-    <p class='text-muted'>© 2019 <a href='index' class='text-muted'>Streams Global Cooperative</a>, All Rights Reserved</p>
-  </footer>
-  <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>
-  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-</body>
-</html>
+    <footer class='footer-copyright text-center py-3 bg-white'>
+      <p class='text-muted'>© 2019 <a href='index' class='text-muted'>Streams Global Cooperative</a>, All Rights Reserved</p>
+    </footer>
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  </body>
+  </html>

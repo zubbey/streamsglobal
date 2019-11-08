@@ -1,9 +1,11 @@
 <?php
 require_once ('./controllers/authController.php');
 
-// if (isset($_SESSION['usersid'])) {
-//   header('location: start.php');
-// }
+if (isset($_SESSION['usersid']) && strlen($_SESSION['verified'] > 0) && is_null($_SESSION['referralcode'])) {
+  header('location: sign-up?success=step3');
+} else if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
+  header('location: start');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,21 +59,20 @@ require_once ('./controllers/authController.php');
     if(isset($_GET['success']) AND $_GET["success"]=='step2')
     {
       echo "<div class='row justify-content-center mt-5'>";
-      echo "<div class='col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
+      echo "<div class='col-md-5 p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
       echo "<h1 class='heading-6'>Verify your account</h1>";
       echo "<p>We sent a verification link to your email <strong>". $_SESSION['usersemail'] ."</strong>, check your email address to continue.</p>";
       echo "<ul class='list-group list-group-flush'>";
       echo "<li class='list-group-item bg-transparent'>Didn't get the email?
-      <form action='sign-up.php' method='post'>
-      <button type='submit' name='resendemail' class='form-link'>Resend email</button>
-      </form>";
+      <a href='sign-up?success=step2&resendemail=1' class='form-link'>Resend email</a>
+      </li>";
       echo "</ul>";
       echo "</div>";
       echo "</div>";
     } else if(isset($_GET['success']) AND $_GET["success"]== 'step3')
     {
       echo "<div class='row justify-content-center mt-5'>";
-      echo "<div class='col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
+      echo "<div class='col-md-5 p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
       echo "<h1 class='heading-6'>Make your entry payment</h1>";
       echo "<p>Hello ". ucwords($_SESSION['usersfname']) .", you have to pay a membership fee of <strong>&#8358;1,000 </strong>to activate your account</p>";
       echo "<ul class='list-group list-group-flush'>";
@@ -90,7 +91,7 @@ require_once ('./controllers/authController.php');
         }
         echo "</div>";
       }
-      echo "<form action='sign-up.php' method='post' name='registration' class='form'>";
+      echo "<form action='".htmlspecialchars($_SERVER["PHP_SELF"])."' method='post' name='registration' class='form'>";
       echo "<h1 class='heading-6'>Create New Account</h1>";
       echo "<p class='paragraph-11'>Please Continue From Where You Left Off</p>";
 

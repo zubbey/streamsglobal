@@ -69,9 +69,6 @@ if (isset($_POST['signup-btn'])) {
 	if ($password !== $passwordConfirm) {
 		$errors['password'] = "Ops! Your password did not match.";
 	}
-	if (strlen($referralcode) !== 6) {
-		$errors['referralcode'] = "Ops! Referral Code must be 6 characters.";
-	}
 	//CHECK IF EMAIL IS IN THE DATABASE
 	$emailQuery = "SELECT `*` FROM `users` WHERE `email` = ? LIMIT 1";
 	$stmt = $conn->prepare($emailQuery);
@@ -86,7 +83,6 @@ if (isset($_POST['signup-btn'])) {
 	}
 
 	//CHECK IF RERERRALCODE BELONGS TO A USER IN THE DATABASE
-//81924c
 	$sql = "SELECT `*` FROM `users` WHERE `referralid` = ? LIMIT 1";
 	$stmt = $conn->prepare($sql);
 	$stmt->bind_param('s', $referralcode);
@@ -106,8 +102,14 @@ if (isset($_POST['signup-btn'])) {
         'userlname' => $lastname,
         'datereferred' => date("Y-m-d")
     );
+	}else if(empty($referralcode)){
+		$errors['noreferralcode'] === "";
 	} else {
-		$errors['noreferralcode'] = "Ops! No user with this (".$referralcode.") Referral Code";
+		$errors['noreferralcode'] = "Ops! No user with this (".$referralcode.") Referral Code, Referral Code must be 6 characters.";
+	}
+
+	if(empty($referralcode)){
+		$errors['noreferralcode'] === "";
 	}
 
 	if (count($errors) === 0) {
@@ -162,6 +164,7 @@ if (isset($_POST['signup-btn'])) {
 			$_SESSION['LGA'] = $LGA;
 			$_SESSION['occupation'] = $occupation;
 			$_SESSION['nationality'] = $nationality;
+			$_SESSION['referralcode'] = $referralid;
 
 			//sendVerificationEmail($email, $token);
 
@@ -169,7 +172,7 @@ if (isset($_POST['signup-btn'])) {
 			$_SESSION['successaccount']= "your account was created successfully and your entry payment was successfully.";
 			$_SESSION['success-message'] = "success";
 
-			header('location: sign-up.php?success=step2');
+			header('location: sign-up?success=step2');
 			exit();
 
 		} else {
@@ -179,13 +182,22 @@ if (isset($_POST['signup-btn'])) {
 }
 
 // CODE TO RESEND EMAIL
-if (isset($_POST['resendemail'])){
+if (isset($_GET['resendemail'])){
+
+	$id = $_SESSION['usersid'];
+
+	$sql = "SELECT `*` FROM `users` WHERE `id` = '$id'";
+	$result = mysqli_query($conn, $sql);
+	while ($row = mysqli_fetch_assoc($result)) {
+		$token = $row['token'];
+		$email = $row['email'];
+	}
 
 	sendVerificationEmail($email, $token);
 
 	$msg = "
 	<div class='col col-md-8 mx-auto'>
-	<div class='alert alert-success alert-dismissible fade show' role='alert'>
+	<div id='alert' class='alert alert-success alert-dismissible fade show' role='alert'>
 	<strong>Email Sent!</strong> please check your spam if you can't find the sent mail.
 	<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
 	<span aria-hidden='true'>&times;</span>
@@ -193,8 +205,6 @@ if (isset($_POST['resendemail'])){
 	</div>
 	</div>
 	";
-	header('location: sign-up.php?success=step2');
-	exit();
 }
 
 
@@ -256,12 +266,13 @@ if (isset($_POST['login-btn'])) {
 			$_SESSION['LGA'] = $user['LGA'];
 			$_SESSION['occupation'] = $user['occupation'];
 			$_SESSION['nationality'] = $user['nationality'];
+			$_SESSION['referralcode'] = $user['referralid'];
 
 			// flash messages
 			$_SESSION['successlogin']= "you're logged in.";
 			$_SESSION['success-message'] = "success";
 
-			header('location: start.php');
+			header('location: start');
 			exit();
 
 		} else {
@@ -290,8 +301,9 @@ if (isset($_GET['logout'])) {
 	unset($_SESSION['LGA']);
 	unset($_SESSION['occupation']);
 	unset($_SESSION['nationality']);
+	unset($_SESSION['referralcode']);
 
-	header('location: index.php');
+	header('location: index');
 	exit();
 }
 
@@ -325,12 +337,58 @@ function verifyUser($token)
 			$_SESSION['LGA'] = $user['LGA'];
 			$_SESSION['occupation'] = $user['occupation'];
 			$_SESSION['nationality'] = $user['nationality'];
+			$_SESSION['referralcode'] = $user['referralid'];
 
 			// flash messages
 			$_SESSION['successverified'] = "Yay! Your account has been verified successfully.";
 			$_SESSION['success-message'] = "success";
 
-			header('location: sign-up.php?success=step3');
+			header('location: sign-up?success=step3');
+			exit();
+		}
+	} else{
+		$errors['onuser'] = "Ops! no user found.";
+	}
+
+}
+
+// verify your new user email address ####################################################
+function verifyusernewEmail($token)
+{
+	global $conn;
+
+	$sql = "SELECT `*` FROM `users` WHERE `token` = '$token' LIMIT 1";
+	$result = mysqli_query($conn, $sql);
+
+	if (mysqli_num_rows($result) > 0) {
+		$user = mysqli_fetch_assoc($result);
+		$update_query = "UPDATE `users` SET `verified` = 1 WHERE `token` = '$token'";
+
+		if (mysqli_query($conn, $update_query)) {
+			//login user
+			$_SESSION['usersid'] = $user['id'];
+			$_SESSION['usersfname'] = $user['fname'];
+			$_SESSION['userslname'] = $user['lname'];
+			$_SESSION['usersphone'] = $user['phone'];
+			$_SESSION['usersemail'] = $user['email'];
+			$_SESSION['verified'] = 1;
+
+			//SESSION VARIABLE WITH NULL VALUE
+			$_SESSION['gender'] = $user['gender'];
+			$_SESSION['DOB'] = $user['DOB'];
+			$_SESSION['address'] = $user['address'];
+			$_SESSION['city'] = $user['city'];
+			$_SESSION['state'] = $user['state'];
+			$_SESSION['LGA'] = $user['LGA'];
+			$_SESSION['occupation'] = $user['occupation'];
+			$_SESSION['nationality'] = $user['nationality'];
+			$_SESSION['referralcode'] = $user['referralid'];
+
+			// flash messages
+			$_SESSION['successverified'] = "Your new email address has been verified successfully.";
+			$_SESSION['success-message'] = "success";
+
+			header('location: user/settings?success=infoupdated');
 			exit();
 		}
 	} else{
@@ -366,18 +424,18 @@ if (isset($_POST['upload-img-submit'])) {
 
 				$sql = "UPDATE `profileimg` SET `status` = 0 WHERE `userid` = '$id';";
 				$result = mysqli_query($conn, $sql);
-				header("Location: ../panels/settings.php?success=uploaded");
+				header("Location: ../panels/settings?success=uploaded");
 				exit();
 			} else {
-				header("Location: ../panels/settings.php?error=sizeerror");
+				header("Location: ../panels/settings?error=sizeerror");
 				exit();
 			}
 		} else {
-			header("Location: ../panels/settings.php?error=errorupload");
+			header("Location: ../panels/settings?error=errorupload");
 			exit();
 		}
 	} else {
-		header("Location: ../panels/settings.php?error=filenotallowed");
+		header("Location: ../panels/settings?error=filenotallowed");
 		exit();
 	}
 
@@ -404,9 +462,9 @@ if (isset($_POST['upload'])) {
 	mysqli_query($conn, $sql);
 
 	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-		header('location: admin.php?success=adcreated');
+		header('location: admin?success=adcreated');
 	}else{
-		header('location: admin.php?error=notcreated');
+		header('location: admin?error=notcreated');
 	}
 }
 
@@ -415,9 +473,9 @@ if (isset($_POST['upload'])) {
 if (isset($_GET['del_id'])){
 	$sql = "DELETE FROM `adminAds` WHERE `id` = '".$_GET['del_id']."'";
 	if (mysqli_query($conn, $sql)){
-		header('location: admin.php?warning=deleted');
+		header('location: admin?warning=deleted');
 	} else {
-		header('location: admin.php?error=notdeleted');
+		header('location: admin?error=notdeleted');
 		die($sql);
 	};
 }
@@ -439,10 +497,10 @@ if(isset($_POST['update_advert'])){
 		if (!isset($sql)) {
 			die("there was an error" .mysqli_connect_error());
 		} else {
-			header('location: admin.php?success=adupdated');
+			header('location: admin?success=adupdated');
 		}
 	} else{
-		header('location: admin.php?error=notupdated');
+		header('location: admin?error=notupdated');
 	};
 
 }

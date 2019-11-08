@@ -1,6 +1,17 @@
-*{transition: all 500ms ease;}
+*{font-family: Saira, sans-serif;}
 body{
   counter-reset: section;
+}
+select.form-control[size] {
+height: 40px;
+}
+.btn-primary{
+  background-color: #2ab334;
+  border: 1px solid #23930f;
+  color: #fff;
+}
+.btn-primary:hover{
+  background-color: #23930f;
 }
 
 .card-link{color:#2AB334 !important;}
@@ -44,13 +55,49 @@ body{
 .navbar-light .navbar-toggler{
   border-color: transparent;
 }
+.navbar-toggler-icon{
+  cursor: pointer;
+}
 input.form-control,input.form-control:focus {
-  border:none;
+  /* border:none; */
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  -moz-transition: none;
-  -webkit-transition: none;
+  /* -moz-transition: none;
+  -webkit-transition: none; */
+}
+#refine2 .dropdown-toggle:active {
+  background-color:transparent;
+  border:0;
+}
+#refine2 .dropdown-toggle:focus {
+  border-top: 1px solid #e3e3e3;
+  border-right: 1px solid #e3e3e3;
+  border-left: 1px solid #e3e3e3;
+  background-color:transparent;
+  }
+
+#refine2 .dropdown-toggle{
+    background-color: transparent !important;
+  }
+  li.dropdown.open {
+    background-color: transparent;
+  }
+.custom-file-control{
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.custom-file-control:hover{
+  background-color: #dedede;
+}
+.table td{
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 3px 2px #ddd;
+    -moz-box-shadow: 0 3px 2px #ddd;
+    box-shadow: 0 3px 2px #ddd;
 }
 .img-icon {
   max-width: 35px;
@@ -327,7 +374,7 @@ button.flickity-button.flickity-prev-next-button.next{
 }
 
 .flyover.in {
-  margin-top: 10px;
+  margin-top: 20px;
 
 }
 .product{
@@ -342,6 +389,10 @@ button.flickity-button.flickity-prev-next-button.next{
   position: absolute;
   /* bottom: 0; */
   width: 100%;
+}
+#profile-image1 {
+max-width: 139px;
+width: 140px;
 }
 @media (max-width: 991px){
   .nav-menu {

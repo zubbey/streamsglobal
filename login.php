@@ -31,7 +31,7 @@ if (isset($_SESSION['usersid'])) {
 
     <div class="row justify-content-center mt-5">
       <div class="col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded">
-        <form action="login.php" method="post" class="form">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="form">
           <h1 class="heading-6">Secure Login</h1>
           <p class="paragraph-11">Please Continue From Where You Left Off</p>
 
@@ -71,8 +71,8 @@ if (isset($_SESSION['usersid'])) {
       <div class="col-md-5 text-center">
         <ul class="list-group list-group-flush">
           <li class="list-group-item bg-transparent">Not a Member?  <a href="sign-up.php" class="form-link"> Create new account</a></li>
-          <li class="list-group-item bg-transparent"><a href="forgotten-password.php" class="form-link">Forgot Password?</a></li>
-          <li class="list-group-item bg-transparent">By clicking on Log In, you agree to our <a href="terms.php" target="_blank" class="form-footer">terms &amp; service</a> and <a href="privacy.php" target="_blank" class="form-footer">privacy policy</a></li>
+          <li class="list-group-item bg-transparent"><a href="forgotten-password" class="form-link">Forgot Password?</a></li>
+          <li class="list-group-item bg-transparent">By clicking on Log In, you agree to our <a href="terms" target="_blank" class="form-footer">terms &amp; service</a> and <a href="privacy" target="_blank" class="form-footer">privacy policy</a></li>
         </ul>
       </div>
     </div>

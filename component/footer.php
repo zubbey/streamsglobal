@@ -76,6 +76,13 @@ $('document').ready(function (){
   }, 8000);
 
 });
+var dropdown = $(".dropdown-toggle");
+
+dropdown.on("click", function() {
+  setTimeout(function(){           //loses focus after 0 milliseconds
+    dropdown.blur();
+  }, 0);
+});
 
 </script>
 </body>
