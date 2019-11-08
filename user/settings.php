@@ -226,44 +226,44 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
                   <div class="col-md-6 text-muted">
                     <address>
                       <strong>Full Name</strong><br>
-                      <p><? echo $_SESSION['usersfname'].' '.$_SESSION['userslname'];?></p>
+                      <p><?php echo $_SESSION['usersfname'].' '.$_SESSION['userslname'];?></p>
                     </address>
                     <address>
                       <strong>Email Address</strong><br>
-                      <p><? echo $_SESSION['usersemail'];?></p>
+                      <p><?php echo $_SESSION['usersemail'];?></p>
                     </address>
                     <address>
                       <strong>Phone Number</strong><br>
-                      <p><? echo $_SESSION['usersphone'];?></p>
+                      <p><?php echo $_SESSION['usersphone'];?></p>
                     </address>
                     <address>
                       <strong>Address</strong><br>
-                      <? echo $_SESSION['address'].' '.$_SESSION['city'].' '.$_SESSION['state'];?><br>
+                      <?php echo $_SESSION['address'].' '.$_SESSION['city'].' '.$_SESSION['state'];?><br>
                     </address>
                     <address>
                       <strong>Gender</strong><br>
-                      <? echo $_SESSION['gender'];?><br>
+                      <?php echo $_SESSION['gender'];?><br>
                     </address>
                     <address>
                       <strong>Date of Birth</strong><br>
-                      <? echo $_SESSION['DOB'];?><br>
+                      <?php echo $_SESSION['DOB'];?><br>
                     </address>
                     <address>
                       <strong>Local Government</strong><br>
-                      <? echo $_SESSION['LGA'];?><br>
+                      <?php echo $_SESSION['LGA'];?><br>
                     </address>
                     <address>
                       <strong>Occupation</strong><br>
-                      <? echo $_SESSION['occupation'];?><br>
+                      <?php echo $_SESSION['occupation'];?><br>
                     </address>
                     <address>
                       <strong>nationality</strong><br>
-                      <? echo $_SESSION['nationality'];?><br>
+                      <?php echo $_SESSION['nationality'];?><br>
                     </address>
                   </div>
                   <div class="col-md-6">
                     <h6>Referral Code</h6>
-                    <h2 class="badge badge-dark" style="font-size: 2rem;"><? echo $_SESSION['referralcode'];?></h2>
+                    <h2 class="badge badge-dark" style="font-size: 2rem;"><?php echo $_SESSION['referralcode'];?></h2>
                     <hr>
                     <span class="badge badge-primary"><i class="fa fa-user"></i> 1 Referred</span>
                     <span class="badge badge-danger"><i class="fa fa-cog"></i> 0 Active Plan</span>
@@ -315,30 +315,30 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">First name</label>
                     <div class="col-lg-9">
-                      <input name="fname" class="form-control" type="text" value="<? echo $_SESSION['usersfname'];?>">
+                      <input name="fname" class="form-control" type="text" value="<?php echo $_SESSION['usersfname'];?>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                     <div class="col-lg-9">
-                      <input name="lname" class="form-control" type="text" value="<? echo $_SESSION['userslname'];?>">
+                      <input name="lname" class="form-control" type="text" value="<?php echo $_SESSION['userslname'];?>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Email</label>
                     <div class="col-lg-9">
-                      <input name="email" class="form-control <?echo $Eclasstype; ?>" type="text" value="<? echo $_SESSION['usersemail'];?>">
-                      <div class="<?echo $EclassFeedback; ?>">
-                        <?echo $EmsgFeedback;?>
+                      <input name="email" class="form-control <?php echo $Eclasstype; ?>" type="text" value="<?php echo $_SESSION['usersemail'];?>">
+                      <div class="<?php echo $EclassFeedback; ?>">
+                        <?php echo $EmsgFeedback;?>
                       </div>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Phone Number</label>
                     <div class="col-lg-9">
-                      <input name="phone" class="form-control <?echo $Pclasstype;?>" type="text" value="<? echo $_SESSION['usersphone'];?>">
-                      <div class="<?echo $PclassFeedback;?>">
-                        <?echo $PmsgFeedback;?>
+                      <input name="phone" class="form-control <?php echo $Pclasstype;?>" type="text" value="<?php echo $_SESSION['usersphone'];?>">
+                      <div class="<?php echo $PclassFeedback;?>">
+                        <?php echo $PmsgFeedback;?>
                       </div>
                     </div>
                   </div>
@@ -346,7 +346,7 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
                     <label class="col-lg-3 col-form-label form-control-label">Gender</label>
                     <div class="col-lg-9">
                       <select name="gender" id="user_state" class="form-control" size="0">
-                        <option selected><? echo $_SESSION['gender'];?></option>
+                        <option selected><?php echo $_SESSION['gender'];?></option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                       </select>
@@ -355,17 +355,17 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Address</label>
                     <div class="col-lg-9">
-                      <input name="address" class="form-control" type="text" value="<? echo $_SESSION['address'];?>" placeholder="Street">
+                      <input name="address" class="form-control" type="text" value="<?php echo $_SESSION['address'];?>" placeholder="Street">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label"></label>
                     <div class="col-lg-6">
-                      <input name="city" class="form-control" type="text" value="<? echo $_SESSION['city'];?>" placeholder="City">
+                      <input name="city" class="form-control" type="text" value="<?php echo $_SESSION['city'];?>" placeholder="City">
                     </div>
                     <div class="col-lg-3">
                       <select name="state" id="user_state" class="form-control" size="0">
-                        <option selected="selected"><? echo $_SESSION['state'];?></option>
+                        <option selected="selected"><?php echo $_SESSION['state'];?></option>
                         <option value="Abia">Abia</option>
                         <option value="Adamawa">Adamawa</option>
                         <option value="Akwa Ibom">Akwa Ibom</option>
@@ -408,25 +408,25 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Date of Birth</label>
                     <div class="col-lg-9">
-                      <input name="dob" class="form-control" type="text" value="<? echo $_SESSION['DOB'];?>" placeholder="Nov 12, 1990">
+                      <input name="dob" class="form-control" type="text" value="<?php echo $_SESSION['DOB'];?>" placeholder="Nov 12, 1990">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Local Government</label>
                     <div class="col-lg-9">
-                      <input name="lga" class="form-control" type="text" value="<? echo $_SESSION['LGA'];?>">
+                      <input name="lga" class="form-control" type="text" value="<?php echo $_SESSION['LGA'];?>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Occupation</label>
                     <div class="col-lg-9">
-                      <input name="occupation" class="form-control" type="text" value="<? echo $_SESSION['occupation'];?>">
+                      <input name="occupation" class="form-control" type="text" value="<?php echo $_SESSION['occupation'];?>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Nationality</label>
                     <div class="col-lg-9">
-                      <input name="nationality" class="form-control" type="text" value="<? echo $_SESSION['nationality'];?>">
+                      <input name="nationality" class="form-control" type="text" value="<?php echo $_SESSION['nationality'];?>">
                     </div>
                   </div>
 
@@ -486,7 +486,7 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
               }
 
               ?>
-              <h4 class="mt-2"><? echo $_SESSION['usersfname'].' '.$_SESSION['userslname'];?></h4>
+              <h4 class="mt-2"><?php echo $_SESSION['usersfname'].' '.$_SESSION['userslname'];?></h4>
               <label class="custom-file">
                 <input type="file" id="file" name="file" class="custom-file-input d-none">
                 <span class="btn custom-file-control shadow-sm">Change image</span>
