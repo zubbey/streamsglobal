@@ -98,9 +98,8 @@ if (isset($_POST['save-changes'])){
 			$update = mysqli_query($conn, "UPDATE `users` SET `verified`= 0, `email`= '$email' WHERE `id` = '$id'");
 
 			if($update){
-
-				$_SESSION['usersemail'] = $_POST['email'];
 				sendemailUpdate($email, $token);
+				$_SESSION['usersemail'] = $email;
 				header('location: settings?success=emailchanged&email='.$email);
 				exit();
 			}
