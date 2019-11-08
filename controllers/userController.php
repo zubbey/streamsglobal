@@ -80,18 +80,25 @@ if (isset($_POST['save-changes'])){
 		header('location: settings?error=invalidemail&email='.$email);
 		exit();
 	}
+	$sql = "SELECT `*` FROM `users` WHERE `token` = '$token' LIMIT 1";
+	$result = mysqli_query($conn, $sql);
 
-	$emailQuery = mysqli_query($conn, "SELECT `*` FROM `users` WHERE `email` = '$email' LIMIT 1");
-	$emailResult = mysqli_num_rows($emailQuery);
+	if (mysqli_num_rows($result) > 0) {
+		$user = mysqli_fetch_assoc($result);
+		$update_query = "UPDATE `users` SET `verified` = 1 WHERE `token` = '$token'";
+	}
 
-	if ($emailResult == 0) {
-			$row = mysqli_fetch_assoc($emailResult);
+	$emailQuery = "SELECT `*` FROM `users` WHERE `email` = '$email' LIMIT 1";
+	$emailResult = mysqli_query($conn, $emailQuery);
+
+	if (mysqli_num_rows($emailResult) == 0) {
+			$user = mysqli_fetch_assoc($emailResult);
 
 			$token = $row['token'];
 			sendemailUpdate($email, $token);
 
 			$update = mysqli_query($conn, "UPDATE `users` SET `verified`= 0 WHERE `id` = '$id'");
-			
+
 			$_SESSION['usersemail'] = $_POST['email'];
 			header('location: settings?success=emailchanged&email='.$email);
 			exit();
