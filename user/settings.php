@@ -290,39 +290,6 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
                     <span class="badge badge-success"><i class="fa fa-eye"></i> Membership Verified</span>
                   </div>
 
-                  <div class="col-md-12">
-                    <hr class="mt-5">
-                    <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
-                    <table class="table table-sm table-hover table-striped">
-                      <tbody class="text-muted">
-                        <tr>
-                          <td class="p-3">
-                            Abby joined ACME Project Team in `Collaboration`
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="p-3">
-                            Gary deleted My Board1 in `Discussions`
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="p-3">
-                            Kensington deleted MyBoard3 in `Discussions`
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="p-3">
-                            John deleted My Board1 in `Discussions`
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="p-3">
-                            Skell deleted his post Look at Why this is.. in `Discussions`
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
                 </div>
                 <!--/row-->
               </div>

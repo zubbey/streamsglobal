@@ -1,0 +1,70 @@
+/* * {
+	 box-model: border-box;
+	 margin: 0;
+	 padding: 0;
+} */
+#myDIV {
+  width: 100px;
+  height: 100px;
+  background-color: coral;
+  color: green;
+
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes moveobj {
+  50% {margin: -4vw -0vw -3vw -9vw;;}
+}
+
+@keyframes moveobj {
+  50% {margin: -4vw -0vw -3vw -9vw;;}
+}
+
+@-webkit-keyframes mymove {
+  50% {clip-path: circle(45%);}
+}
+
+@keyframes mymove {
+  50% {clip-path: circle(45%);}
+}
+
+ ul.team_ul {
+	 margin: 8vw auto;
+	 width: 75vw;
+	 list-style: none;
+}
+ li.team_li {
+	 width: 15vw;
+	 height: 13vw;
+	 float: left;
+	 margin-right: 10vw;
+
+   -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+   animation: mymove 5s infinite;
+   clip-path: circle(50%);
+}
+ li.team_li:nth-child(2n) {
+	 margin: -5vw -1vw -4vw -8vw;
+   -webkit-animation: moveobj 5s infinite; /* Safari 4.0 - 8.0 */
+   animation: moveobj 5s infinite;
+}
+ img.team_img {
+	 width: 100%;
+	 object-fit: cover;
+	 object-position: 50% 50%;
+}
+li.team_li.smlist{
+  width: 10vw;
+  height: 10vw;
+}
+img.team_img.sm{
+  width: 100%;
+  object-position: 20% 80%;
+}
+ h1.team_h1 {
+	 margin: 7vw 10vw 0;
+	 font-size: 3vw;
+}
+ a.team_a {
+	 color: #888;
+}
