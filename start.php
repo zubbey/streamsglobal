@@ -28,6 +28,7 @@ if (isset($_GET['token'])) {
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="css/streams-project.webflow.css" rel="stylesheet" type="text/css">
   <link href="css/custom.css" rel="stylesheet" type="text/css">
@@ -72,6 +73,24 @@ if (isset($_GET['token'])) {
           ';
           unset($_SESSION['successlogin']);
         }
+        if(isset($_SESSION['emailverified'])){
+          echo '
+          <div id="alert" class="alert alert-success alert-dismissable flyover flyover-centered" role="alert">
+          <h5 class="alert-heading">Welcome back '.ucwords($_SESSION['usersfname']).'</h5>
+          <p>'. $_SESSION['emailverified'] .'</p>
+          </div>
+          ';
+          unset($_SESSION['emailverified']);
+        }
+        if(isset($_SESSION['successverified'])){
+          echo '
+          <div id="alert" class="alert alert-success alert-dismissable flyover flyover-centered" role="alert">
+          <h5 class="alert-heading">Congrats '.ucwords($_SESSION['usersfname']).' you account sign up it complete</h5>
+          <p>'. $_SESSION['successverified'] .'</p>
+          </div>
+          ';
+          unset($_SESSION['successverified']);
+        }
         // if(isset($_SESSION['payment'])){
         //   echo '<div class="alert '.$_SESSION['warning-message'].'"><div>'. $_SESSION['payment'] .'</div></div>';
         //   unset($_SESSION['payment']);
@@ -90,76 +109,64 @@ if (isset($_GET['token'])) {
       </div>
     </div>
 
-    <div class="container">
-      <div class="row py-5">
-        <div class="col text-center">
-          <div class="card product">
-            <div class="card-body p-0">
-              <img src="images/piggy.jpg" alt="Piggy Wallet image" class="image span">
-              <h1 class="h4 p-2">Piggy Wallet</h1>
-              <hr class='my-2'>
-              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
+          <a href="/themes/" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">
+            <div class="card-body d-flex align-items-end flex-column text-right">
+              <h4>Piggy Wallet</h4>
+              <p class="w-75">Automatically save an amount at regular ...</p>
+              <i class="fas fa-piggy-bank"></i>
             </div>
-          </div>
+          </a>
         </div>
-
-        <div class="col text-center">
-          <div class="card product">
-            <div class="card-body p-0">
-              <img src="images/saap.jpg" alt="" class="image span">
-              <h1 class="h4 p-2">SAAP</h1>
-              <hr class='my-2'>
-              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+        <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
+          <a href="/themes/" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">
+            <div class="card-body d-flex align-items-end flex-column text-right">
+              <h4>SAAP</h4>
+              <p class="w-75">Automatically save an amount at regular ...</p>
+              <i class="fas fa-cart-arrow-down"></i>
             </div>
-          </div>
+          </a>
         </div>
-
-        <div class="col text-center">
-          <div class="card product">
-            <div class="card-body p-0">
-              <img src="images/fixed.jpg" alt="" class="image span">
-              <h1 class="h4 p-2">Fixed Savings</h1>
-              <hr class='my-2'>
-              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+        <div class="col-lg-4 col-md-8 mx-auto">
+          <a href="/guides/" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">
+            <div class="card-body d-flex align-items-end flex-column text-right">
+              <h4>Fixed Savings</h4>
+              <p class="w-75">Automatically save an amount at regular ...</p>
+              <i class="fas fa-unlock-alt"></i>
             </div>
-          </div>
+          </a>
         </div>
       </div>
-
-<!-- SECOND ROW FOR PLANS -->
-
-      <div class="row py-5">
-        <div class="col text-center">
-          <div class="card product">
-            <div class="card-body p-0">
-              <img src="images/land.jpg" alt="Land & Building Savings" class="image span">
-              <h1 class="h4 p-2">Land & Building Savings</h1>
-              <hr class='my-2'>
-              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+      <!-- SECOND ROW     -->
+      <div class="row my-4">
+        <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
+          <a href="/themes/" class="after-loop-item card border-0 rounded-lg land-themes shadow-lg">
+            <div class="card-body d-flex align-items-end flex-column text-right">
+              <h4>Land & Building Savings</h4>
+              <p class="w-75">Automatically save an amount at regular ...</p>
+              <i class="fas fa-home"></i>
             </div>
-          </div>
+          </a>
         </div>
-
-        <div class="col text-center">
-          <div class="card product">
-            <div class="card-body p-0">
-              <img src="images/cooperators.jpg" alt="Cooperators Bank" class="image span">
-              <h1 class="h4 p-2">Cooperators Bank</h1>
-              <hr class='my-2'>
-              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+        <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
+          <a href="/themes/" class="after-loop-item card border-0 rounded-lg cooperators-themes shadow-lg">
+            <div class="card-body d-flex align-items-end flex-column text-right">
+              <h4>Cooperators Bank</h4>
+              <p class="w-75">Automatically save an amount at regular ...</p>
+              <i class="fas fa-handshake"></i>
             </div>
-          </div>
+          </a>
         </div>
-
-        <div class="col text-center">
-          <div class="card product">
-            <div class="card-body p-0">
-              <img src="images/diaspora.jpg" alt="Diaspora Safe" class="image span">
-              <h1 class="h4 p-2">Diaspora Safe</h1>
-              <hr class='my-2'>
-              <p class="px-3">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
+        <div class="col-lg-4 col-md-8 mx-auto">
+          <a href="/guides/" class="after-loop-item card border-0 rounded-lg diaspora-themes shadow-lg">
+            <div class="card-body d-flex align-items-end flex-column text-right">
+              <h4>Diaspora Safe</h4>
+              <p class="w-75">Automatically save an amount at regular ...</p>
+              <i class="fab fa-diaspora"></i>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>

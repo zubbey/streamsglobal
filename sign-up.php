@@ -182,10 +182,10 @@ if (isset($_SESSION['usersid']) && strlen($_SESSION['verified'] > 0) && is_null(
       },
       callback: function(response){
         //alert('success. transaction ref is ' + response.reference);
-        window.location.assign("http://streamsglobal.com/start.php?success=entryverified&reference="+response.reference);
+        window.location.assign("http://streamsglobal.com/start?success=entryverified&reference="+response.reference);
       },
       onClose: function(){
-        window.location.assign("http://streamsglobal.com/sign-up.php?success=step3&error=closepayment");
+        window.location.assign("http://streamsglobal.com/sign-up?success=step3&error=closepayment");
       }
     });
     handler.openIframe();

@@ -62,7 +62,6 @@ if (isset($_POST['save-changes'])){
 	$firstname = mysqli_real_escape_string($conn, $_POST['fname']);
 	$lastname = mysqli_real_escape_string($conn, $_POST['lname']);
 	$phone = mysqli_real_escape_string($conn, $_POST['phone']);
-	$email = mysqli_real_escape_string($conn, $_POST['email']);
 	$gender = mysqli_real_escape_string($conn, $_POST['gender']);
 	$DOB = mysqli_real_escape_string($conn, $_POST['dob']);
 	$address = mysqli_real_escape_string($conn, $_POST['address']);
@@ -76,64 +75,111 @@ if (isset($_POST['save-changes'])){
 		header('location: settings?error=invalidphone&phone='.$phone);
 		exit();
 	}
+
+	$sql_check = mysqli_query($conn, "SELECT `*` FROM `users` WHERE `id` = '$id' LIMIT 1");
+	$result = mysqli_num_rows($sql_check);
+	if($result > 0){
+		$update = "UPDATE `users` SET `fname`= '$firstname', `lname`= '$lastname', `phone`= '$phone', `gender`= '$gender',
+		`DOB`= '$DOB', `address`= '$address', `city`= '$city', `state`= '$state', `LGA`= '$LGA', `occupation`= '$occupation', `nationality`= '$nationality' WHERE `id` = '$id'";
+		if (mysqli_query($conn, $update)){
+
+			$_SESSION['usersfname'] = $_POST['fname'];
+			$_SESSION['userslname'] = $_POST['lname'];
+			$_SESSION['usersphone'] = $_POST['phone'];
+			$_SESSION['gender'] = $_POST['gender'];
+			$_SESSION['address'] = $_POST['address'];
+			$_SESSION['city'] = $_POST['city'];
+			$_SESSION['state'] = $_POST['state'];
+			$_SESSION['DOB'] = $_POST['dob'];
+			$_SESSION['LGA'] = $_POST['lga'];
+			$_SESSION['occupation'] = $_POST['occupation'];
+			$_SESSION['nationality'] = $_POST['nationality'];
+
+			header('location: settings?success=infoupdated');
+			exit();
+		} else{
+			header('location: settings?error=couldnotupdated');
+			exit();
+		}
+	} else {
+		die("there was an error" .mysqli_connect_error());
+	}
+}
+
+// CHANGE EMAIL
+if (isset($_POST['change-email'])){
+
+	$id = $_SESSION['usersid'];
+
+	$email = mysqli_real_escape_string($conn, $_POST['email']);
+
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		header('location: settings?error=invalidemail&email='.$email);
 		exit();
-	}
-	$sql = "SELECT `*` FROM `users` WHERE `token` = '$token' LIMIT 1";
-	$result = mysqli_query($conn, $sql);
-
-	if (mysqli_num_rows($result) > 0) {
-		$user = mysqli_fetch_assoc($result);
-		$update_query = "UPDATE `users` SET `verified` = 1 WHERE `token` = '$token'";
 	}
 
 	$emailQuery = "SELECT `*` FROM `users` WHERE `email` = '$email' LIMIT 1";
 	$emailResult = mysqli_query($conn, $emailQuery);
 
 	if (mysqli_num_rows($emailResult) == 0) {
-			$user = mysqli_fetch_assoc($emailResult);
-			$token = $row['token'];
+		$row = mysqli_fetch_assoc($emailResult);
+		$token = $row['token'];
 
-			$update = mysqli_query($conn, "UPDATE `users` SET `verified`= 0, `email`= '$email' WHERE `id` = '$id'");
+		$update = mysqli_query($conn, "UPDATE `users` SET `verified`= 0, `email`= '$email' WHERE `id` = '$id'");
 
-			if($update){
-				sendemailUpdate($email, $token);
-				$_SESSION['usersemail'] = $email;
-				header('location: settings?success=emailchanged&email='.$email);
-				exit();
-			}
+		if($update){
+			sendemailUpdate($email, $token);
+
+			$_SESSION['usersemail'] = $email;
+
+			header('location: settings?success=emailchanged&email='.$email);
+			exit();
+		}
+	} else if (mysqli_num_rows($emailResult) > 0) {
+		header('location: settings?error=emailexist&email='.$email);
+		exit();
+	} else {
+
+		die("there was an error" .mysqli_connect_error());
+	}
+}
+
+// CHANGE EMAIL
+if (isset($_POST['change-password'])){
+
+	$email = $_SESSION['usersemail'];
+
+	$current_password = mysqli_real_escape_string($conn, $_POST['current_password']);
+	$new_password = mysqli_real_escape_string($conn, $_POST['new_password']);
+	$confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
+
+	if (strlen($new_password) < 6) {
+		header('location: settings?error=passwordmustbelong');
+		exit();
 	}
 
-		$sql_check = mysqli_query($conn, "SELECT `*` FROM `users` WHERE `id` = '$id' LIMIT 1");
-		$result = mysqli_num_rows($sql_check);
-		if($result > 0){
-			$update = "UPDATE `users` SET `fname`= '$firstname', `lname`= '$lastname', `phone`= '$phone', `email`= '$email', `gender`= '$gender',
-			`DOB`= '$DOB', `address`= '$address', `city`= '$city', `state`= '$state', `LGA`= '$LGA', `occupation`= '$occupation', `nationality`= '$nationality' WHERE `id` = '$id'";
-			if (mysqli_query($conn, $update)){
+	if ($new_password === $confirm_password) {
 
-				$_SESSION['usersfname'] = $_POST['fname'];
-				$_SESSION['userslname'] = $_POST['lname'];
-				$_SESSION['usersemail'] = $_POST['email'];
-				$_SESSION['usersphone'] = $_POST['phone'];
-				$_SESSION['gender'] = $_POST['gender'];
-				$_SESSION['address'] = $_POST['address'];
-				$_SESSION['city'] = $_POST['city'];
-				$_SESSION['state'] = $_POST['state'];
-				$_SESSION['DOB'] = $_POST['dob'];
-				$_SESSION['LGA'] = $_POST['lga'];
-				$_SESSION['occupation'] = $_POST['occupation'];
-				$_SESSION['nationality'] = $_POST['nationality'];
+		$new_password = password_hash($new_password, PASSWORD_DEFAULT);
+		//$current_password = password_hash($new_password, PASSWORD_DEFAULT);
 
-				header('location: settings?success=infoupdated');
-				exit();
-			} else{
-				header('location: settings?error=couldnotupdated');
+		$result = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
+		$user = mysqli_fetch_array($result);
+		//echo $row["password"].' '.$current_password;
+		if (password_verify($current_password, $user['password'])) {
+			$updatepassword = mysqli_query($conn, "UPDATE users set password='$new_password' WHERE email='$email'");
+			if ($updatepassword) {
+				header('location: settings?success=passwordchanged');
 				exit();
 			}
 		} else {
-			die("there was an error" .mysqli_connect_error());
+			header('location: settings?error=nouserpasswordfound');
+			exit();
 		}
+	} else {
+		header('location: settings?error=passwordnotmatch');
+		exit();
+	}
 }
 
 ########## if user clicks the close dialog button on email verified popup ###########

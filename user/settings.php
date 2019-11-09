@@ -84,7 +84,7 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
         <hr class="my-2">
         <a href="settings" class="list-group-item list-group-item-action shadow-sm active"><i class="fas fa-user-cog mr-1"></i>Account Settings</a>
         <hr class="my-2">
-        <a href="../start?logout=1" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-sign-out-alt mr-1"></i>Sign Out</a>
+        <a href="../start?logout=1" id="logout" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-sign-out-alt mr-1"></i>Sign Out</a>
         <a href="../faqs" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-question-circle mr-1"></i>FAQs</a>
       </div>
     </div>
@@ -155,55 +155,69 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
           $EclassFeedback = "invalid-feedback";
           $EmsgFeedback = "This Email address (".$email.") is invalid.";
 
+        } else if(isset($_GET['error']) AND $_GET["error"]=='emailexist'){
+          $email = $_GET['email'];
+          $Eclasstype = "is-invalid";
+          $EclassFeedback = "invalid-feedback";
+          $EmsgFeedback = "This Email address (".$email.") is already in use.";
+
+        } else if(isset($_GET['error']) AND $_GET["error"]=='nouserpasswordfound'){
+          $PWnouserclasstype = "is-invalid";
+          $PWnouserclassFeedback = "invalid-feedback";
+          $PWnousermsgFeedback = "Your current password is incorrect.";
+
+        } else if(isset($_GET['error']) AND $_GET["error"]=='passwordmustbelong'){
+          $PWclasstype = "is-invalid";
+          $PWclassFeedback = "invalid-feedback";
+          $PWmsgFeedback = "Passwords must be at least 6 characters long.";
+
+        } else if(isset($_GET['error']) AND $_GET["error"]=='passwordnotmatch'){
+          $CPWclasstype = "is-invalid";
+          $CPWclassFeedback = "invalid-feedback";
+          $CPWmsgFeedback = "Passwords did not match.";
+
         }
 
         if (isset($_GET['error'])) {
           if ($_GET['error'] == "sizeerror") {
             echo '<div class="container">
-            <div id="alert" class="alert alert-danger" role="alert">
+            <div id="alert" class="alert alert-danger alert-dismissable flyover flyover-centered" role="alert">
             Oops! file too Large, image must be 50mb or Less.
             </div>
             </div>';
           }
           else if ($_GET['error'] == "errorupload") {
             echo '<div class="container">
-            <div id="alert" class="alert alert-danger" role="alert">
+            <div id="alert" class="alert alert-danger alert-dismissable flyover flyover-centered" role="alert">
             Oops! image could not be uploaded.
             </div>
             </div>';
           }
           else if ($_GET['error'] == "filenotallowed") {
             echo '<div class="container">
-            <div id="alert" class="alert alert-danger" role="alert">
+            <div id="alert" class="alert alert-danger alert-dismissable flyover flyover-centered" role="alert">
             Oops! Only JPG Image accepted.
             </div>
             </div>';
           }
           else if ($_GET['error'] == "sqlerror") {
             echo '<div class="container">
-            <div id="alert" class="alert alert-danger" role="alert">
+            <div id="alert" class="alert alert-danger alert-dismissable flyover flyover-centered" role="alert">
             Oops! Connection was not successful.
             </div>
             </div>';
           }
           else if ($_GET['error'] == "couldnotupdate") {
             echo '<div class="container">
-            <div id="alert" class="alert alert-danger" role="alert">
+            <div id="alert" class="alert alert-danger alert-dismissable flyover flyover-centered" role="alert">
             Oops! Could not Update.
             </div>
             </div>';
           }
-        } elseif (isset($_GET['success'])) {
+        } else if (isset($_GET['success'])) {
           echo '<div class="container">
-          <div id="alert" class="alert alert-success" role="alert">
+          <div id="alert" class="alert alert-success alert-dismissable flyover flyover-centered" role="alert">
           Yay! Profile Updated Successfully.
-          </div>
-          </div>';
-        }elseif (isset($_GET['success-update'])) {
-          echo '<div class="container">
-          <div id="alert" class="alert alert-success" role="alert">
-          Yay! Updated.
-          <p>Update will be available on next login</p>
           </div>
           </div>';
         }
@@ -215,7 +229,13 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
                 <a class="nav-link text-muted active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-muted" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="true">Settings</a>
+                <a class="nav-link text-muted" id="personal-info-tab" data-toggle="tab" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">Personal Info</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-muted" id="email-tab" data-toggle="tab" href="#email" role="tab" aria-controls="email" aria-selected="true">Change Email</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-muted" id="password-tab" data-toggle="tab" href="#password" role="tab" aria-controls="password" aria-selected="true">Change Password</a>
               </li>
             </ul>
             <div class="tab-content py-4" id="myTabContent">
@@ -308,7 +328,7 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
               </div>
 
               <!-- EDIT / UPDATE ACCOUNT -->
-              <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+              <div class="tab-pane fade" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
                 <!-- <div class="tab-pane" id="settings"> -->
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" role="form">
                   <h4 class="mb-3">Personal information</h4>
@@ -322,15 +342,6 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
                     <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                     <div class="col-lg-9">
                       <input name="lname" class="form-control" type="text" value="<?php echo $_SESSION['userslname'];?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                    <div class="col-lg-9">
-                      <input name="email" class="form-control <?php echo $Eclasstype; ?>" type="text" value="<?php echo $_SESSION['usersemail'];?>">
-                      <div class="<?php echo $EclassFeedback; ?>">
-                        <?php echo $EmsgFeedback;?>
-                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -430,35 +441,82 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
                     </div>
                   </div>
 
-                  <h4 class="mt-5">Change Password</h4>
-                  <hr>
-                  <div class="form-group row">
-                    <label class="col-lg-3 col-form-label form-control-label">Current Password</label>
-                    <div class="col-lg-9">
-                      <input class="form-control" type="password" value="11111122333">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-lg-3 col-form-label form-control-label">New Password</label>
-                    <div class="col-lg-9">
-                      <input class="form-control" type="password" value="">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-lg-3 col-form-label form-control-label">Confirm Password</label>
-                    <div class="col-lg-9">
-                      <input class="form-control" type="password" value="">
-                    </div>
-                  </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label"></label>
                     <div class="col-lg-9">
-                      <input type="reset" class="btn btn-secondary" value="Cancel">
                       <input name="save-changes" type="submit" class="btn btn-primary" value="Save Changes">
                     </div>
                   </div>
                 </form>
               </div>
+
+              <!-- CHANGE EMAIL TAB ####################################### -->
+
+              <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="email-tab">
+                <!-- <div class="tab-pane" id="settings"> -->
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" role="form">
+                  <h4 class="mb-3">Personal information</h4>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                    <div class="col-lg-9">
+                      <input name="email" class="form-control <?php echo $Eclasstype; ?>" type="text" value="<?php echo $_SESSION['usersemail'];?>">
+                      <div class="<?php echo $EclassFeedback; ?>">
+                        <?php echo $EmsgFeedback;?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                    <div class="col-lg-9">
+                      <input name="change-email" type="submit" class="btn btn-primary" value="Change-email">
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- CHANGE PASSWORD TAB ####################################### -->
+
+              <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+                <!-- <div class="tab-pane" id="settings"> -->
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" role="form">
+                  <h4 class="mt-5">Change Password</h4>
+                  <hr>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label">Current Password</label>
+                    <div class="col-lg-9">
+                      <input name="current_password" class="form-control <?php echo $PWnouserclasstype; ?>" type="password" value="" placeholder="***************************">
+                      <div class="<?php echo $PWnouserclassFeedback; ?>">
+                        <?php echo $PWnousermsgFeedback;?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label">New Password</label>
+                    <div class="col-lg-9">
+                      <input name="new_password" class="form-control <?php echo $PWclasstype; ?>" type="password" value="">
+                      <div class="<?php echo $PWclassFeedback; ?>">
+                        <?php echo $PWmsgFeedback;?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label">Confirm Password</label>
+                    <div class="col-lg-9">
+                      <input name="confirm_password" class="form-control <?php echo $CPWclasstype; ?>" type="password" value="">
+                      <div class="<?php echo $CPWclassFeedback; ?>">
+                        <?php echo $CPWmsgFeedback;?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                    <div class="col-lg-9">
+                      <input name="change-password" type="submit" class="btn btn-primary" value="Save-password">
+                    </div>
+                  </div>
+                </form>
+              </div>
+
             </div>
           </div>
           <div class="col-lg-3 order-lg-1 text-center py-5">
@@ -561,11 +619,16 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
 
       return result;
     }
-    if (queryParameters().error){
-      $("#settings-tab")[0].click();
-    }
-    if (queryParameters().success == "emailchanged"){
+    if (queryParameters().error == "invalidphone"){
+      $("#personal-info-tab")[0].click();
+    } else if (queryParameters().error == "invalidemail" || queryParameters().error == "emailexist"){
+      $("#email-tab")[0].click();
+    } else if (queryParameters().error == "nouserpasswordfound" || queryParameters().error == "passwordmustbelong" || queryParameters().error == "passwordnotmatch"){
+      $("#password-tab")[0].click();
+    } else if (queryParameters().success == "emailchanged"){
       $("#modalbtn")[0].click();
+    } else if (queryParameters().success == "passwordchanged"){
+      $("#logout")[0].click(); //logout the user if password changed
     }
 
     </script>

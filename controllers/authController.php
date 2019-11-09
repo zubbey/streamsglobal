@@ -93,15 +93,15 @@ if (isset($_POST['signup-btn'])) {
 
 	if ($user['referralid']){
 		$userdata = array(
-				'referraluserid' => $user['id'],
-        'referralfname' => $user['fname'],
-        'referrallname' => $user['lname'],
-        'referralemail' => $user['email'],
-        'referralcode' => $user['referralid'],
-        'userfname' => $firstname,
-        'userlname' => $lastname,
-        'datereferred' => date("Y-m-d")
-    );
+			'referraluserid' => $user['id'],
+			'referralfname' => $user['fname'],
+			'referrallname' => $user['lname'],
+			'referralemail' => $user['email'],
+			'referralcode' => $user['referralid'],
+			'userfname' => $firstname,
+			'userlname' => $lastname,
+			'datereferred' => date("Y-m-d")
+		);
 	}else if(empty($referralcode)){
 		$errors['noreferralcode'] === "";
 	} else {
@@ -217,7 +217,14 @@ function createreferralID(){
 	$id = $_SESSION['usersid'];
 
 	$sql = "UPDATE users SET referralid='$referralid' WHERE id='$id'";
-	$conn->query($sql);
+	if($conn->query($sql)){
+
+		$_SESSION['successverified'] = "Your Membership fee was successful and account verified.";
+		$_SESSION['success-message'] = "success";
+
+		header('location: start?success=paymentsuccessful');
+		exit();
+	}
 	$conn->close();
 
 }
@@ -280,6 +287,31 @@ if (isset($_POST['login-btn'])) {
 		}
 	}
 
+}
+
+// CODE TO SEND RESET LINK
+if (isset($_POST['reset-btn'])) {
+
+	$email = mysqli_real_escape_string($conn,$_POST['email']);
+
+	if (empty($email)) {
+		$errors['emailempty'] = "Ops! Email address is required.";
+	}
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		$errors['notemail'] = "Ops! Your Email address is invailed.";
+	}
+
+	$emailresult = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
+	if (mysqli_num_rows($emailresult) > 0){
+		$user = mysqli_fetch_array($emailresult);
+		$token = $user['token'];
+		if(sendresetpasswordLink($email, $token)){
+			header('location: ?success=sent&email='.$email);
+			exit();
+		}
+	} else {
+		$errors['emailnotexist'] = "Their's no user with this email address.";
+	}
 }
 
 // CODE TO LOGOUT A USER
@@ -349,7 +381,6 @@ function verifyUser($token)
 	} else{
 		$errors['onuser'] = "Ops! no user found.";
 	}
-
 }
 
 // verify your new user email address ####################################################
@@ -385,21 +416,63 @@ function verifyusernewEmail($token)
 			$_SESSION['referralcode'] = $user['referralid'];
 
 			// flash messages
-			$_SESSION['successverified'] = "Your new email address has been verified successfully.";
+			$_SESSION['emailverified'] = "Your new email address has been verified successfully.";
 			$_SESSION['success-message'] = "success";
 
-			header('location: user/settings?success=infoupdated');
+			header('location: ./user/settings?success=infoupdated');
 			exit();
 		}
 	} else{
 		$errors['onuser'] = "Ops! no user found.";
 	}
+}
 
+// VERIFY USER TOKEN FOR PASSWORD RESET
+function createnewPassword($token){
+	global $conn;
+
+	$sql = "SELECT `*` FROM `users` WHERE `token` = '$token' LIMIT 1";
+	$result = mysqli_query($conn, $sql);
+	$user = mysqli_fetch_assoc($result);
+	$_SESSION['usersemail'] = $user['email'];
+
+	header('location: ?resetpassword=ready');
 }
 
 
-//if click on upload images in profile settings
+// CREATE NEW PASSWORD FROM RESET PASSWORD LINK
+if(isset($_POST['create-new_password-btn'])){
 
+	$new_password = mysqli_real_escape_string($conn,$_POST['new_password']);
+	$confirm_password = mysqli_real_escape_string($conn,$_POST['confirm_password']);
+
+	if (empty($new_password )) {
+		$errors['emptypassword'] = "Please enter a new password.";
+	}
+	if (strlen($new_password ) < 6) {
+		$errors['passwordtooshort'] = "Ops! Passwords must be at least 6 characters long.";
+	}
+	if ($new_password !== $confirm_password) {
+		$errors['passwordnotmatch'] = "Ops! Your password did not match.";
+	}
+
+	if (count($errors) == 0){
+
+		$new_password = password_hash($new_password, PASSWORD_DEFAULT);
+		$email = $_SESSION['usersemail'];
+
+		$sql = "UPDATE users set password='$new_password' WHERE email='$email'";
+		$result = mysqli_query($conn, $sql);
+		if($result){
+			header('location: login');
+			exit();
+		}
+	}
+}
+
+
+
+//if click on upload images in profile settings
 if (isset($_POST['upload-img-submit'])) {
 	$id = $_SESSION['usersid'];
 	$file = $_FILES['file'];

@@ -46,13 +46,6 @@ if (isset($_SESSION['usersid'])) {
           }
           ?>
 
-          <div class="success-message w-form-done">
-            <div>Thank you! Your submission has been received!</div>
-          </div>
-          <div class="w-form-fail">
-            <div>Oops! Something went wrong while submitting the form.</div>
-          </div>
-
           <label for="email">Email or Phone Number</label>
           <input type="text" name="emailPhone" value="<?php echo $emailPhone;?>" class="text-field w-input" autocomplete="on">
           <label for="password">Password</label>

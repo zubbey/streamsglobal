@@ -96,9 +96,66 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">Simple Sidebar</h1>
-        <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
+        <h3 class="mt-4">Savings Plans</h3>
+        <div class="row">
+          <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
+            <a href="/themes/" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">
+              <div class="card-body d-flex align-items-end flex-column text-right">
+                <h4>Piggy Wallet</h4>
+                <p class="w-75">Automatically save an amount at regular ...</p>
+                <i class="fas fa-piggy-bank"></i>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
+            <a href="/themes/" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">
+              <div class="card-body d-flex align-items-end flex-column text-right">
+                <h4>SAAP</h4>
+                <p class="w-75">Automatically save an amount at regular ...</p>
+                <i class="fas fa-cart-arrow-down"></i>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-md-8 mx-auto">
+            <a href="/guides/" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">
+              <div class="card-body d-flex align-items-end flex-column text-right">
+                <h4>Fixed Savings</h4>
+                <p class="w-75">Automatically save an amount at regular ...</p>
+                <i class="fas fa-unlock-alt"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- SECOND ROW     -->
+        <div class="row my-4">
+          <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
+            <a href="/themes/" class="after-loop-item card border-0 rounded-lg land-themes shadow-lg">
+              <div class="card-body d-flex align-items-end flex-column text-right">
+                <h4>Land & Building Savings</h4>
+                <p class="w-75">Automatically save an amount at regular ...</p>
+                <i class="fas fa-home"></i>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
+            <a href="/themes/" class="after-loop-item card border-0 rounded-lg cooperators-themes shadow-lg">
+              <div class="card-body d-flex align-items-end flex-column text-right">
+                <h4>Cooperators Bank</h4>
+                <p class="w-75">Automatically save an amount at regular ...</p>
+                <i class="fas fa-handshake"></i>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-md-8 mx-auto">
+            <a href="/guides/" class="after-loop-item card border-0 rounded-lg diaspora-themes shadow-lg">
+              <div class="card-body d-flex align-items-end flex-column text-right">
+                <h4>Diaspora Safe</h4>
+                <p class="w-75">Automatically save an amount at regular ...</p>
+                <i class="fab fa-diaspora"></i>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <!-- /#page-content-wrapper -->
@@ -134,13 +191,13 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
     });
 
     $("#menu-toggle").click(function() {
-     $("#logo").toggle("slow", function(){
-       if($(this).is(':visible'))
-           $("#logo").html("<img src='../images/H-Logo_Color.png' width='100%' class='sidebar-heading img-responsive' alt='Streamsglobal'>")
-       else
-           $("#logo").html("<img src='../images/ms-icon-256x256.png' width='100px' class='sidebar-heading img-responsive' alt='Streamsglobal'>")
-     });
-   });
+      $("#logo").toggle("slow", function(){
+        if($(this).is(':visible'))
+        $("#logo").html("<img src='../images/H-Logo_Color.png' width='100%' class='sidebar-heading img-responsive' alt='Streamsglobal'>")
+        else
+        $("#logo").html("<img src='../images/ms-icon-256x256.png' width='100px' class='sidebar-heading img-responsive' alt='Streamsglobal'>")
+      });
+    });
 
   });
   var dropdown = $(".dropdown-toggle");

@@ -35,6 +35,7 @@ body {
     background-color: #eee;
     border-color: #343940;
 }
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
