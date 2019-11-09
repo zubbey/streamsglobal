@@ -8,69 +8,51 @@
   </div>
 
   <div class="container">
-    <div class="row py-5">
-      <div class="col text-center">
-        <div class="card">
-          <div class="card-body p-0">
-            <img src="images/piggy.jpg" alt="Piggy Wallet image" class="image span">
-            <h1 class="h4 p-2">Piggy Wallet</h1>
-            <p class="px-3 mb-0">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-            <hr class='my-2'>
-            <div class="py-2">
-            <?php
-            if (isset($_SESSION['usersid'])) {
-              echo "<a href='plans/piggy' class='card-link'>Get Started</a>";
-            }
-            else {
-              echo "<a href='login' class='card-link'>Get Started</a>";
-            }
-            ?>
-          </div>
-          </div>
+      <div class="row my-5">
+        <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
+          <?php
+          if (isset($_SESSION['usersid'])) {
+            echo '<a href="user/dashboard" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">';
+          } else {
+            echo '<a href="login" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">';
+          }?>
+            <div class="card-body d-flex align-items-end flex-column text-right">
+              <h4>Piggy Wallet</h4>
+              <p class="w-75">Automatically save an amount at regular ...</p>
+              <i class="fas fa-piggy-bank"></i>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
+          <?php
+          if (isset($_SESSION['usersid'])) {
+            echo '<a href="user/dashboard" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">';
+          } else {
+            echo '<a href="login" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">';
+          }?>
+            <div class="card-body d-flex align-items-end flex-column text-right">
+              <h4>SAAP</h4>
+              <p class="w-75">Automatically save an amount at regular ...</p>
+              <i class="fas fa-cart-arrow-down"></i>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-8 mx-auto">
+          <?php
+          if (isset($_SESSION['usersid'])) {
+            echo '<a href="user/dashboard" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">';
+          } else {
+            echo '<a href="login" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">';
+          }?>
+            <div class="card-body d-flex align-items-end flex-column text-right">
+              <h4>Fixed Savings</h4>
+              <p class="w-75">Automatically save an amount at regular ...</p>
+              <i class="fas fa-unlock-alt"></i>
+            </div>
+          </a>
         </div>
       </div>
 
-      <div class="col text-center">
-        <div class="card">
-          <div class="card-body p-0">
-            <img src="images/saap.jpg" alt="" class="image span">
-            <h1 class="h4 p-2">SAAP</h1>
-            <p class="px-3 mb-0">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-            <hr class='my-2'>
-            <div class="py-2">
-            <?php
-            if (isset($_SESSION['usersid'])) {
-              echo "<a href='plans/saap' class='card-link'>Get Started</a>";
-            }
-            else {
-              echo "<a href='login' class='card-link'>Get Started</a>";
-            }
-            ?>
-          </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col text-center">
-        <div class="card">
-          <div class="card-body p-0">
-            <img src="images/fixed.jpg" alt="" class="image span">
-            <h1 class="h4 p-2">Fixed Savings</h1>
-            <p class="px-3 mb-0">Automatically save an amount at regular intervals and earn 10% interest rate per annum</p>
-            <hr class='my-2'>
-            <div class="py-2">
-            <?php
-            if (isset($_SESSION['usersid'])) {
-              echo "<a href='plans/fixed' class='card-link'>Get Started</a>";
-            }
-            else {
-              echo "<a href='login' class='card-link'>Get Started</a>";
-            }
-            ?>
-          </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
