@@ -1,9 +1,7 @@
 <?php
 require_once ('./controllers/authController.php');
 
-if (isset($_SESSION['usersid']) && strlen($_SESSION['verified'] > 0) && is_null($_SESSION['referralcode'])) {
-  header('location: sign-up?success=step3');
-} else if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
+if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
   header('location: start');
 }
 ?>
