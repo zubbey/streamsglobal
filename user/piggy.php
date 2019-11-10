@@ -262,11 +262,11 @@ var responseDiv2 = document.getElementById('responseDiv2');
         ref: '<?php echo $_SESSION["usersfname"].'_'; ?>'+Math.floor((Math.random() * 1000000000) + 1),
         metadata: {
            custom_fields: [
-              {
-                  display_name: "Mobile Number",
-                  variable_name: "mobile_number",
-                  value: "+2348012345678"
-              }
+             {
+               display_name: "Customer ReferralCode",
+               variable_name: "referral_code",
+               value: "<?php echo $_SESSION['referralcode']; ?>"
+             }
            ]
         },
         callback: function(response){

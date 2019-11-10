@@ -146,6 +146,13 @@ if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
   //     $(this).remove();
   //   });
   // }, 8000);
+function formatDate(date) {
+    var year = date.getFullYear().toString();
+    var month = (date.getMonth() + 101).toString().substring(1);
+    var day = (date.getDate() + 100).toString().substring(1);
+    return year + "-" + month + "-" + day;
+}
+var currentDate = formatDate(new Date());
 
 
   if (window.location.search.indexOf('step2') > -1) {
@@ -175,16 +182,16 @@ if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
       metadata: {
         custom_fields: [
           {
-            display_name: "Customer ReferralCode",
-            variable_name: "referral_code",
-            value: "<?php echo $_SESSION['referralcode']; ?>"
+            display_name: "Joined Streamsglobal",
+            variable_name: "joined_date",
+            value: currentDate
           }
         ]
       },
       callback: function(response){
         //alert('success. transaction ref is ' + response.reference);
-        window.location.assign("http://streamsglobal.com/start?success=entryverified&reference="+response.reference);
         console.log(response);
+        window.location.assign("http://streamsglobal.com/start?success=entryverified&reference="+response.reference+"&customer_code="+response.customer_code);
       },
       onClose: function(){
         window.location.assign("http://streamsglobal.com/sign-up?success=step3&error=closepayment");
