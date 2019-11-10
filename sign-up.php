@@ -173,8 +173,8 @@ var currentDate = formatDate(new Date());
     var handler = PaystackPop.setup({
       key: 'pk_test_02a7ea9bf16da92e8bfd82243e847b36c28a919a',
       email: '<?php echo $_SESSION["usersemail"]; ?>',
-      first_name: '<?php echo $_SESSION["usersfname"]; ?>',
-      last_name: '<?php echo $_SESSION["userslname"]; ?>',
+      firstname: '<?php echo $_SESSION["usersfname"]; ?>',
+      lastname: '<?php echo $_SESSION["userslname"]; ?>',
       phone: '<?php echo $_SESSION["usersphone"]; ?>',
       amount: 100000,
       currency: "NGN",
