@@ -36,6 +36,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
     //createSub($planCode);
     echo "<button id='subBtn' class='d-none' type='button' onclick='payWithPaystack()'> Pay </button> ";
   }
+  echo $_SESSION['customer_code'];
   ?>
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
