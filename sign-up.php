@@ -191,7 +191,7 @@ var currentDate = formatDate(new Date());
       callback: function(response){
         //alert('success. transaction ref is ' + response.reference);
         console.log(response);
-        window.location.assign("http://streamsglobal.com/start?success=entryverified&reference="+response.reference+"&customer_code="+response.customer_code);
+        window.location.assign("http://streamsglobal.com/start?success=entryverified&reference="+response.reference);
       },
       onClose: function(){
         window.location.assign("http://streamsglobal.com/sign-up?success=step3&error=closepayment");

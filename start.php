@@ -5,10 +5,6 @@ if (!isset($_SESSION['usersid'])) {
   header('location: login');
 }
 
-if (isset($_GET['customer_code'])){
-  $_SESSION['customer_code'] = $_GET['customer_code'];
-}
-
 if (isset($_GET['reference'])) {
   $reference = $_GET['reference'];
 

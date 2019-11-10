@@ -36,7 +36,6 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
     //createSub($planCode);
     echo "<button id='subBtn' class='d-none' type='button' onclick='payWithPaystack()'> Pay </button> ";
   }
-  echo $_SESSION['customer_code'];
   ?>
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
@@ -259,7 +258,7 @@ var responseDiv2 = document.getElementById('responseDiv2');
         key: 'pk_test_02a7ea9bf16da92e8bfd82243e847b36c28a919a',
         email: '<?php echo $_SESSION['usersemail'];?>',
         plan: "<?php echo $planCode;?>",
-        customer: "CUS_5kgw5gs7z00ebck",
+        customer: "CUS_7way5h2ccn695vd",
         ref: '<?php echo $_SESSION["usersfname"].'_'; ?>'+Math.floor((Math.random() * 1000000000) + 1),
         metadata: {
            custom_fields: [
