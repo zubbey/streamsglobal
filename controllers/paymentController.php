@@ -5,7 +5,6 @@ require_once ('../controllers/emailControl.php');
 function sessionData(){
   global $conn;
 
-  $email = $_SESSION['usersemail'];
   $id = $_SESSION['usersid'];
   $sql = "SELECT `*` FROM `users` WHERE `id` = '$id' LIMIT 1";
   $result = mysqli_query($conn, $sql);
@@ -44,13 +43,13 @@ if(isset($_POST['piggy1btn'])){
 
     $plandata = json_decode($result);
     $plan_code = $plandata->data->plan_code;
+    $email = $_SESSION['usersemail'];
+    //$url ='https://api.paystack.co/customer/'.$email;
 
     // GET THE CUSTOMER CODE FROM REFERENCE DATA
     $ch = curl_init();
 
-    $url ='https://api.paystack.co/customer/' . $email;
-
-    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/customer/'.$email);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
