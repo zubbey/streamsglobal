@@ -102,14 +102,10 @@ if (isset($_POST['signup-btn'])) {
 			'userlname' => $lastname,
 			'datereferred' => date("Y-m-d")
 		);
-	}else if(empty($referralcode)){
+	} else if(empty($referralcode)){
 		$errors['noreferralcode'] === "";
 	} else {
 		$errors['noreferralcode'] = "Ops! No user with this (".$referralcode.") Referral Code, Referral Code must be 6 characters.";
-	}
-
-	if(empty($referralcode)){
-		$errors['noreferralcode'] === "";
 	}
 
 	if (count($errors) === 0) {
@@ -126,7 +122,9 @@ if (isset($_POST['signup-btn'])) {
 		if($result){
 
 			sendVerificationEmail($email, $token);
-			sendreferralEmail($userdata);
+			if($user['referralid'] == $referralcode){
+				sendreferralEmail($userdata);
+			}
 
 			//INSERT INTO PROFILE IMAGE
 			$sql = "SELECT `*` FROM `users` WHERE `email` = '$email' LIMIT 1";
