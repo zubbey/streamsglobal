@@ -122,7 +122,7 @@ if (isset($_POST['signup-btn'])) {
 		if($result){
 
 			sendVerificationEmail($email, $token);
-			if($user['referralid'] == $referralcode){
+			if(!empty($referralcode)){
 				sendreferralEmail($userdata);
 			}
 

@@ -31,11 +31,13 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
   <!-- <button type="button" onclick="payWithPaystack()"> Pay </button>  -->
 <body class="bg-light">
   <?php
-  if (isset($_GET['planCode'])) {
+  if (isset($_GET['planCode']) && isset($_GET['cusCode'])) {
     $planCode = $_GET['planCode'];
+    $cusCode = $_GET['cusCode'];
     //createSub($planCode);
     echo "<button id='subBtn' class='d-none' type='button' onclick='payWithPaystack()'> Pay </button> ";
   }
+
   ?>
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
@@ -251,14 +253,13 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
       dropdown.blur();
     }, 0);
   });
-var responseDiv = document.getElementById('responseDiv');
-var responseDiv2 = document.getElementById('responseDiv2');
+
     function payWithPaystack(){
       var handler = PaystackPop.setup({
         key: 'pk_test_02a7ea9bf16da92e8bfd82243e847b36c28a919a',
         email: '<?php echo $_SESSION['usersemail'];?>',
         plan: "<?php echo $planCode;?>",
-        customer: "CUS_7way5h2ccn695vd",
+        customer: "<?php echo $cusCode;?>",
         ref: '<?php echo $_SESSION["usersfname"].'_'; ?>'+Math.floor((Math.random() * 1000000000) + 1),
         metadata: {
            custom_fields: [
