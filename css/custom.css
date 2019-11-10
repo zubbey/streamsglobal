@@ -2,6 +2,9 @@
 body{
   counter-reset: section;
 }
+.verifyMsg{
+  display: none;
+}
 select.form-control[size] {
   height: 40px;
 }
@@ -448,6 +451,22 @@ a.after-loop-item:hover {
 }
 a.after-loop-item:hover {
   text-decoration: none;
+}
+
+/* plan dashboard style */
+.piggy-themes.plan-color{
+  width: 100%;
+  height: 80px;
+  border-radius: .2rem;
+}
+ .card .plan-color i{
+  position: absolute;
+  top: 10%;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  right: 1rem;
+  color: rgba(255,255,255,.2);
+  transition: .15s all ease;
 }
 @media (max-width: 991px){
   .nav-menu {

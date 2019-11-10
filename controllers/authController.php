@@ -279,9 +279,13 @@ if (isset($_POST['login-btn'])) {
 			$_SESSION['successlogin']= "you're logged in.";
 			$_SESSION['success-message'] = "success";
 
-			header('location: start');
-			exit();
-
+			if($user['verified'] > 0 || $user['referralid'] > 0){
+				header('location: user/dashboard');
+				exit();
+			} else {
+				header('location: start');
+				exit();
+			}
 		} else {
 			$errors['email'] = "Ops! no registered user found with this credentials.";
 		}

@@ -85,6 +85,9 @@ dropdown.on("click", function() {
   }, 0);
 });
 
+function verifyaccountMsg(){
+  $(".verifyMsg").animate({top: '180px'}).css('display','block');
+}
 </script>
 </body>
 </html>

@@ -8,11 +8,25 @@
   </div>
 
   <div class="container">
+
+    <div id="alert" class="alert alert-warning alert-dismissable flyover flyover-centered verifyMsg" role="alert">
+      <div class="justify-content-between d-flex">
+      <h3>Complete your signup</h3>
+      <span><i class="fas fa-exclamation-triangle"></i></span>
+    </div>
+      <p class="mb-0">You are not a member yet, Please verify your account<br> and pay a membership fee to complete your <br> registration and start saving.</p>
+    </div>
+
+
       <div class="row my-5">
         <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
           <?php
           if (isset($_SESSION['usersid'])) {
-            echo '<a href="user/dashboard" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">';
+            if ($_SESSION['verified'] == 0 || strlen($_SESSION['referralcode']) > 0){
+              echo '<a href="#" onclick="verifyaccountMsg()" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">';
+            } else{
+              echo '<a href="user/piggy" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">';
+            }
           } else {
             echo '<a href="login" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">';
           }?>
@@ -26,7 +40,11 @@
         <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
           <?php
           if (isset($_SESSION['usersid'])) {
-            echo '<a href="user/dashboard" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">';
+            if ($_SESSION['verified'] == 0 || strlen($_SESSION['referralcode']) > 0){
+              echo '<a href="#" onclick="verifyaccountMsg()" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">';
+            } else{
+              echo '<a href="user/saap" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">';
+            }
           } else {
             echo '<a href="login" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">';
           }?>
@@ -40,7 +58,11 @@
         <div class="col-lg-4 col-md-8 mx-auto">
           <?php
           if (isset($_SESSION['usersid'])) {
-            echo '<a href="user/dashboard" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">';
+            if ($_SESSION['verified'] == 0 || strlen($_SESSION['referralcode']) > 0){
+              echo '<a href="#" onclick="verifyaccountMsg()" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">';
+            } else{
+              echo '<a href="user/fixed" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">';
+            }
           } else {
             echo '<a href="login" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">';
           }?>

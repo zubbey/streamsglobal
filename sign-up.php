@@ -168,21 +168,25 @@ if (isset($_SESSION['usersid']) && strlen($_SESSION['verified'] > 0) && is_null(
     var handler = PaystackPop.setup({
       key: 'pk_test_02a7ea9bf16da92e8bfd82243e847b36c28a919a',
       email: '<?php echo $_SESSION["usersemail"]; ?>',
+      first_name: '<?php echo $_SESSION["usersfname"]; ?>',
+      last_name: '<?php echo $_SESSION["userslname"]; ?>',
+      phone: '<?php echo $_SESSION["usersphone"]; ?>',
       amount: 100000,
       currency: "NGN",
-      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      ref: '<?php echo $_SESSION["usersfname"].'_'; ?>'+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
       metadata: {
         custom_fields: [
           {
-            display_name: "<?php echo $_SESSION['usersfname'].' '.$_SESSION['userslname']; ?>",
-            variable_name: "<?php echo $_SESSION['usersfname']; ?>",
-            value: "<?php echo $_SESSION['usersphone']; ?>"
+            display_name: "Customer ReferralCode",
+            variable_name: "referral_code",
+            value: "<?php echo $_SESSION['referralcode']; ?>"
           }
         ]
       },
       callback: function(response){
         //alert('success. transaction ref is ' + response.reference);
         window.location.assign("http://streamsglobal.com/start?success=entryverified&reference="+response.reference);
+        console.log(response);
       },
       onClose: function(){
         window.location.assign("http://streamsglobal.com/sign-up?success=step3&error=closepayment");

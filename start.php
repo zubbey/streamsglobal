@@ -49,6 +49,15 @@ if (isset($_GET['token'])) {
   }
   ?>
   <div class="container">
+
+    <div id="alert" class="alert alert-warning alert-dismissable flyover flyover-centered verifyMsg" role="alert">
+      <div class="justify-content-between d-flex">
+      <h3>Complete your signup</h3>
+      <span><i class="fas fa-exclamation-triangle"></i></span>
+    </div>
+      <p class="mb-0">You are not a member yet, Please verify your account<br> and pay a membership fee to complete your <br> registration and start saving.</p>
+    </div>
+
     <div class="row">
       <div class="col">
         <?php
@@ -112,7 +121,13 @@ if (isset($_GET['token'])) {
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
-          <a href="/themes/" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">
+          <?php
+          if ($_SESSION['verified'] == 0 || strlen($_SESSION['referralcode']) > 0) {
+            echo '<a onclick="verifyaccountMsg()" href="#" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">';
+          } else {
+            echo '<a href="user/piggy" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">';
+          }
+          ?>
             <div class="card-body d-flex align-items-end flex-column text-right">
               <h4>Piggy Wallet</h4>
               <p class="w-75">Automatically save an amount at regular ...</p>
@@ -121,7 +136,13 @@ if (isset($_GET['token'])) {
           </a>
         </div>
         <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
-          <a href="/themes/" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">
+          <?php
+          if ($_SESSION['verified'] == 0 || strlen($_SESSION['referralcode']) > 0) {
+            echo '<a onclick="verifyaccountMsg()" href="#" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">';
+          } else {
+            echo '<a href="user/saap" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">';
+          }
+          ?>
             <div class="card-body d-flex align-items-end flex-column text-right">
               <h4>SAAP</h4>
               <p class="w-75">Automatically save an amount at regular ...</p>
@@ -130,7 +151,13 @@ if (isset($_GET['token'])) {
           </a>
         </div>
         <div class="col-lg-4 col-md-8 mx-auto">
-          <a href="/guides/" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">
+          <?php
+          if ($_SESSION['verified'] == 0 || strlen($_SESSION['referralcode']) > 0) {
+            echo '<a onclick="verifyaccountMsg()" href="#" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">';
+          } else {
+            echo '<a href="user/fixed" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">';
+          }
+          ?>
             <div class="card-body d-flex align-items-end flex-column text-right">
               <h4>Fixed Savings</h4>
               <p class="w-75">Automatically save an amount at regular ...</p>
@@ -142,7 +169,13 @@ if (isset($_GET['token'])) {
       <!-- SECOND ROW     -->
       <div class="row my-4">
         <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
-          <a href="/themes/" class="after-loop-item card border-0 rounded-lg land-themes shadow-lg">
+          <?php
+          if ($_SESSION['verified'] == 0 || strlen($_SESSION['referralcode']) > 0) {
+            echo '<a onclick="verifyaccountMsg()" href="#" class="after-loop-item card border-0 rounded-lg land-themes shadow-lg">';
+          } else {
+            echo '<a href="user/land" class="after-loop-item card border-0 rounded-lg land-themes shadow-lg">';
+          }
+          ?>
             <div class="card-body d-flex align-items-end flex-column text-right">
               <h4>Land & Building Savings</h4>
               <p class="w-75">Automatically save an amount at regular ...</p>
@@ -151,7 +184,13 @@ if (isset($_GET['token'])) {
           </a>
         </div>
         <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
-          <a href="/themes/" class="after-loop-item card border-0 rounded-lg cooperators-themes shadow-lg">
+          <?php
+          if ($_SESSION['verified'] == 0 || strlen($_SESSION['referralcode']) > 0) {
+            echo '<a onclick="verifyaccountMsg()" href="#" class="after-loop-item card border-0 rounded-lg cooperators-themes shadow-lg">';
+          } else {
+            echo '<a href="user/cooperators" class="after-loop-item card border-0 rounded-lg cooperators-themes shadow-lg">';
+          }
+          ?>
             <div class="card-body d-flex align-items-end flex-column text-right">
               <h4>Cooperators Bank</h4>
               <p class="w-75">Automatically save an amount at regular ...</p>
@@ -160,7 +199,13 @@ if (isset($_GET['token'])) {
           </a>
         </div>
         <div class="col-lg-4 col-md-8 mx-auto">
-          <a href="/guides/" class="after-loop-item card border-0 rounded-lg diaspora-themes shadow-lg">
+          <?php
+          if ($_SESSION['verified'] == 0 || strlen($_SESSION['referralcode']) > 0) {
+            echo '<a onclick="verifyaccountMsg()" href="#" class="after-loop-item card border-0 rounded-lg diaspora-themes shadow-lg">';
+          } else {
+            echo '<a href="user/diaspora" class="after-loop-item card border-0 rounded-lg diaspora-themes shadow-lg">';
+          }
+          ?>
             <div class="card-body d-flex align-items-end flex-column text-right">
               <h4>Diaspora Safe</h4>
               <p class="w-75">Automatically save an amount at regular ...</p>

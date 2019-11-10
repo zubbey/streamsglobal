@@ -99,7 +99,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
         <h3 class="mt-4">Savings Plans</h3>
         <div class="row">
           <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
-            <a href="/themes/" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">
+            <a href="piggy" class="after-loop-item card border-0 rounded-lg piggy-themes shadow-lg">
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Piggy Wallet</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
@@ -108,7 +108,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
             </a>
           </div>
           <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
-            <a href="/themes/" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">
+            <a href="saap" class="after-loop-item card border-0 rounded-lg saap-themes shadow-lg">
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>SAAP</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
@@ -117,7 +117,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
             </a>
           </div>
           <div class="col-lg-4 col-md-8 mx-auto">
-            <a href="/guides/" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">
+            <a href="fixed" class="after-loop-item card border-0 rounded-lg fixed-themes shadow-lg">
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Fixed Savings</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
@@ -129,7 +129,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
         <!-- SECOND ROW     -->
         <div class="row my-4">
           <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
-            <a href="/themes/" class="after-loop-item card border-0 rounded-lg land-themes shadow-lg">
+            <a href="land" class="after-loop-item card border-0 rounded-lg land-themes shadow-lg">
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Land & Building Savings</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
@@ -138,7 +138,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
             </a>
           </div>
           <div class="col-lg-4 col-md-8 mb-5 mb-lg-0 mx-auto">
-            <a href="/themes/" class="after-loop-item card border-0 rounded-lg cooperators-themes shadow-lg">
+            <a href="cooperators" class="after-loop-item card border-0 rounded-lg cooperators-themes shadow-lg">
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Cooperators Bank</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
@@ -147,7 +147,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
             </a>
           </div>
           <div class="col-lg-4 col-md-8 mx-auto">
-            <a href="/guides/" class="after-loop-item card border-0 rounded-lg diaspora-themes shadow-lg">
+            <a href="diaspora" class="after-loop-item card border-0 rounded-lg diaspora-themes shadow-lg">
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Diaspora Safe</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
