@@ -3,6 +3,10 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
   header("Location: ../login");
   exit();
 }
+if (isset($_SESSION['planCode'])) {
+  $planCode = $_SESSION['planCode'];
+  getcustomerplanData2($planCode);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

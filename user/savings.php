@@ -7,10 +7,6 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
   exit();
 }
 //EVERY TIME USER LOGIN USE PLAN SESSION
-if (isset($_SESSION['planCode'])) {
-  $planCode = $_SESSION['planCode'];
-  getcustomerplanData2($planCode);
-}
 
 // CALL THE FETCH CUSTOMER DATA FROM API
 if (isset($_GET['planCode']) && isset($_GET['cusCode'])) {
@@ -123,13 +119,6 @@ if(isset($_GET['planname'])){
         <h3 class="mt-4">My Current Savings</h3>
         <div class="row">
           <?php
-
-          // print $_SESSION['plan']->data->status;
-          // $data = json_encode($_SESSION['plan'], true);
-          // echo "<br>";
-          // echo "<pre>";
-          // print_r($data['data'][2]);
-          // echo "<pre>";
 
           if (isset($_SESSION['plan'])){
 
