@@ -174,7 +174,7 @@ function getcustomerplanData($planCode, $cusCode){
     //INSERT INTO SAVINGSDATA
     $email = $_SESSION['usersemail'];
 
-    $sql = "SELECT `*` FROM `users` WHERE `email` = '$email'";
+    $sql = "SELECT `*` FROM `users` WHERE `email` = '$email' LIMIT 1";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {

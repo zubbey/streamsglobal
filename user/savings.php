@@ -124,6 +124,13 @@ if(isset($_GET['planname'])){
         <div class="row">
           <?php
 
+          // print $_SESSION['plan']->data->status;
+          // $data = json_encode($_SESSION['plan'], true);
+          // echo "<br>";
+          // echo "<pre>";
+          // print_r($data['data'][2]);
+          // echo "<pre>";
+
           if (isset($_SESSION['plan'])){
 
             echo "<div class='col-lg-4 col-md-4 col-sm-6 mb-4 h-100'>";
