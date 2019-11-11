@@ -35,7 +35,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
       <a id="logo" href="../index" ><img src="../images/H-Logo_Color.png" width="100%" class="sidebar-heading img-responsive" alt="Streamsglobal"></a>
       <div class="list-group list-group-flush">
         <a href="dashboard" class="list-group-item list-group-item-action shadow-sm active"><i class="fas fa-th-large mr-1"></i>Dashboard</a>
-        <a href="withdraw" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-wallet mr-1"></i>Withdraw</a>
+        <a href="savings" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-wallet mr-1"></i>Savings</a>
         <hr class="my-2">
         <a href="settings" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-user-cog mr-1"></i>Account Settings</a>
         <hr class="my-2">
@@ -103,6 +103,13 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Piggy Wallet</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
+                <?php
+                if ($_SESSION['plan_name'] === 'Piggy Wallat One (1)' || $_SESSION['plan_name'] === 'Piggy Wallat Two (2)' || $_SESSION['plan_name'] === 'Piggy Wallat Three (3)' || $_SESSION['plan_name'] === 'Piggy Wallat Four (4)') {
+                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
+                } else{
+                  echo "";
+                }
+                ?>
                 <i class="fas fa-piggy-bank"></i>
               </div>
             </a>
@@ -112,6 +119,13 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>SAAP</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
+                <?php
+                if ($_SESSION['plan_name'] === 'SAAP' || $_SESSION['plan_name'] === 'SAAP_Product') {
+                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
+                } else{
+                  echo "";
+                }
+                ?>
                 <i class="fas fa-cart-arrow-down"></i>
               </div>
             </a>
@@ -121,6 +135,13 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Fixed Savings</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
+                <?php
+                if ($_SESSION['plan_name'] === 'Fixed Savings' || $_SESSION['plan_name'] === 'Target Savings') {
+                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
+                } else{
+                  echo "";
+                }
+                ?>
                 <i class="fas fa-unlock-alt"></i>
               </div>
             </a>
@@ -133,6 +154,13 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Land & Building Savings</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
+                <?php
+                if ($_SESSION['plan_name'] === 'Land & Building Savings') {
+                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
+                } else{
+                  echo "";
+                }
+                ?>
                 <i class="fas fa-home"></i>
               </div>
             </a>
@@ -142,6 +170,13 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Cooperators Bank</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
+                <?php
+                if ($_SESSION['plan_name'] === 'Cooperators Bank') {
+                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
+                } else{
+                  echo "";
+                }
+                ?>
                 <i class="fas fa-handshake"></i>
               </div>
             </a>
@@ -151,6 +186,13 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Diaspora Safe</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
+                <?php
+                if ($_SESSION['plan_name'] === 'Diaspora Safe') {
+                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
+                } else{
+                  echo "";
+                }
+                ?>
                 <i class="fab fa-diaspora"></i>
               </div>
             </a>

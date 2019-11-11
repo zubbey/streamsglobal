@@ -80,7 +80,7 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
       <a id="logo" href="../index" ><img src="../images/H-Logo_Color.png" width="100%" class="sidebar-heading img-responsive" alt="Streamsglobal"></a>
       <div class="list-group list-group-flush">
         <a href="dashboard" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-th-large mr-1"></i>Dashboard</a>
-        <a href="withdraw" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-wallet mr-1"></i>Withdraw</a>
+        <a href="savings" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-wallet mr-1"></i>Savings</a>
         <hr class="my-2">
         <a href="settings" class="list-group-item list-group-item-action shadow-sm active"><i class="fas fa-user-cog mr-1"></i>Account Settings</a>
         <hr class="my-2">

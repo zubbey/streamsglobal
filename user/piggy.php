@@ -34,7 +34,6 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
   if (isset($_GET['planCode']) && isset($_GET['cusCode'])) {
     $planCode = $_GET['planCode'];
     $cusCode = $_GET['cusCode'];
-    //createSub($planCode);
     echo "<button id='subBtn' class='d-none' type='button' onclick='payWithPaystack()'> Pay </button> ";
   }
 
@@ -46,7 +45,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
       <a id="logo" href="../index" ><img src="../images/H-Logo_Color.png" width="100%" class="sidebar-heading img-responsive" alt="Streamsglobal"></a>
       <div class="list-group list-group-flush">
         <a href="dashboard" class="list-group-item list-group-item-action shadow-sm active"><i class="fas fa-th-large mr-1"></i>Dashboard</a>
-        <a href="withdraw" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-wallet mr-1"></i>Withdraw</a>
+        <a href="savings" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-wallet mr-1"></i>Savings</a>
         <hr class="my-2">
         <a href="settings" class="list-group-item list-group-item-action shadow-sm"><i class="fas fa-user-cog mr-1"></i>Account Settings</a>
         <hr class="my-2">
@@ -110,7 +109,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
         <h3 class="mt-4">Piggy Wallet Plan</h3>
         <div class="row">
           <div class="col col-md-8 mb-4">
-            <h5>This is a modernized online Esusu, Ajor, Akawor that can be collected in 30 days, 90 days, 185 and 365 days with interest.</h5>
+            <h6>This is a modernized online Esusu, Ajor, Akawor that can be collected in 30 days, 90 days, 185 and 365 days with interest.</h6>
           </div>
         </div>
         <div class="row">
@@ -272,10 +271,12 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
         },
         callback: function(response){
             //alert('successfully subscribed. transaction ref is ' + response.reference);
-            console.log(response);
+            var planCode = "<?php echo $planCode;?>";
+            var cusCode = "<?php echo $cusCode;?>";
+            window.location.assign("http://streamsglobal.com/user/savings?success=subCreated&reference="+response.reference+"&planCode="+planCode+"&cusCode="+cusCode);
         },
         onClose: function(){
-            alert('window closed');
+            location.reload(true);
         }
       });
       handler.openIframe();

@@ -253,6 +253,16 @@ if (isset($_POST['login-btn'])) {
 		if (password_verify($password, $user['password'])) {
 
 			// login successfully
+			// before login Check if user has a Subcription Plan
+			$userid = $user['id'];
+
+			$planresult = mysqli_query($conn, "SELECT `*` FROM `savingsData` WHERE `usersid`='$userid' LIMIT 1");
+			if (mysqli_num_rows($planresult) > 0){
+				$userplan = mysqli_fetch_array($planresult);
+				$_SESSION['planCode'] = $userplan['plan_code'];
+				$_SESSION['cusCode'] = $userplan['cus_code'];
+				$_SESSION['subCode'] = $userplan['sub_code'];
+			}
 
 			$_SESSION['usersid'] = $user['id'];
 			$_SESSION['usersfname'] = $user['fname'];
