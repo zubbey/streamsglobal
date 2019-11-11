@@ -180,15 +180,11 @@ function getcustomerplanData($planCode, $cusCode){
     if (mysqli_num_rows($result) > 0) {
       while ($user = mysqli_fetch_assoc($result)){
         $id = $user['id'];
-        echo $user['id'];
-        echo $email;
-        print $sub_code;
 
-        $sql = "INSERT INTO `savingsData` (usersid, cus_code, plan_code, sub_code) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('isss', $id, $cusCode, $plan_code, $sub_code);
-        $stmt->execute();
-        header('Location: ?planname='.$planname.'&amount='.$amount.'&interval='.$interval.'&createdAt='.$createdAt);
+        $planresult = mysqli_query($conn, "INSERT into `savingsData` (usersid, cus_code, plan_code, sub_code) VALUES ('$id', '$cusCode', '$plan_code', '$sub_code')");
+        if ($planresult){
+          header('Location: ?planname='.$planname.'&amount='.$amount.'&interval='.$interval.'&createdAt='.$createdAt);
+        }
       }
     } else {
       header('Location: ?error=nouserfound'.$email);
