@@ -231,11 +231,11 @@ function getcustomerplanData2($planCode){
     $interval = $plandata->data->interval;
     $createdAt = $plandata->data->createdAt;
 
-    //DATA TO INSERT INTO DATABASE
-    $plan_code = $plandata->data->plan_code;
-    $sub_code = $plandata->data->subscription_code;
-
-    header('Location: ?planname='.$planname.'&amount='.$amount.'&interval='.$interval.'&createdAt='.$createdAt);
+		  $_SESSION['plan_amount'] = $amount;
+		  $_SESSION['plan_name'] = $planname;
+		  $_SESSION['plan_interval'] = $interval;
+		  $_SESSION['plan_createdAt'] = $createdAt;
+    //header('Location: ?planname='.$planname.'&amount='.$amount.'&interval='.$interval.'&createdAt='.$createdAt);
   }
 
   if (curl_errno($ch)) {

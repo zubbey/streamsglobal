@@ -6,7 +6,6 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
   header("Location: ../login");
   exit();
 }
-//EVERY TIME USER LOGIN USE PLAN SESSION
 
 // CALL THE FETCH CUSTOMER DATA FROM API
 if (isset($_GET['planCode']) && isset($_GET['cusCode'])) {
