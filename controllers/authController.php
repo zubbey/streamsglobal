@@ -4,6 +4,7 @@ session_start();
 
 require ('./config/db.php');
 require_once ('./controllers/emailControl.php');
+date_default_timezone_set("Africa/Lagos");
 
 // initializing variables
 $errors =  array();
@@ -167,7 +168,8 @@ if (isset($_POST['signup-btn'])) {
 			//sendVerificationEmail($email, $token);
 
 			// flash messages
-			$_SESSION['successaccount']= "your account was created successfully and your entry payment was successfully.";
+			$_SESSION['newmember'] = "your created you account at ".date("M d, Y h:i a");
+			$_SESSION['sucessaccount']= "your account was created successfully and your entry payment was successfully.";
 			$_SESSION['success-message'] = "success";
 
 			header('location: sign-up?success=step2');
@@ -217,6 +219,7 @@ function createreferralID(){
 	$sql = "UPDATE users SET referralid='$referralid' WHERE id='$id'";
 	if($conn->query($sql)){
 
+		$_SESSION['verifiedlog'] = "you verifed your account, your referralID is: ".$referralid;
 		$_SESSION['successverified'] = "Your Membership fee was successful and account verified.";
 		$_SESSION['success-message'] = "success";
 
@@ -226,6 +229,8 @@ function createreferralID(){
 	$conn->close();
 
 }
+
+########### FOR EVERYTIME A USER LOGIN ##################
 
 // CODE IF CLICKED ON LOGIN
 
@@ -255,14 +260,64 @@ if (isset($_POST['login-btn'])) {
 			// login successfully
 			// before login Check if user has a Subcription Plan
 			$userid = $user['id'];
+			$useremail = $user['email'];
 
-			$planresult = mysqli_query($conn, "SELECT `*` FROM `savingsData` WHERE `usersid`='$userid' LIMIT 1");
-			if (mysqli_num_rows($planresult) > 0){
-				$userplan = mysqli_fetch_array($planresult);
-				$_SESSION['planCode'] = $userplan['plan_code'];
-				$_SESSION['cusCode'] = $userplan['cus_code'];
-				$_SESSION['subCode'] = $userplan['sub_code'];
+			$ch = curl_init();
+
+			curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/customer/'.$useremail);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+
+
+			$headers = array();
+			$headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+			$result = curl_exec($ch);
+			if($result){
+
+				$cusdata = json_decode($result, true);
+				$sub_code = $cusdata['data']['subscriptions'][0]['subscription_code'];
+				//print $sub_code."<br>";
+
+				#################### FETCH SUBSCRIPTION ################
+
+				$ch = curl_init();
+
+				curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/subscription/'.$sub_code);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+
+
+				$headers = array();
+				$headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
+				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+				$result = curl_exec($ch);
+				if($result){
+					$subdata = json_decode($result, true);
+
+					if(!empty($subdata)){
+						//$plan_code = $subdata['data']['customer']['first_name'];
+						$userplan = $subdata;
+						$amount = $subdata['data']['plan']['amount'];
+						$planname = $subdata['data']['plan']['name'];
+						$interval = $subdata['data']['plan']['interval'];
+						$createdAt = $subdata['data']['plan']['createdAt'];
+						//print $plan_code;
+						$_SESSION['plandata'] = $userplan;
+						// $_SESSION['plan_amount'] = $amount;
+						// $_SESSION['plan_name'] = $planname;
+						// $_SESSION['plan_interval'] = $interval;
+						// $_SESSION['plan_createdAt'] = $createdAt;
+					}
+					//var_dump($plan_code);
+				}
 			}
+			if (curl_errno($ch)) {
+				echo 'Error:' . curl_error($ch);
+			}
+			//curl_close($ch);
 
 			$_SESSION['usersid'] = $user['id'];
 			$_SESSION['usersfname'] = $user['fname'];
@@ -285,10 +340,11 @@ if (isset($_POST['login-btn'])) {
 
 			// flash messages
 			$_SESSION['successlogin']= "you're logged in.";
+			$_SESSION['loginlog']= "you logged in at ". date("h:i a");
 			$_SESSION['success-message'] = "success";
 
 			if($user['verified'] > 0 || $user['referralid'] > 0){
-				header('location: user/dashboard');
+				header('location: user/dashboard?amount='.$amount.'&planname='.$planname.'&interval='.$interval.'&createdAt='.$createdAt);
 				exit();
 			} else {
 				header('location: start');
@@ -318,6 +374,7 @@ if (isset($_POST['reset-btn'])) {
 		$user = mysqli_fetch_array($emailresult);
 		$token = $user['token'];
 		if(sendresetpasswordLink($email, $token)){
+			$_SESSION['resetpasswordlog'] = "you have resetted your password";
 			header('location: ?success=sent&email='.$email);
 			exit();
 		}
@@ -481,51 +538,6 @@ if(isset($_POST['create-new_password-btn'])){
 		}
 	}
 }
-
-
-
-//if click on upload images in profile settings
-if (isset($_POST['upload-img-submit'])) {
-	$id = $_SESSION['usersid'];
-	$file = $_FILES['file'];
-
-	$fileName = $_FILES['file']['name'];
-	$fileTmpName = $_FILES['file']['tmp_name'];
-	$fileSize = $_FILES['file']['size'];
-	$fileError = $_FILES['file']['error'];
-	$fileType = $_FILES['file']['type'];
-
-	$fileExt = explode('.', $fileName);
-	$fileActualExt = strtolower(end($fileExt));
-
-	$allowed = array('jpg');
-
-	if (in_array($fileActualExt, $allowed)) {
-		if ($fileError === 0) {
-			if ($fileSize > 5000) {
-				$fileNameNew = "profile".$id.".".$fileActualExt;
-				$fileDestination = '../images/uploads/'.$fileNameNew;
-				move_uploaded_file($fileTmpName, $fileDestination);
-
-				$sql = "UPDATE `profileimg` SET `status` = 0 WHERE `userid` = '$id';";
-				$result = mysqli_query($conn, $sql);
-				header("Location: ../panels/settings?success=uploaded");
-				exit();
-			} else {
-				header("Location: ../panels/settings?error=sizeerror");
-				exit();
-			}
-		} else {
-			header("Location: ../panels/settings?error=errorupload");
-			exit();
-		}
-	} else {
-		header("Location: ../panels/settings?error=filenotallowed");
-		exit();
-	}
-
-}
-
 
 
 // Admin Create Ads

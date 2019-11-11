@@ -9,6 +9,9 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
 
 // CALL THE FETCH CUSTOMER DATA FROM API
 if (isset($_GET['planCode']) && isset($_GET['cusCode'])) {
+
+  $_SESSION['createnewplan']= "you successfully created a new subscription plan.";
+
   $planCode = $_GET['planCode'];
   $cusCode = $_GET['cusCode'];
   getcustomerplanData($planCode, $cusCode);
@@ -45,8 +48,12 @@ if(isset($_GET['planname'])){
 <!-- <button type="button" onclick="payWithPaystack()"> Pay </button>  -->
 <body class="bg-light">
   <?php
-
+  // echo "<h3> PHP List All Session Variables</h3>";
+  //     foreach ($_SESSION as $key=>$val)
+  //     echo $key." ".$val."<br/>";
+  // //
   ?>
+
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-white shadow-lg" id="sidebar-wrapper">
@@ -119,7 +126,39 @@ if(isset($_GET['planname'])){
         <div class="row">
           <?php
 
-          if (isset($_SESSION['plan'])){
+          $ch = curl_init();
+
+          curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/customer/CUS_ybbzp7m8utihx5t');
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+
+
+          $headers = array();
+          $headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
+          curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+          $result = curl_exec($ch);
+          if($result){
+            $data = json_decode($result, true);
+
+            $all_sub = $data['data']['subscriptions'];
+            for ($x = 0; $x < count($all_sub); $x++){
+              // echo "<pre>";
+              // var_dump($x);
+              // echo "</pre>";
+            }
+          }
+          if (curl_errno($ch)) {
+              echo 'Error:' . curl_error($ch);
+          }
+          curl_close($ch);
+
+          //$plan = $_SESSION['plandata'];
+
+              // foreach ($_SESSION as $key=>$val)
+              // echo $key." ".$val."<br/>";
+
+          for ($x = 0; $x < count($all_sub); $x++){
 
             echo "<div class='col-lg-4 col-md-4 col-sm-6 mb-4 h-100'>";
             echo "<div class='card border-0 shadow-sm rounded-lg h-100'>";

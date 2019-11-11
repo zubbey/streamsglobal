@@ -2,10 +2,14 @@
 if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
   header("Location: ../login");
   exit();
-}
-if (isset($_SESSION['planCode'])) {
-  $planCode = $_SESSION['planCode'];
-  getcustomerplanData2($planCode);
+} else {
+
+  if(isset($_GET['planname'])){
+    $_SESSION['plan_amount'] = $_GET['amount'];
+    $_SESSION['plan_name'] = $_GET['planname'];
+    $_SESSION['plan_interval'] = $_GET['interval'];
+    $_SESSION['plan_createdAt'] = $_GET['createdAt'];
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -208,31 +212,100 @@ if (isset($_SESSION['planCode'])) {
           <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
           <table class="table table-sm table-hover table-striped">
             <tbody class="text-muted">
-              <tr>
-                <td class="p-3">
-                  Abby joined ACME Project Team in `Collaboration`
-                </td>
-              </tr>
-              <tr>
-                <td class="p-3">
-                  Gary deleted My Board1 in `Discussions`
-                </td>
-              </tr>
-              <tr>
-                <td class="p-3">
-                  Kensington deleted MyBoard3 in `Discussions`
-                </td>
-              </tr>
-              <tr>
-                <td class="p-3">
-                  John deleted My Board1 in `Discussions`
-                </td>
-              </tr>
-              <tr>
-                <td class="p-3">
-                  Skell deleted his post Look at Why this is.. in `Discussions`
-                </td>
-              </tr>
+
+              <?php
+              if(isset($_SESSION['newmember'])){
+                echo "<tr>";
+                echo"<td class='p-3'>";
+                echo $_SESSION['newmember'];
+                echo "</td>";
+                echo "</tr>";
+              }
+
+              if(isset($_SESSION['verifiedlog'])){
+                echo "<tr>";
+                echo "<td class='p-3'>";
+                echo $_SESSION['verifiedlog'];
+                echo "</td>";
+                echo " </tr>";
+              }
+
+              if(isset($_SESSION['loginlog'])){
+                echo "<tr>";
+                echo "<td class='p-3'>";
+                echo $_SESSION['loginlog'];
+                echo "</td>";
+                echo "</tr>";
+              }
+
+              if ($_SESSION['plan_name'] === 'Piggy Wallat One (1)' || $_SESSION['plan_name'] === 'Piggy Wallat Two (2)' || $_SESSION['plan_name'] === 'Piggy Wallat Three (3)' || $_SESSION['plan_name'] === 'Piggy Wallat Four (4)') {
+                echo "<tr>";
+                echo "<td class='p-3'>Your are currently Saving &#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</td>";
+                echo "</tr>";
+              } else if ($_SESSION['plan_name'] === 'SAAP' || $_SESSION['plan_name'] === 'SAAP_Product'){
+                echo "<tr>";
+                echo "<td class='p-3'>Your are currently Saving &#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</td>";
+                echo "</tr>";
+              } else if ($_SESSION['plan_name'] === 'Fixed Savings' || $_SESSION['plan_name'] === 'Target Savings'){
+                echo "<tr>";
+                echo "<td class='p-3'>Your are currently Saving &#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</td>";
+                echo "</tr>";
+              } else if ($_SESSION['plan_name'] === 'Land & Building Savings'){
+                echo "<tr>";
+                echo "<td class='p-3'>Your are currently Saving &#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</td>";
+                echo "</tr>";
+              } else if ($_SESSION['plan_name'] === 'Cooperators Bank'){
+                echo "<tr>";
+                echo "<td class='p-3'>Your are currently Saving &#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</td>";
+                echo "</tr>";
+              } else if ($_SESSION['plan_name'] === 'Diaspora Safe'){
+                echo "<tr>";
+                echo "<td class='p-3'>Your are currently Saving &#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</td>";
+                echo "</tr>";
+              }
+
+
+              if(isset($_SESSION['updatedpassword'])){
+                echo "<tr>";
+                echo "<td class='p-3'>";
+                echo $_SESSION['updatedpassword'];
+                echo "</td>";
+                echo "</tr>";
+              }
+
+              if(isset($_SESSION['updatedemail'])){
+                echo "<tr>";
+                echo "<td class='p-3'>";
+                echo $_SESSION['updatedemail'];
+                echo "</td>";
+                echo "</tr>";
+              }
+
+
+              if(isset($_SESSION['updatedinfo'])){
+                echo "<tr>";
+                echo "<td class='p-3'>";
+                echo $_SESSION['updatedinfo'];
+                echo "</td>";
+                echo "</tr>";
+              }
+
+              if(isset($_SESSION['updatedprofileimage'])){
+                echo "<tr>";
+                echo "<td class='p-3'>";
+                echo $_SESSION['updatedprofileimage'];
+                echo "</td>";
+                echo "</tr>";
+              }
+
+              if(isset($_SESSION['resetpasswordlog'])){
+                echo "<tr>";
+                echo "<td class='p-3'>";
+                echo $_SESSION['resetpasswordlog'];
+                echo "</td>";
+                echo "</tr>";
+              }
+              ?>
             </tbody>
           </table>
         </div>

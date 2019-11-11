@@ -1,9 +1,11 @@
 <?php
 ini_set('error_reporting', E_ALL);
 session_start();
+$_SESSION['planCode']=array();
 
 require ('../config/db.php');
 require_once ('../controllers/emailControl.php');
+date_default_timezone_set("Africa/Lagos");
 
 if(!isset($email)){
 	$Eclasstype = "is-valid";
@@ -36,6 +38,8 @@ if (isset($_POST['upload-img'])) {
 
 				$sql = "UPDATE `profileimg` SET `status` = 0 WHERE `userid` = '$id';";
 				$result = mysqli_query($conn, $sql);
+
+				$_SESSION['updatedprofileimage']= "you updated your profile image.";
 				header("Location: ../user/settings?success=uploaded");
 				exit();
 			} else {
@@ -95,6 +99,7 @@ if (isset($_POST['save-changes'])){
 			$_SESSION['occupation'] = $_POST['occupation'];
 			$_SESSION['nationality'] = $_POST['nationality'];
 
+			$_SESSION['updatedinfo']= "you updated your information.";
 			header('location: settings?success=infoupdated');
 			exit();
 		} else{
@@ -131,7 +136,7 @@ if (isset($_POST['change-email'])){
 			sendemailUpdate($email, $token);
 
 			$_SESSION['usersemail'] = $email;
-
+			$_SESSION['updatedemail']= "you changed your email address.";
 			header('location: settings?success=emailchanged&email='.$email);
 			exit();
 		}
@@ -169,6 +174,7 @@ if (isset($_POST['change-password'])){
 		if (password_verify($current_password, $user['password'])) {
 			$updatepassword = mysqli_query($conn, "UPDATE users set password='$new_password' WHERE email='$email'");
 			if ($updatepassword) {
+				$_SESSION['updatedpassword']= "you changed your password.";
 				header('location: settings?success=passwordchanged');
 				exit();
 			}
@@ -202,44 +208,4 @@ if (isset($_GET['resendemail'])){
 
 	sendemailUpdate($email, $token);
 
-}
-
-########### FOR EVERYTIME A USER LOGIN ##################
-
-function getcustomerplanData2($planCode){
-
-  $ch = curl_init();
-
-  curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/plan/'.$planCode);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-
-
-  $headers = array();
-  $headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
-  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-  $result = curl_exec($ch);
-
-  if($result){
-    $plandata = json_decode($result);
-    // $plandata->{0}->status
-    $plan = $plandata;
-    $_SESSION['plan'] = $plan;
-    $planname = $plandata->data->name;
-    $amount = $plandata->data->amount;
-    $interval = $plandata->data->interval;
-    $createdAt = $plandata->data->createdAt;
-
-		  $_SESSION['plan_amount'] = $amount;
-		  $_SESSION['plan_name'] = $planname;
-		  $_SESSION['plan_interval'] = $interval;
-		  $_SESSION['plan_createdAt'] = $createdAt;
-    //header('Location: ?planname='.$planname.'&amount='.$amount.'&interval='.$interval.'&createdAt='.$createdAt);
-  }
-
-  if (curl_errno($ch)) {
-    echo 'Error:' . curl_error($ch);
-  }
-  curl_close($ch);
 }

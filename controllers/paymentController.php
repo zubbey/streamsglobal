@@ -1,6 +1,7 @@
 <?php
 require ('../config/db.php');
 require_once ('../controllers/emailControl.php');
+date_default_timezone_set("Africa/Lagos");
 
 function sessionData(){
   global $conn;
@@ -169,7 +170,7 @@ function getcustomerplanData($planCode, $cusCode){
 
     //DATA TO INSERT INTO DATABASE
     $plan_code = $plandata->data->plan_code;
-    $sub_code = $plandata->data->subscription_code;
+    $sub_code = $cusdata->data->subscriptions->{0}->subscription_code;
 
     //INSERT INTO SAVINGSDATA
     $email = $_SESSION['usersemail'];
