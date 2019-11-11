@@ -150,7 +150,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               </div>
               <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" role="form">
                 <div class="form-group px-3">
-                  <input type="text" class="form-control form-control-lg" id="formGroupExampleInput" placeholder="Enter amount">
+                  <input name="amount2" type="text" class="form-control form-control-lg" id="formGroupExampleInput" placeholder="Enter amount">
                 </div>
                 <div class="m-3">
                 <button type="submit" class="btn btn-primary btn-block" name="piggy2btn">Save</button>
@@ -276,7 +276,7 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
             window.location.assign("http://streamsglobal.com/user/savings?success=subCreated&reference="+response.reference+"&planCode="+planCode+"&cusCode="+cusCode);
         },
         onClose: function(){
-            location.reload(true);
+            location.reload();
         }
       });
       handler.openIframe();
