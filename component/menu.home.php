@@ -1,6 +1,5 @@
 <?php
-if (isset($_SESSION['usersid'])) {
-  if (($_SESSION['verified'] == 0)){
+if (isset($_SESSION['usersid']) && isset($_SESSION['verified']) && $_SESSION['verified'] == 0) {
     echo '
     <div style="width: 100%; height: auto; text-align: center; font-size: 15px; padding: 5px;" class="alert-warning alert-dismissible"  role="alert">
     <p>We sent a verification link to your email <b>'. $_SESSION['usersemail'] .'</b>, Didnt get the email? <a href="sign-up?success=step2&resendemail=1">Resend Email</a>.</p>
@@ -8,8 +7,10 @@ if (isset($_SESSION['usersid'])) {
 
     <style>
     .menu{position: relative;}
-    </style>';
-  }
+    </style>
+    ';
+} else {
+  echo "";
 }
 ?>
 
