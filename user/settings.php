@@ -43,7 +43,7 @@ if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
     <div class='modal-content'>
     <div class='modal-header'>
     <h5 class='modal-title' id='exampleModalCenterTitle'>Verify your email address</h5>
-    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+    <button onclick=\"javascript:location.href='?close=1'\" type='button' class='close' data-dismiss='modal' aria-label='Close'>
     <span aria-hidden='true'>&times;</span>
     </button>
     </div>

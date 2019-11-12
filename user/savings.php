@@ -242,7 +242,7 @@ if (isset($_GET['success']) AND $_GET["success"]=='newplancreated') {
           <div class='modal-content'>
           <div class='modal-header'>
           <h5 class='modal-title text-center' id='exampleModalCenterTitle'>How much do you want to top up</h5>
-          <button onclick=\"javascript:location.href='?close=1'\" type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
           <span aria-hidden='true'>&times;</span>
           </button>
           </div>
