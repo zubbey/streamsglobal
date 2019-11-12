@@ -2,7 +2,7 @@
 require_once ('../controllers/userController.php');
 require_once ('../controllers/paymentController.php');
 
-if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
+if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
   header("Location: ../login");
   exit();
 }

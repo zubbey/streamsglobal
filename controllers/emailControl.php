@@ -150,7 +150,7 @@ function sendVerificationEmail($userEmail, $token){
               <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 60px 30px;'>
                 <table width='100%' border='0' cellspacing='0' cellpadding='0'>
                   <tr>
-                    <td align='center' style='border-radius: 5px;' bgcolor='#19b334'><a href='http://streamsglobal.com/sign-up.php?success=step3&token=" . $token . "' target='_blank' style='font-size: 20px; font-family: \"Saira\", Helvetica, Arial, sans-serif; background-color: #19b334; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 5px; border: 1px solid #19b334; display: inline-block;'>Confirm Account</a></td>
+                    <td align='center' style='border-radius: 5px;' bgcolor='#19b334'><a href='http://streamsglobal.com/sign-up?success=step3&token=" . $token . "' target='_blank' style='font-size: 20px; font-family: \"Saira\", Helvetica, Arial, sans-serif; background-color: #19b334; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 5px; border: 1px solid #19b334; display: inline-block;'>Confirm Account</a></td>
                   </tr>
                 </table>
               </td>
@@ -164,7 +164,7 @@ function sendVerificationEmail($userEmail, $token){
             </tr> <!-- COPY -->
             <tr>
               <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 20px 30px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                <p style='margin: 0;'><a href='http://streamsglobal.com/sign-up.php?success=step3&token=" . $token . "' target='_blank' style='color: #19b334;'>http://streamsglobal.com/sign-up.php?success=step3&token=" . $token . "</a></p>
+                <p style='margin: 0;'><a href='http://streamsglobal.com/sign-up?success=step3&token=" . $token . "' target='_blank' style='color: #19b334;'>http://streamsglobal.com/sign-up?success=step3&token=" . $token . "</a></p>
               </td>
             </tr>
             <tr>
@@ -186,7 +186,7 @@ function sendVerificationEmail($userEmail, $token){
             <tr>
               <td bgcolor='#FFECD1' align='center' style='padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                 <h2 style='font-size: 20px; font-weight: 400; color: #111111; margin: 0;'>Need more help?</h2>
-                <p style='margin: 0;'><a href='http://streamsglobal.com/faqs.php' target='_blank' style='color: #19b334;'>We&rsquo;re here to help you out</a></p>
+                <p style='margin: 0;'><a href='http://streamsglobal.com/faqs' target='_blank' style='color: #19b334;'>We&rsquo;re here to help you out</a></p>
               </td>
             </tr>
           </table>
@@ -224,7 +224,6 @@ function sendreferralEmail($userdata){
     <title>Referral Email | Streams Global</title>
     <link href='https://i.imgur.com/q6DcKop.png' rel='shortcut icon' type='image/x-icon'>
     <link href='https://i.imgur.com/q6DcKop.png' rel='apple-touch-icon'>
-    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
@@ -488,7 +487,7 @@ function sendreferralEmail($userdata){
               <div class='card-title'><smail>Referral Code: </small><span class='h3 font-weight-normal'>".$userdata['referralcode']."</span></div>
               <p class='card-text text-muted'>please comfirm if ".$userdata['userfname']." is fully registered.</p>
               <div class='d-flex justify-content-between my-auto'>
-              <a href='http://streamsglobal.com/admin#users' class='btn btn-primary'>View Profile</a>
+              <a href='http://streamsglobal.com/user/admin?users=all' class='btn btn-primary'>View Profile</a>
               <small class='text-muted'>".$userdata['datereferred'].".</small>
               </div>
             </div>
@@ -497,7 +496,7 @@ function sendreferralEmail($userdata){
       </div>
     </div>
     <footer class='footer-copyright text-center py-3 bg-white'>
-      <p class='text-muted'>© 2019 <a href='index' class='text-muted'>Streams Global Cooperative</a>, All Rights Reserved</p>
+      <p class='text-muted'>&copy; Copyright 2019 <script>new Date().getFullYear()>2017&&document.write('|'+new Date().getFullYear());</script> <a href='index' class='text-muted'> Streams Global Cooperative</a>, All Rights Reserved</p>
     </footer>
     <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>
@@ -703,7 +702,7 @@ function sendemailUpdate($newEmail, $token){
             <tr>
               <td bgcolor='#FFECD1' align='center' style='padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                 <h2 style='font-size: 20px; font-weight: 400; color: #111111; margin: 0;'>Need more help?</h2>
-                <p style='margin: 0;'><a href='http://streamsglobal.com/faqs.php' target='_blank' style='color: #19b334;'>We&rsquo;re here to help you out</a></p>
+                <p style='margin: 0;'><a href='http://streamsglobal.com/faqs' target='_blank' style='color: #19b334;'>We&rsquo;re here to help you out</a></p>
               </td>
             </tr>
           </table>
@@ -914,7 +913,7 @@ function sendresetpasswordLink($resetemail, $token){
             <tr>
               <td bgcolor='#FFECD1' align='center' style='padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: \"Saira\", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                 <h2 style='font-size: 20px; font-weight: 400; color: #111111; margin: 0;'>Need more help?</h2>
-                <p style='margin: 0;'><a href='http://streamsglobal.com/faqs.php' target='_blank' style='color: #19b334;'>We&rsquo;re here to help you out</a></p>
+                <p style='margin: 0;'><a href='http://streamsglobal.com/faqs' target='_blank' style='color: #19b334;'>We&rsquo;re here to help you out</a></p>
               </td>
             </tr>
           </table>

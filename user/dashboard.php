@@ -1,15 +1,14 @@
 <?php require_once ('../controllers/userController.php');
-if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
+if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
   header("Location: ../login");
   exit();
-} else {
+}
 
-  if(isset($_GET['planname'])){
-    $_SESSION['plan_amount'] = $_GET['amount'];
-    $_SESSION['plan_name'] = $_GET['planname'];
-    $_SESSION['plan_interval'] = $_GET['interval'];
-    $_SESSION['plan_createdAt'] = $_GET['createdAt'];
-  }
+if(isset($_GET['planname'])){
+  $_SESSION['plan_amount'] = $_GET['amount'];
+  $_SESSION['plan_name'] = $_GET['planname'];
+  $_SESSION['plan_interval'] = $_GET['interval'];
+  $_SESSION['plan_createdAt'] = $_GET['createdAt'];
 }
 ?>
 <!DOCTYPE html>
