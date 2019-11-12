@@ -223,6 +223,8 @@ function createreferralID(){
 		$_SESSION['successverified'] = "Your Membership fee was successful and account verified.";
 		$_SESSION['success-message'] = "success";
 
+		$_SESSION['newmember'] = "your created you account at ".date("M d, Y h:i a");
+		$_SESSION['sucessaccount']= "your account was created successfully and your entry payment was successfully.";
 		header('location: start?success=paymentsuccessful');
 		exit();
 	}
@@ -259,64 +261,60 @@ if (isset($_POST['login-btn'])) {
 
 			// login successfully
 			// before login Check if user has a Subcription Plan
-			$userid = $user['id'];
-			$useremail = $user['email'];
-
-			$ch = curl_init();
-
-			curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/customer/'.$useremail);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-
-
-			$headers = array();
-			$headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-			$result = curl_exec($ch);
-			if($result){
-
-				$cusdata = json_decode($result, true);
-				$sub_code = $cusdata['data']['subscriptions'][0]['subscription_code'];
-				//print $sub_code."<br>";
-
-				#################### FETCH SUBSCRIPTION ################
-
-				$ch = curl_init();
-
-				curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/subscription/'.$sub_code);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-
-
-				$headers = array();
-				$headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-				$result = curl_exec($ch);
-				if($result){
-					$subdata = json_decode($result, true);
-
-					if(!empty($subdata)){
-						//$plan_code = $subdata['data']['customer']['first_name'];
-						$userplan = $subdata;
-						$amount = $subdata['data']['plan']['amount'];
-						$planname = $subdata['data']['plan']['name'];
-						$interval = $subdata['data']['plan']['interval'];
-						$createdAt = $subdata['data']['plan']['createdAt'];
-						//print $plan_code;
-						$_SESSION['plandata'] = $userplan;
-						// $_SESSION['plan_amount'] = $amount;
-						// $_SESSION['plan_name'] = $planname;
-						// $_SESSION['plan_interval'] = $interval;
-						// $_SESSION['plan_createdAt'] = $createdAt;
-					}
-					//var_dump($plan_code);
-				}
-			}
-			if (curl_errno($ch)) {
-				echo 'Error:' . curl_error($ch);
-			}
+			//$userid = $user['id'];
+			// $useremail = $user['email'];
+			//
+			// $ch = curl_init();
+			//
+			// curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/customer/'.$useremail);
+			// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+			//
+			//
+			// $headers = array();
+			// $headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
+			// curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			//
+			// $result = curl_exec($ch);
+			// if($result){
+			//
+			// 	$cusdata = json_decode($result, true);
+			// 	$sub_code = $cusdata['data']['subscriptions'][0]['subscription_code'];
+			// 	//print $sub_code."<br>";
+			//
+			// 	#################### FETCH SUBSCRIPTION ################
+			//
+			// 	$ch = curl_init();
+			//
+			// 	curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/subscription/'.$sub_code);
+			// 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			// 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+			//
+			//
+			// 	$headers = array();
+			// 	$headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
+			// 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			//
+			// 	$result = curl_exec($ch);
+			// 	if($result){
+			// 		$subdata = json_decode($result, true);
+			//
+			// 		if(!empty($subdata)){
+			// 			//$plan_code = $subdata['data']['customer']['first_name'];
+			// 			$userplan = $subdata;
+			// 			$amount = $subdata['data']['plan']['amount'];
+			// 			$planname = $subdata['data']['plan']['name'];
+			// 			$interval = $subdata['data']['plan']['interval'];
+			// 			$createdAt = $subdata['data']['plan']['createdAt'];
+			// 			//print $plan_code;
+			// 			//$_SESSION['plandata'] = $userplan;
+			// 		}
+			// 		//var_dump($plan_code);
+			// 	}
+			// }
+			// if (curl_errno($ch)) {
+			// 	echo 'Error:' . curl_error($ch);
+			// }
 			//curl_close($ch);
 
 			$_SESSION['usersid'] = $user['id'];

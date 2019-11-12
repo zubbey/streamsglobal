@@ -31,47 +31,47 @@ if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
 </head>
 
 <body class="bg-light">
-<?php
+  <?php
 
-if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
+  if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
 
-  echo "
-  <button type='button' id='modalbtn' data-toggle='modal' data-target='#exampleModalCenter'>
-</button>
-  <div class='modal fade' id='exampleModalCenter' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
-  <div class='modal-dialog modal-dialog-centered' role='document'>
-  <div class='modal-content'>
-  <div class='modal-header'>
-  <h5 class='modal-title' id='exampleModalCenterTitle'>Verify your email address</h5>
-  <button onclick=\"javascript:location.href='?close=1'\" type='button' class='close' data-dismiss='modal' aria-label='Close'>
-  <span aria-hidden='true'>&times;</span>
-  </button>
-  </div>
-  <div class='modal-body'>
-
-  <div class='row justify-content-center'>
-    <div class='col p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>
-      <p>We sent a verification link to your email <strong>". $_SESSION['usersemail'] ."</strong>, check your email address to continue.</p>
-      <ul class='list-group list-group-flush'>
-        <li class='list-group-item bg-transparent'>Didn't get the email?
-          <a href='?resendemail=1' class='form-link'>Resend email</a>
-        </li>
-      </ul>
+    echo "
+    <button type='button' id='modalbtn' data-toggle='modal' data-target='#exampleModalCenter'>
+    </button>
+    <div class='modal fade' id='exampleModalCenter' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+    <div class='modal-dialog modal-dialog-centered' role='document'>
+    <div class='modal-content'>
+    <div class='modal-header'>
+    <h5 class='modal-title' id='exampleModalCenterTitle'>Verify your email address</h5>
+    <button onclick=\"javascript:location.href='?close=1'\" type='button' class='close' data-dismiss='modal' aria-label='Close'>
+    <span aria-hidden='true'>&times;</span>
+    </button>
     </div>
-  </div>
+    <div class='modal-body'>
 
-  </div>
-  </div>
-  </div>
-  </div>
-  ";
+    <div class='row justify-content-center'>
+    <div class='col p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>
+    <p>We sent a verification link to your email <strong>". $_SESSION['usersemail'] ."</strong>, check your email address to continue.</p>
+    <ul class='list-group list-group-flush'>
+    <li class='list-group-item bg-transparent'>Didn't get the email?
+    <a href='?resendemail=1' class='form-link'>Resend email</a>
+    </li>
+    </ul>
+    </div>
+    </div>
 
-  $email = $_GET['email'];
-  $Eclasstype = "is-invalid";
-  $EclassFeedback = "invalid-feedback";
-  $EmsgFeedback = "This Email address (".$email.") is not verified.";
-}
-?>
+    </div>
+    </div>
+    </div>
+    </div>
+    ";
+
+    $email = $_GET['email'];
+    $Eclasstype = "is-invalid";
+    $EclassFeedback = "invalid-feedback";
+    $EmsgFeedback = "This Email address (".$email.") is not verified.";
+  }
+  ?>
   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
@@ -286,7 +286,21 @@ if(isset($_GET['success']) AND $_GET["success"]=='emailchanged'){
                     <h2 class="badge badge-dark" style="font-size: 2rem;"><?php echo $_SESSION['referralcode'];?></h2>
                     <hr>
                     <span class="badge badge-primary"><i class="fa fa-user"></i> 1 Referred</span>
-                    <span class="badge badge-danger"><i class="fa fa-cog"></i> 0 Active Plan</span>
+                    <?php
+                    $id = $_SESSION['usersid'];
+
+                    $cus_coderesult = mysqli_query($conn, "SELECT `*` FROM `savingsData` WHERE usersid='$id'");
+                    if (mysqli_num_rows($cus_coderesult) > 0){
+                      if ($user = mysqli_fetch_array($cus_coderesult)){
+                        for($x = 0; $x <= $user['usersid']; $x++){
+                            //Count how many plan a user has
+                        }
+                      }
+                      echo "<span class='badge badge-success'><i class='fa fa-cog'></i> ".$x." Active Plan</span>";
+                    } else {
+                      echo "<span class='badge badge-danger'><i class='fa fa-cog'></i> 0 Active Plan</span>";
+                    }
+                    ?>
                     <span class="badge badge-success"><i class="fa fa-eye"></i> Membership Verified</span>
                   </div>
 

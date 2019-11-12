@@ -111,13 +111,6 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Piggy Wallet</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
-                <?php
-                if ($_SESSION['plan_name'] === 'Piggy Wallat One (1)' || $_SESSION['plan_name'] === 'Piggy Wallat Two (2)' || $_SESSION['plan_name'] === 'Piggy Wallat Three (3)' || $_SESSION['plan_name'] === 'Piggy Wallat Four (4)') {
-                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
-                } else{
-                  echo "";
-                }
-                ?>
                 <i class="fas fa-piggy-bank"></i>
               </div>
             </a>
@@ -127,13 +120,6 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>SAAP</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
-                <?php
-                if ($_SESSION['plan_name'] === 'SAAP' || $_SESSION['plan_name'] === 'SAAP_Product') {
-                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
-                } else{
-                  echo "";
-                }
-                ?>
                 <i class="fas fa-cart-arrow-down"></i>
               </div>
             </a>
@@ -143,13 +129,6 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Fixed Savings</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
-                <?php
-                if ($_SESSION['plan_name'] === 'Fixed Savings' || $_SESSION['plan_name'] === 'Target Savings') {
-                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
-                } else{
-                  echo "";
-                }
-                ?>
                 <i class="fas fa-unlock-alt"></i>
               </div>
             </a>
@@ -162,13 +141,6 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Land & Building Savings</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
-                <?php
-                if ($_SESSION['plan_name'] === 'Land & Building Savings') {
-                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
-                } else{
-                  echo "";
-                }
-                ?>
                 <i class="fas fa-home"></i>
               </div>
             </a>
@@ -178,13 +150,6 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Cooperators Bank</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
-                <?php
-                if ($_SESSION['plan_name'] === 'Cooperators Bank') {
-                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
-                } else{
-                  echo "";
-                }
-                ?>
                 <i class="fas fa-handshake"></i>
               </div>
             </a>
@@ -194,13 +159,6 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
               <div class="card-body d-flex align-items-end flex-column text-right">
                 <h4>Diaspora Safe</h4>
                 <p class="w-75">Automatically save an amount at regular ...</p>
-                <?php
-                if ($_SESSION['plan_name'] === 'Diaspora Safe') {
-                  echo "<p class='m-0'>&#8358;". number_format(substr($_SESSION['plan_amount'], 0, 4))."</p>";
-                } else{
-                  echo "";
-                }
-                ?>
                 <i class="fab fa-diaspora"></i>
               </div>
             </a>
@@ -214,6 +172,13 @@ if (isset($_SESSION['id']) && $_SESSION['verified'] == 0) {
             <tbody class="text-muted">
 
               <?php
+              if(isset($_SESSION['createnewplan'])){
+                echo "<tr>";
+                echo"<td class='p-3'>";
+                echo $_SESSION['createnewplan'];
+                echo "</td>";
+                echo "</tr>";
+              }
               if(isset($_SESSION['newmember'])){
                 echo "<tr>";
                 echo"<td class='p-3'>";

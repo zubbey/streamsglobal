@@ -169,8 +169,9 @@ function getcustomerplanData($planCode, $cusCode){
     $createdAt = $plandata->data->createdAt;
 
     //DATA TO INSERT INTO DATABASE
+    $subresult = json_decode($result, true);
     $plan_code = $plandata->data->plan_code;
-    $sub_code = $cusdata->data->subscriptions->{0}->subscription_code;
+    $sub_code = $subresult['data'][0]['subscriptions'][0]['subscription_code'];
 
     //INSERT INTO SAVINGSDATA
     $email = $_SESSION['usersemail'];
@@ -184,7 +185,8 @@ function getcustomerplanData($planCode, $cusCode){
 
         $planresult = mysqli_query($conn, "INSERT into `savingsData` (usersid, cus_code, plan_code, sub_code) VALUES ('$id', '$cusCode', '$plan_code', '$sub_code')");
         if ($planresult){
-          header('Location: ?planname='.$planname.'&amount='.$amount.'&interval='.$interval.'&createdAt='.$createdAt);
+          header('Location: ?success=newplancreated&amount='.$amount.'&interval='.$interval.'&createdAt='.$createdAt);
+          //header('Location: ?planname='.$planname.'&amount='.$amount.'&interval='.$interval.'&createdAt='.$createdAt);
         }
       }
     } else {
@@ -196,5 +198,33 @@ function getcustomerplanData($planCode, $cusCode){
     echo 'Error:' . curl_error($ch);
   }
   curl_close($ch);
+
+}
+
+
+
+#################### TO TOPUP PLAN ########################
+if (isset($_GET[$topup_x])) {
+  // code...
+
+  echo "you click: ".$_POST[$topup_x];
+// $ch = curl_init();
+//
+// curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/plan/'.$x_planCode);
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+//
+// curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"amount\": \"$x_amount\"}");
+//
+// $headers = array();
+// $headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
+// $headers[] = 'Content-Type: application/json';
+// curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+//
+// $result = curl_exec($ch);
+// if (curl_errno($ch)) {
+//     echo 'Error:' . curl_error($ch);
+// }
+// curl_close($ch);
 
 }
