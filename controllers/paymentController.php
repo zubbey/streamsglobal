@@ -204,10 +204,9 @@ function getcustomerplanData($planCode, $cusCode){
 
 
 #################### TO TOPUP PLAN ########################
-if (isset($_GET[$topup_x])) {
-  // code...
+// if (isset($_POST[$topup_x])) {
 
-  echo "you click: ".$_POST[$topup_x];
+  // echo "you click: ".$_POST[$topup_x];
 // $ch = curl_init();
 //
 // curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/plan/'.$x_planCode);
@@ -227,4 +226,4 @@ if (isset($_GET[$topup_x])) {
 // }
 // curl_close($ch);
 
-}
+// }

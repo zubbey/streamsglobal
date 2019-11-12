@@ -177,8 +177,11 @@ if (isset($_GET['success']) AND $_GET["success"]=='newplancreated') {
             $plandata = json_decode($result, true);
             $all_plan = $plandata['data'][0];
 
-            $name = $plandata['data'][0]['subscriptions'][0]['subscription_code'];
-            //print $name;
+            //$name = $plandata['data'][0]['subscriptions'][0]['subscription_code'];
+
+            // $name = $plandata['data'][0]['plan_code'];
+            // print_r($name);
+
           }
           if (curl_errno($ch)) {
             echo 'Error:' . curl_error($ch);
@@ -198,36 +201,9 @@ if (isset($_GET['success']) AND $_GET["success"]=='newplancreated') {
         echo "<div class='row'>";
         for ($x = 0; $x < count($all_sub); $x++){
 
-          $topup_x = "topup".$x;
-          $topupname = "hello world!";
-          echo "
-          <div class='modal fade' id='exampleModalCenter' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
-          <div class='modal-dialog modal-dialog-centered' role='document'>
-          <div class='modal-content'>
-          <div class='modal-header'>
-          <h5 class='modal-title text-center' id='exampleModalCenterTitle'>How much do you want to top up</h5>
-          <button onclick=\"javascript:location.href='?close=1'\" type='button' class='close' data-dismiss='modal' aria-label='Close'>
-          <span aria-hidden='true'>&times;</span>
-          </button>
-          </div>
-          <div class='modal-body'>
-          <div class='row justify-content-center'>
-          <div class='col rounded'>
-          <p id='topupname'></p>
-          <form action='' method='POST' role='form'>
-          <div class='form-group'>
-          <input name='amount' type='text' class='form-control form-control-lg' id='formGroupExampleInput' placeholder='Enter amount'>
-          </div>
-          <button type='submit' class='btn btn-primary btn-block' name='topup'>Top up <i class='fas fa-plus'></i></button>
-          </form>
-          </div>
-          </div>
 
-          </div>
-          </div>
-          </div>
-          </div>
-          ";
+          // $amount = "amount_".$x;
+          // $topup_x = "topup".$x;
 
           echo "<div class='col-lg-4 col-md-4 col-sm-6 mb-4 h-100'>";
           echo "<div class='card border-0 shadow-sm rounded-lg h-100'>";
@@ -252,12 +228,89 @@ if (isset($_GET['success']) AND $_GET["success"]=='newplancreated') {
           echo "<hr>";
 
           echo "<div class='form-group d-flex justify-content-between'>";
-          echo "<button onclick='showtopModal(hello from showtop)' name='".$topup_x."' class='btn btn-secondary btn-sm text-white' type='button'> Top up <i class='fas fa-plus'></i></button>";
+          echo "<button onclick='showtopModal(".$x.")' class='btn btn-secondary btn-sm text-white' type='button'> Top up <i class='fas fa-plus'></i></button>";
           echo "<button name='withdrawal_".$x."' class='btn btn-primary btn-sm text-white d-none' type='submit'> Request withdrawal <i class='fas fa-paper-plane'></i></button>";
           echo "</div>";
           echo "</div>";
           echo "</div>";
           echo "</div>";
+
+
+          echo "
+          <div class='modal fade' id='exampleModalCenter' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+          <div class='modal-dialog modal-dialog-centered' role='document'>
+          <div class='modal-content'>
+          <div class='modal-header'>
+          <h5 class='modal-title text-center' id='exampleModalCenterTitle'>How much do you want to top up</h5>
+          <button onclick=\"javascript:location.href='?close=1'\" type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+          </button>
+          </div>
+          <div class='modal-body'>
+          <div class='row justify-content-center'>
+          <div class='col rounded'>
+          <p id='topupname'></p>
+          <form action='".htmlspecialchars($_SERVER["PHP_SELF"])."' method='GET' role='form'>
+          <div class='form-group'>
+          <input name='"."amount_".$x."' type='text' class='form-control form-control-lg' id='formGroupExampleInput' placeholder='Enter amount'>
+          </div>
+          <button type='submit' onclick='javascript:location.href=\"\"' class='btn btn-primary btn-block' name='"."topup_".$x."'>Top up <i class='fas fa-plus'></i></button>
+          </form>
+          </div>
+          </div>
+
+          </div>
+          </div>
+          </div>
+          </div>
+          ";
+
+
+          #################### TO TOPUP PLAN ########################
+          if (isset($_GET["x"])) {
+            $xx = $_GET["x"];
+          }
+
+          if (isset($_GET["amount_".$x])) {
+
+            //echo $xx;
+            //$amount = $_GET[$mount];
+            //echo $_GET["amount_".$x];
+            $amount = $_GET["amount_".$x];
+            $x_planCode = $plandata['data'][$x]['plan_code'];
+
+            $result = array();
+            //Set other parameters as keys in the $postdata array
+            $postdata =  array(
+              'email' => $_SESSION['usersemail'],
+              'amount' => $amount,
+              'reference' => '7PVGX8MEk85tgeEpVDtD',
+              'plan' => $x_planCode,
+            );
+            $url = "https://api.paystack.co/transaction/initialize";
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL,$url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($postdata));  //Post Fields
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            $headers = [
+              'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56',
+              'Content-Type: application/json',
+
+            ];
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $request = curl_exec ($ch);
+
+            curl_close ($ch);
+
+            if ($request) {
+              $result = json_decode($request, true);
+            }
+
+          }
         }
         ?>
       </div>
@@ -348,7 +401,18 @@ if (isset($_GET['success']) AND $_GET["success"]=='newplancreated') {
     var topupname = $("#topupname");
     topupname.text(en);
     $("#modalbtn")[0].click();
+    getX(en);
   }
+
+  function getX(x){
+    window.location.hash='?x='+x+'';
+    return true;
+  }
+  // function editAds(editid){
+  //   window.location.href='admin.php?edit_id=' +editid+'';
+  //   return true;
+  // }
+
 
 
   </script>
