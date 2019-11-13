@@ -183,7 +183,7 @@ if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
       phone: '<?php echo $_SESSION["usersphone"]; ?>',
       amount: 100000,
       currency: "NGN",
-      ref: '<?php echo $_SESSION["usersfname"].'_'; ?>'+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      ref: Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
       metadata: {
         custom_fields: [
           {
