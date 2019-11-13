@@ -57,7 +57,25 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/loader.js"></script>
 <script>
+function onReady(callback) {
+  var intervalId = window.setInterval(function() {
+    if (document.getElementsByTagName('body')[0] !== undefined) {
+      window.clearInterval(intervalId);
+      callback.call(this);
+    }
+  }, 1000);
+}
+
+function setVisible(selector, visible) {
+  document.querySelector(selector).style.display = visible ? 'block' : 'none';
+}
+
+onReady(function() {
+  setVisible('.page', true);
+  setVisible('#loading', false);
+});
 
 $('document').ready(function (){
 

@@ -25,6 +25,7 @@ if(isset($_GET['planname'])){
   <link href="../css/custom.css" rel="stylesheet" type="text/css">
   <link href="../css/users.css" rel="stylesheet" type="text/css">
   <link href="../css/streams-project.webflow.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../css/loader.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Saira:100,200,300,regular,500,600,700,800,900"]  }});
   </script>
@@ -33,7 +34,10 @@ if(isset($_GET['planname'])){
 </head>
 
 <body class="bg-light">
-
+  <body class="body">
+    <div class="loader-body" id="loader">
+  	<div class="loader"></div>
+  </div>
   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
@@ -285,7 +289,7 @@ if(isset($_GET['planname'])){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<script src="../js/loader.js"></script>
   <!-- Menu Toggle Script -->
   <script>
   $("#menu-toggle").click(function(e) {

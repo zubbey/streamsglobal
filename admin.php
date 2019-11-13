@@ -21,6 +21,7 @@
   <!-- <link href="css/webflow.css" rel="stylesheet" type="text/css"> -->
   <link href="css/custom.css" rel="stylesheet" type="text/css">
   <!-- <link href="css/streams-project.webflow.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="css/loader.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Saira:100,200,300,regular,500,600,700,800,900"]  }});
   </script>
@@ -28,6 +29,10 @@
   <link href="images/ms-icon-256x256.png" rel="apple-touch-icon">
 </head>
 <body>
+  <body class="body">
+    <div class="loader-body" id="loader">
+  	<div class="loader"></div>
+  </div>
 <div class="container">
 <div class="row">
   <div class="col">
@@ -202,7 +207,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<script src="js/loader.js"></script>
 <script language='javascript'>
 
 function editAds(editid){
