@@ -28,9 +28,8 @@ if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
   <link href="images/ms-icon-256x256.png" rel="apple-touch-icon">
 </head>
 <body class="body bg-light">
-  <body class="body">
-    <div class="loader-body" id="loader">
-  	<div class="loader"></div>
+  <div class="loader-body" id="loader">
+    <div class="loader"></div>
   </div>
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <div class="container">
@@ -152,13 +151,13 @@ if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
   //     $(this).remove();
   //   });
   // }, 8000);
-function formatDate(date) {
+  function formatDate(date) {
     var year = date.getFullYear().toString();
     var month = (date.getMonth() + 101).toString().substring(1);
     var day = (date.getDate() + 100).toString().substring(1);
     return year + "-" + month + "-" + day;
-}
-var currentDate = formatDate(new Date());
+  }
+  var currentDate = formatDate(new Date());
 
 
   if (window.location.search.indexOf('step2') > -1) {

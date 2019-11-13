@@ -51,7 +51,7 @@ if (isset($_GET['success']) AND $_GET["success"]=='newplancreated') {
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <!-- <button type="button" onclick="payWithPaystack()"> Pay </button>  -->
 <body class="bg-light">
-  <body class="body">
+
     <div class="loader-body" id="loader">
   	<div class="loader"></div>
   </div>

@@ -20,9 +20,8 @@
   <link href="images/ms-icon-256x256.png" rel="apple-touch-icon">
 </head>
 <body class="body">
-  <body class="body">
-    <div class="loader-body" id="loader">
-  	<div class="loader"></div>
+  <div class="loader-body" id="loader">
+    <div class="loader"></div>
   </div>
   <div class="header-section span">
 

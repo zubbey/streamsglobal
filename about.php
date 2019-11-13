@@ -22,18 +22,17 @@
   <link href="images/ms-icon-256x256.png" rel="apple-touch-icon">
 </head>
 <body class="body">
-  <body class="body">
-    <div class="loader-body" id="loader">
-  	<div class="loader"></div>
+  <div class="loader-body" id="loader">
+    <div class="loader"></div>
   </div>
-    <?php
-    if (isset($_SESSION['usersid'])) {
-      require ('./component/menu.home.php');
-    }
-    else {
-      require ('./component/menu.php');
-    }
-    ?>
+  <?php
+  if (isset($_SESSION['usersid'])) {
+    require ('./component/menu.home.php');
+  }
+  else {
+    require ('./component/menu.php');
+  }
+  ?>
   <div class="header-section span abtCover text-center d-flex justify-content-center">
     <h2 class="team_h1 my-5"><strong>It's good to have you on board!</strong></h2>
   </div>
@@ -85,18 +84,18 @@
         </div>
       </div>
     </div>
-</main>
+  </main>
 
-    <div class="container-fluid p-5" style="background-color: #f4f8fd;">
-      <div class="row text-center d-flex justify-content-center">
-        <div class="col col-md-8">
-          <h3><strong>Better way of savings best way of acquiring</strong></h3>
-          <p>You can acquire that your dream household, property by saving stipends daily, weekly and monthly without stress. You can also save with the cooperative and pick it monthly like the normal Ajor, Akawo or Esusu. You can also make as huge as 3 —100% when you save between 90days to 1,825 days. What are you waiting for? Savings can never be better.</p>
-        </div>
+  <div class="container-fluid p-5" style="background-color: #f4f8fd;">
+    <div class="row text-center d-flex justify-content-center">
+      <div class="col col-md-8">
+        <h3><strong>Better way of savings best way of acquiring</strong></h3>
+        <p>You can acquire that your dream household, property by saving stipends daily, weekly and monthly without stress. You can also save with the cooperative and pick it monthly like the normal Ajor, Akawo or Esusu. You can also make as huge as 3 —100% when you save between 90days to 1,825 days. What are you waiting for? Savings can never be better.</p>
       </div>
     </div>
+  </div>
 
-    <div class="container">
+  <div class="container">
     <div class="row text-center d-flex justify-content-center my-5">
       <div class="col col-md-8">
         <h3><strong>Our Physical Offices</strong></h3>
@@ -116,7 +115,7 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
   <?php
   require ('./component/footer.php');
   ?>
