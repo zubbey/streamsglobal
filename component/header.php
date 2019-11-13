@@ -49,7 +49,7 @@
             echo "<h5 class='display-4 font-weight-bold text-uppercase'>".$imgRow ['heading']."</h5>";
             echo "<p class='lead'>".$imgRow ['body']."</p>";
             if (isset($_SESSION['usersid'])) {
-              echo "<a class='btn bg-white text-dark p-2' href='start'>GET STARTED</a>";
+              echo "<a class='btn bg-white text-dark p-2' href='start'>GET STARTED  <i class='fas fa-plus'></i></a>";
             }
             else {
               echo "<a class='btn btn-primary text-white p-2' href='sign-up'>JOIN US TODAY</a>";
