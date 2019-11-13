@@ -283,7 +283,7 @@ if (isset($_POST['login-btn'])) {
 			$_SESSION['loginlog']= "you logged in at ". date("h:i a");
 			$_SESSION['success-message'] = "success";
 
-			if($user['verified'] > 0 && $user['referralid'] > 0 && $user['usertype'] < 0){
+			if($user['verified'] > 0 && $user['referralid'] > 0 && $user['usertype'] == 0){
 				header('location: user/dashboard?amount='.$amount.'&planname='.$planname.'&interval='.$interval.'&createdAt='.$createdAt);
 				exit();
 			} else if($user['usertype'] == 1){
