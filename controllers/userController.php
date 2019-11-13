@@ -209,3 +209,67 @@ if (isset($_GET['resendemail'])){
 	sendemailUpdate($email, $token);
 
 }
+
+
+
+// Admin Create Ads
+
+// If upload button is clicked ...
+if (isset($_POST['upload'])) {
+	// Get image name
+	$image = $_FILES['image']['name'];
+	// Get text
+	$heading = mysqli_real_escape_string($conn, $_POST['heading']);
+	$body = mysqli_real_escape_string($conn, $_POST['body']);
+	$creator = $_SESSION['usersfname'].' '.$_SESSION['userslname'];
+
+	// image file directory
+	$target = "../images/".basename($image);
+
+	$sql = "INSERT into `adminAds` (image, heading, body, creator) VALUES ('$image', '$heading', '$body', '$creator')";
+	// execute query
+	mysqli_query($conn, $sql);
+
+	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+		header('location: ?success=adcreated');
+	}else{
+		header('location: ?error=notcreated');
+	}
+}
+
+// Admin Delete Ads
+
+if (isset($_GET['del_id'])){
+	$sql = "DELETE FROM `adminAds` WHERE `id` = '".$_GET['del_id']."'";
+	if (mysqli_query($conn, $sql)){
+		header('location: ?warning=deleted');
+	} else {
+		header('location: ?error=notdeleted');
+		die($sql);
+	};
+}
+
+// Admin Edit/Update Ads
+
+if (isset($_GET['edit_id'])){
+	$sql = "SELECT `*` FROM `adminAds` WHERE `id` = '".$_GET['edit_id']."'";
+	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_array($result);
+}
+// Update information
+if(isset($_POST['update_advert'])){
+	$heading = mysqli_real_escape_string($conn, $_POST['edit-heading']);
+	$body = mysqli_real_escape_string($conn, $_POST['edit-body']);
+
+	$update = "UPDATE `adminAds` SET `heading`= '$heading', `body`= '$body' WHERE `id` = '".$_GET['edit_id']."'";
+	if (mysqli_query($conn, $update)){
+		if (!isset($sql)) {
+			die("there was an error" .mysqli_connect_error());
+		} else {
+			header('location: ?success=adupdated');
+		}
+	} else{
+		header('location: ?error=notupdated');
+	};
+
+}

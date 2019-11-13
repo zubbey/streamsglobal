@@ -1,6 +1,6 @@
 <?php
   // Connect database admin php
-  require_once ('./controllers/authController.php');
+  require_once ('../controllers/userController.php');
 
   if (isset($_SESSION['usersid']) && $_SESSION['usertype'] == 0) {
       header('location: login');
@@ -15,18 +15,18 @@
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-  <link href="css/fontawesome.css" rel="stylesheet" type="text/css">
-  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../css/fontawesome.css" rel="stylesheet" type="text/css">
+  <link href="../css/normalize.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- <link href="css/webflow.css" rel="stylesheet" type="text/css"> -->
-  <link href="css/custom.css" rel="stylesheet" type="text/css">
+  <link href="../css/custom.css" rel="stylesheet" type="text/css">
   <!-- <link href="css/streams-project.webflow.css" rel="stylesheet" type="text/css"> -->
-  <link rel="stylesheet" href="css/loader.min.css">
+  <link rel="stylesheet" href="../css/loader.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Saira:100,200,300,regular,500,600,700,800,900"]  }});
   </script>
-  <link href="images/favicon-32x32.png" rel="shortcut icon" type="image/x-icon">
-  <link href="images/ms-icon-256x256.png" rel="apple-touch-icon">
+  <link href="../images/favicon-32x32.png" rel="shortcut icon" type="image/x-icon">
+  <link href="../images/ms-icon-256x256.png" rel="apple-touch-icon">
 </head>
 <body>
   <body class="body">
@@ -104,7 +104,7 @@
 
       echo "<div id='Ads' class='col-sm'>";
       echo "<div class='card p-3'>";
-      	echo "<img class='card-img-top' src='images/".$imgRow ['image']."' >";
+      	echo "<img class='card-img-top' src='../images/".$imgRow ['image']."' >";
       	echo "<h5 class='card-title pt-3'>".$imgRow ['heading']."</h5>";
         echo "<hr class='my-2'>";
         echo "<p class='blockquote'>".$imgRow ['body']."</p>";
@@ -130,7 +130,7 @@
     <div class="modal-content px-3">
       <div class="modal-header">
         <label for="exampleInputEmail1">Edit Headings</label>
-        <button onclick="javascript:location.href='admin.php'" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button onclick="javascript:location.href=''" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -146,7 +146,7 @@
         <?php echo $row ['body']; ?>
       </textarea>
       <div class="modal-footer">
-        <button onclick="javascript:location.href='admin.php'" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button onclick="javascript:location.href=''" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         <button type="submit" class="btn btn-primary" name="update_advert">Update</button>
       </div>
     </div>
@@ -164,9 +164,9 @@
 </div>
   <div class="row"> <!-- this row Creates the Ads-->
   <div class="col">
-  <form method="POST" action="admin.php" enctype="multipart/form-data">
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
     <div class="form-group">
-  	<input type="hidden" name="size" value="1000000">
+  	<input type="hidden" name="size" value="20000000">
     <label for="exampleInputEmail1">Upload your Banner</label>
   	<div>
   	  <input type="file" name="image" class="form-control-file">
@@ -207,17 +207,17 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="js/loader.js"></script>
+<script src="../js/loader.js"></script>
 <script language='javascript'>
 
 function editAds(editid){
-  window.location.href='admin.php?edit_id=' +editid+'';
+  window.location.href='?edit_id=' +editid+'';
   return true;
 }
 
 function deleteAds(delid){
   if(confirm("Do you want to delete this Advert")){
-    window.location.href='admin.php?del_id=' +delid+'';
+    window.location.href='?del_id=' +delid+'';
     return true;
   }
 }

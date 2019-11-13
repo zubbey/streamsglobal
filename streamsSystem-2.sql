@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 29, 2019 at 05:41 PM
+-- Generation Time: Nov 13, 2019 at 09:19 AM
 -- Server version: 8.0.17
--- PHP Version: 7.3.8
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,9 +41,10 @@ CREATE TABLE `adminAds` (
 --
 
 INSERT INTO `adminAds` (`id`, `image`, `heading`, `body`, `creator`) VALUES
-(4, 'banner01.jpg', 'invest the way you want. we can show you how.', 'Whether you’re new to investing, an experienced trader or somewhere in between, we offer investment choices with some of the lowest commissions in the industry.      ', 'zubbey'),
-(5, 'banner2', 'Saving money should be easy.\r\nAutomate it with Trim.', 'Our users saved over $1,000,000 in the last month.\r\nGet your results in less than a minute.      ', 'zubbey'),
-(6, 'banner03', 'Banking your way.', 'Wherever you are in life,\r\nwe’ve got an online bank account designed to make it more rewarding.', 'zubbey code');
+(1, 'banner0_50.jpg', '      ', '      ', 'zubbey codez'),
+(2, 'banner1_50.jpg', '      ', '      ', 'zubbey codez'),
+(3, 'banner2_50.jpg', '      ', '      ', 'zubbey codez'),
+(4, 'banner3_50.jpg', '      ', '      ', 'zubbey codez');
 
 -- --------------------------------------------------------
 
@@ -63,22 +64,30 @@ CREATE TABLE `profileimg` (
 
 INSERT INTO `profileimg` (`id`, `userid`, `status`) VALUES
 (1, 1, 1),
-(2, 1, 1),
-(3, 3, 1);
+(2, 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pwdreset`
+-- Table structure for table `savingsData`
 --
 
-CREATE TABLE `pwdreset` (
-  `pwdResetId` int(11) NOT NULL,
-  `pwdResetEmail` mediumtext NOT NULL,
-  `pwdResetSelector` mediumtext NOT NULL,
-  `pwdResetTokon` longtext NOT NULL,
-  `pwdResetExpires` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `savingsData` (
+  `id` int(11) NOT NULL,
+  `usersid` int(11) NOT NULL,
+  `cus_code` varchar(200) NOT NULL,
+  `plan_code` varchar(200) NOT NULL,
+  `sub_code` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table containers users plan';
+
+--
+-- Dumping data for table `savingsData`
+--
+
+INSERT INTO `savingsData` (`id`, `usersid`, `cus_code`, `plan_code`, `sub_code`) VALUES
+(1, 1, 'CUS_l32wfchi5jkmzxl', 'PLN_bxxj4bojka90l6o', ''),
+(2, 1, 'CUS_l32wfchi5jkmzxl', 'PLN_3r5k86k1ngb8xvt', ''),
+(3, 2, 'CUS_wmrvl9teum0nbmn', 'PLN_3t9j6k5tq4d9rwo', '');
 
 -- --------------------------------------------------------
 
@@ -87,25 +96,25 @@ CREATE TABLE `pwdreset` (
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `fname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `lname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `phone` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `password` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `id` int(12) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` longtext NOT NULL,
   `verified` tinyint(4) NOT NULL,
   `token` longtext NOT NULL,
-  `referralid` varchar(6) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `referralid` longtext,
   `usertype` tinyint(11) NOT NULL,
-  `gender` varchar(6) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `DOB` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `address` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `city` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `state` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `LGA` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `occupation` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `nationality` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `dateReg` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+  `gender` varchar(6) DEFAULT NULL,
+  `DOB` varchar(200) DEFAULT NULL,
+  `address` longtext,
+  `city` varchar(100) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `LGA` longtext,
+  `occupation` varchar(50) DEFAULT NULL,
+  `nationality` varchar(100) DEFAULT NULL,
+  `dateReg` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=REDUNDANT;
 
 --
@@ -113,9 +122,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `verified`, `token`, `referralid`, `usertype`, `gender`, `DOB`, `address`, `city`, `state`, `LGA`, `occupation`, `nationality`, `dateReg`) VALUES
-(1, 'Chibike', 'Son', '09029431070', 'chibike@gmail.com', '$2y$10$hiKaQ6X/5abhyD0qPsmjb.6eX5r3vpaCUaKAjw/GsoZlB8ZMwkuMG', 0, 'f9858a985616e88e4ff166b48a2ffc68aa8e8df26873b4cc6d76a8ad3f99', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-27 10:28:18'),
-(2, 'zubbey', 'code', '08060265699', 'com.zubbey@icloud.com', '$2y$10$sNQJTgG33wpBelfVjcttnu49pPhbwW6jyaWq8Mw.kkCIUamb3UYM.', 1, 'd5a0b2d49672c6ca76e482d41f6907776a00cefa0b2bd629ce4fffb03923', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-28 04:13:40'),
-(3, 'melody', 'kpekpee', '09022003001', 'com.zubbey@hotmail.com', '$2y$10$d7bFpzY0bez/Q3nMSLn.uuE8hB1UcPqPPjE5aHfdKSmSC4gs63wcO', 0, 'f81f1b6eb6a2326f6205ff86ee5da0240dab3809756af286decdd6f5aa37', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-29 08:54:31');
+(1, 'chibike', 'zubbey', '08050440033', 'com.zubbey@hotmail.com', '$2y$10$M2nkSDqza6SWrFLaHbh9TuZoj5BeO5D77kE4Y1XDFPoexvGqcSlKC', 1, 'ffa536adb908248c6342ad969160b322f910b9a4b58d18b93febff694feb', '33a71a', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-11-11'),
+(2, 'zubbey', 'codez', '09022001021', 'zubyinnocent@outlook.com', '$2y$10$ZGj1DrdV8q9arwNHell32uPJVUhdHNFEso5nGSz1phvUPIT8POUlO', 1, '0079d0353e8403aeba9ccf8a7bb3c14113aa7c192a3112b73b8ee97c28a0', 'f7e35a', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-11-13');
 
 --
 -- Indexes for dumped tables
@@ -134,10 +142,10 @@ ALTER TABLE `profileimg`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pwdreset`
+-- Indexes for table `savingsData`
 --
-ALTER TABLE `pwdreset`
-  ADD PRIMARY KEY (`pwdResetId`);
+ALTER TABLE `savingsData`
+  ADD PRIMARY KEY (`id`,`usersid`);
 
 --
 -- Indexes for table `users`
@@ -153,25 +161,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `adminAds`
 --
 ALTER TABLE `adminAds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `profileimg`
 --
 ALTER TABLE `profileimg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `pwdreset`
+-- AUTO_INCREMENT for table `savingsData`
 --
-ALTER TABLE `pwdreset`
-  MODIFY `pwdResetId` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `savingsData`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

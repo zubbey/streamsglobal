@@ -259,64 +259,6 @@ if (isset($_POST['login-btn'])) {
 
 		if (password_verify($password, $user['password'])) {
 
-			// login successfully
-			// before login Check if user has a Subcription Plan
-			//$userid = $user['id'];
-			// $useremail = $user['email'];
-			//
-			// $ch = curl_init();
-			//
-			// curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/customer/'.$useremail);
-			// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-			//
-			//
-			// $headers = array();
-			// $headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
-			// curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			//
-			// $result = curl_exec($ch);
-			// if($result){
-			//
-			// 	$cusdata = json_decode($result, true);
-			// 	$sub_code = $cusdata['data']['subscriptions'][0]['subscription_code'];
-			// 	//print $sub_code."<br>";
-			//
-			// 	#################### FETCH SUBSCRIPTION ################
-			//
-			// 	$ch = curl_init();
-			//
-			// 	curl_setopt($ch, CURLOPT_URL, 'https://api.paystack.co/subscription/'.$sub_code);
-			// 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			// 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-			//
-			//
-			// 	$headers = array();
-			// 	$headers[] = 'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56';
-			// 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			//
-			// 	$result = curl_exec($ch);
-			// 	if($result){
-			// 		$subdata = json_decode($result, true);
-			//
-			// 		if(!empty($subdata)){
-			// 			//$plan_code = $subdata['data']['customer']['first_name'];
-			// 			$userplan = $subdata;
-			// 			$amount = $subdata['data']['plan']['amount'];
-			// 			$planname = $subdata['data']['plan']['name'];
-			// 			$interval = $subdata['data']['plan']['interval'];
-			// 			$createdAt = $subdata['data']['plan']['createdAt'];
-			// 			//print $plan_code;
-			// 			//$_SESSION['plandata'] = $userplan;
-			// 		}
-			// 		//var_dump($plan_code);
-			// 	}
-			// }
-			// if (curl_errno($ch)) {
-			// 	echo 'Error:' . curl_error($ch);
-			// }
-			//curl_close($ch);
-
 			$_SESSION['usersid'] = $user['id'];
 			$_SESSION['usersfname'] = $user['fname'];
 			$_SESSION['userslname'] = $user['lname'];
@@ -341,10 +283,13 @@ if (isset($_POST['login-btn'])) {
 			$_SESSION['loginlog']= "you logged in at ". date("h:i a");
 			$_SESSION['success-message'] = "success";
 
-			if($user['verified'] > 0 || $user['referralid'] > 0){
+			if($user['verified'] > 0 && $user['referralid'] > 0 && $user['usertype'] < 0){
 				header('location: user/dashboard?amount='.$amount.'&planname='.$planname.'&interval='.$interval.'&createdAt='.$createdAt);
 				exit();
-			} else {
+			} else if($user['usertype'] == 1){
+				header('location: user/admin.dashboard');
+				exit();
+			}else {
 				header('location: start');
 				exit();
 			}
@@ -535,67 +480,4 @@ if(isset($_POST['create-new_password-btn'])){
 			exit();
 		}
 	}
-}
-
-
-// Admin Create Ads
-
-// If upload button is clicked ...
-if (isset($_POST['upload'])) {
-	// Get image name
-	$image = $_FILES['image']['name'];
-	// Get text
-	$heading = mysqli_real_escape_string($conn, $_POST['heading']);
-	$body = mysqli_real_escape_string($conn, $_POST['body']);
-	$creator = $_SESSION['usersfname'].' '.$_SESSION['userslname'];
-
-	// image file directory
-	$target = "images/".basename($image);
-
-	$sql = "INSERT into `adminAds` (image, heading, body, creator) VALUES ('$image', '$heading', '$body', '$creator')";
-	// execute query
-	mysqli_query($conn, $sql);
-
-	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-		header('location: admin?success=adcreated');
-	}else{
-		header('location: admin?error=notcreated');
-	}
-}
-
-// Admin Delete Ads
-
-if (isset($_GET['del_id'])){
-	$sql = "DELETE FROM `adminAds` WHERE `id` = '".$_GET['del_id']."'";
-	if (mysqli_query($conn, $sql)){
-		header('location: admin?warning=deleted');
-	} else {
-		header('location: admin?error=notdeleted');
-		die($sql);
-	};
-}
-
-// Admin Edit/Update Ads
-
-if (isset($_GET['edit_id'])){
-	$sql = "SELECT `*` FROM `adminAds` WHERE `id` = '".$_GET['edit_id']."'";
-	$result = mysqli_query($conn, $sql);
-	$row = mysqli_fetch_array($result);
-}
-// Update information
-if(isset($_POST['update_advert'])){
-	$heading = mysqli_real_escape_string($conn, $_POST['edit-heading']);
-	$body = mysqli_real_escape_string($conn, $_POST['edit-body']);
-
-	$update = "UPDATE `adminAds` SET `heading`= '$heading', `body`= '$body' WHERE `id` = '".$_GET['edit_id']."'";
-	if (mysqli_query($conn, $update)){
-		if (!isset($sql)) {
-			die("there was an error" .mysqli_connect_error());
-		} else {
-			header('location: admin?success=adupdated');
-		}
-	} else{
-		header('location: admin?error=notupdated');
-	};
-
 }

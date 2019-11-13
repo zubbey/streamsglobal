@@ -65,9 +65,14 @@ if (isset($_SESSION['usersid']) && isset($_SESSION['verified']) && $_SESSION['ve
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <?php
             //Hide if account not verified
-          if (($_SESSION['verified'] == 1)) {
+          if (($_SESSION['verified'] == 1) && $_SESSION['usertype'] == 0) {
             echo '
             <a class="dropdown-item" href="user/dashboard">Dashboard</a>
+            <a class="dropdown-item" href="user/settings">Account Settings</a>
+            ';
+          } else if (($_SESSION['verified'] == 1) && $_SESSION['usertype'] == 1){
+            echo '
+            <a class="dropdown-item" href="user/admin.dashboard">Admin Dashboard</a>
             <a class="dropdown-item" href="user/settings">Account Settings</a>
             ';
           }
