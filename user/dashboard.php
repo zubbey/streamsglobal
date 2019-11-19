@@ -2,6 +2,9 @@
 if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
   header("Location: ../login");
   exit();
+} else if (strlen($_SESSION['referralcode']) < 0){
+  header("Location; ../sign-up?success=step3");
+  exit();
 }
 
 if(isset($_GET['planname'])){

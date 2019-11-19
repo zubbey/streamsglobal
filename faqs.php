@@ -21,8 +21,8 @@
   <link href="images/ms-icon-256x256.png" rel="apple-touch-icon">
 
   <style>
-  .accordion-toggle{color: #2AB334 !important;}
-  .accordion-toggle:hover{color: #2AB334 !important;}
+  .accordion-toggle{color: #758184 !important;}
+  .accordion-toggle:hover{color: #333333 !important;}
   .card-header{background-color: transparent;border-bottom:none;padding: .5rem;}
   </style>
 </head>
@@ -38,10 +38,10 @@
     require ('./component/menu.php');
   }
   ?>
-  <div class="container-fluid header-section span">
+  <div class="container-fluid header-section">
 
-    <div class="text-center">
-      <h1 class="display-4 font-weight-bold span">Frequently Asked Questions</h1>
+    <div class="container py-2">
+      <h2 class="team_h1 my-5" style="color:seagreen;">Frequently Asked Questions</h2>
     </div>
 
   </div>

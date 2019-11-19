@@ -5,6 +5,9 @@ require_once ('../controllers/paymentController.php');
 if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
   header("Location: ../login");
   exit();
+} else if (strlen($_SESSION['referralcode']) < 0){
+  header("Location; ../sign-up?success=step3");
+  exit();
 }
 ?>
 <!DOCTYPE html>
@@ -264,7 +267,7 @@ if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
         email: '<?php echo $_SESSION['usersemail'];?>',
         plan: "<?php echo $planCode;?>",
         customer: "<?php echo $cusCode;?>",
-        ref: '<?php echo $_SESSION["usersfname"].'_'; ?>'+Math.floor((Math.random() * 1000000000) + 1),
+        ref: Math.floor((Math.random() * 1000000000) + 1),
         metadata: {
            custom_fields: [
              {
@@ -281,7 +284,7 @@ if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
             window.location.assign("http://streamsglobal.com/user/savings?success=subCreated&reference="+response.reference+"&planCode="+planCode+"&cusCode="+cusCode);
         },
         onClose: function(){
-            location.reload();
+            window.location.assign("?cancelled");
         }
       });
       handler.openIframe();

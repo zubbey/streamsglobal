@@ -9,8 +9,6 @@ if (isset($_SESSION['usersid']) && isset($_SESSION['verified']) && $_SESSION['ve
     .menu{position: relative;}
     </style>
     ';
-} else {
-  echo "";
 }
 ?>
 
@@ -22,10 +20,10 @@ if (isset($_SESSION['usersid']) && isset($_SESSION['verified']) && $_SESSION['ve
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+  <div class="collapse navbar-collapse justify-content-end" id="#navbar">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="start">PLANS <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="start">PLANS</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="faqs">FAQS</a>
@@ -65,14 +63,9 @@ if (isset($_SESSION['usersid']) && isset($_SESSION['verified']) && $_SESSION['ve
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <?php
             //Hide if account not verified
-          if (($_SESSION['verified'] == 1) && $_SESSION['usertype'] == 0) {
+          if ($_SESSION['verified'] == 1 && strlen($_SESSION['referralcode']) > 0) {
             echo '
             <a class="dropdown-item" href="user/dashboard">Dashboard</a>
-            <a class="dropdown-item" href="user/settings">Account Settings</a>
-            ';
-          } else if (($_SESSION['verified'] == 1) && $_SESSION['usertype'] == 1){
-            echo '
-            <a class="dropdown-item" href="user/admin.dashboard">Admin Dashboard</a>
             <a class="dropdown-item" href="user/settings">Account Settings</a>
             ';
           }

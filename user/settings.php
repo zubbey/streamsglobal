@@ -2,6 +2,9 @@
 if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
   header("Location: ../login");
   exit();
+} else if (strlen($_SESSION['referralcode']) <= 0){
+  header("Location; ../sign-up?success=step3");
+  exit();
 }
 ?>
 <!DOCTYPE html>
@@ -551,7 +554,7 @@ if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../js/loader.js"></script>
-
+      <script src="../js/sweetalert2.all.js"></script>
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {

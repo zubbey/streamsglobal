@@ -42,12 +42,12 @@
       $resultImg = mysqli_query($conn, $sqlImg);
       while ($imgRow = mysqli_fetch_assoc($resultImg)) {
         echo "<div class='carousel-item'>";
-          echo "<img src='images/".$imgRow ['image']."' class='d-block w-100' alt='Streamsglobal adverts images'>";
+          echo "<img src='images/".$imgRow['image']."' class='d-block w-100' alt='Streamsglobal adverts images'>";
           echo "<div class='container carousel-caption'>";
-          echo "<div class='row'>";
+          echo "<div class='row text-white'>";
             echo "<div class='col-sm-7'>";
-            echo "<h5 class='display-4 font-weight-bold text-uppercase'>".$imgRow ['heading']."</h5>";
-            echo "<p class='lead'>".$imgRow ['body']."</p>";
+            echo "<h5 class='display-4 text-uppercase'>".$imgRow['heading']."</h5>";
+            echo "<p class='lead'>".$imgRow['body']."</p>";
             if (isset($_SESSION['usersid'])) {
               echo "<a class='btn bg-white text-dark p-2' href='start'>GET STARTED  <i class='fas fa-plus'></i></a>";
             }

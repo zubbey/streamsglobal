@@ -15,7 +15,7 @@ if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
-  <link href="fontawesome/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/streams-project.webflow.css" rel="stylesheet" type="text/css">
@@ -73,15 +73,20 @@ if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
       echo "</div>";
     } else if(isset($_GET['success']) AND $_GET["success"]== 'step3')
     {
-      echo "<div class='row justify-content-center mt-5'>";
-      echo "<div class='col-md-5 p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
-      echo "<h1 class='heading-6'>Make your entry payment</h1>";
-      echo "<p>Hello ". ucwords($_SESSION['usersfname']) .", you have to pay a membership fee of <strong>&#8358;1,000 </strong>to activate your account</p>";
-      echo "<ul class='list-group list-group-flush'>";
-      echo "<li class='list-group-item bg-transparent'><button type='button' onclick='payWithPaystack()' name='entrypayment-btn' data-wait='please wait...' class='btn btn-primary btn-block'>Complete <i class='fas fa-check'></i></button></li>";
-      echo "</ul>";
-      echo "</div>";
-      echo "</div>";
+        if ($_SESSION['verified'] == 0){
+            header('location: ?success=step2');
+            exit();
+        } else {
+            echo "<div class='row justify-content-center mt-5'>";
+            echo "<div class='col-md-5 p-4 shadow-sm p-3 mb-1 bg-white rounded text-center'>";
+            echo "<h1 class='heading-6'>Make your entry payment</h1>";
+            echo "<p>Hello ". ucwords($_SESSION['usersfname']) .", you have to pay a membership fee of <strong>&#8358;1,000 </strong>to activate your account</p>";
+            echo "<ul class='list-group list-group-flush'>";
+            echo "<li class='list-group-item bg-transparent'><button type='button' onclick='payWithPaystack()' name='entrypayment-btn' data-wait='please wait...' class='btn btn-primary btn-block'>Complete <i class='fas fa-check'></i></button></li>";
+            echo "</ul>";
+            echo "</div>";
+            echo "</div>";
+        }
     }else{
       echo "<div class='row justify-content-center mt-5'>";
       echo "<div class='col-md-5 bg-white p-4 shadow-sm p-3 mb-1 bg-white rounded'>";
@@ -183,7 +188,7 @@ if(isset($_SESSION['usersid']) && strlen($_SESSION['referralcode'] > 0)){
       phone: '<?php echo $_SESSION["usersphone"]; ?>',
       amount: 100000,
       currency: "NGN",
-      ref: 'user_'+Math.floor((Math.random() * 1000000000) + 1),
+      ref: Math.floor((Math.random() * 1000000000) + 1),
       metadata: {
         custom_fields: [
           {

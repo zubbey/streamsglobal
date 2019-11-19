@@ -34,7 +34,7 @@
   }
   ?>
   <div class="header-section span abtCover text-center d-flex justify-content-center">
-    <h2 class="team_h1 my-5"><strong>It's good to have you on board!</strong></h2>
+    <h2 class="team_h1 my-5" style="color:seagreen;"><strong>It's good to have you on board!</strong></h2>
   </div>
 
   <main class="container">
@@ -62,10 +62,14 @@
 
     <div class="row text-center d-flex justify-content-center my-5">
       <div class="col col-md-8">
-        <h3><strong>About Streamsglobal Cooperatives</strong></h3>
-        <div>
-          <p>Cooperatives is all about the growth and development of members. We at streams global ensure we do that practically by ensuring that thrift, property acquisition and investment is effortless, rewarding  and exciting for members.</p>
-        </div>
+          <?php
+          $sql = "SELECT `*` FROM `pageContent` WHERE `id` = 3;";
+          $result = mysqli_query($conn, $sql);
+          while ($contentRow = mysqli_fetch_assoc($result)) {
+              echo "<h3><strong>".$contentRow['heading']."</strong></h3>";
+              echo "<p>".$contentRow['body']."</p>";
+          }
+          ?>
       </div>
     </div>
     <hr>
@@ -73,14 +77,26 @@
     <div class="row text-center d-flex justify-content-center my-5">
       <div class="col col-md-8">
         <div>
-          <p class="paragraph-8">Mission Statment</p>
-          <p>Accelerating  dreams and goals to reality using the power  of optimism, collectiveness, set time and effortless thrift investment and agriculture.</p>
+            <?php
+            $sql = "SELECT `*` FROM `pageContent` WHERE `id` = 4;";
+            $result = mysqli_query($conn, $sql);
+            while ($contentRow = mysqli_fetch_assoc($result)) {
+                echo "<p class='paragraph-8'>".$contentRow['heading']."</p>";
+                echo "<p>".$contentRow['body']."</p>";
+            }
+            ?>
         </div>
       </div>
       <div class="col col-md-8">
         <div>
-          <p class="paragraph-8">Vision</p>
-          <p>Becoming a cooperative that is evident in all homes and bridging the deficit in agriculture and agric business investment.</p>
+            <?php
+            $sql = "SELECT `*` FROM `pageContent` WHERE `id` = 5;";
+            $result = mysqli_query($conn, $sql);
+            while ($contentRow = mysqli_fetch_assoc($result)) {
+                echo "<p class='paragraph-8'>".$contentRow['heading']."</p>";
+                echo "<p>".$contentRow['body']."</p>";
+            }
+            ?>
         </div>
       </div>
     </div>
@@ -89,8 +105,14 @@
   <div class="container-fluid p-5" style="background-color: #f4f8fd;">
     <div class="row text-center d-flex justify-content-center">
       <div class="col col-md-8">
-        <h3><strong>Better way of savings best way of acquiring</strong></h3>
-        <p>You can acquire that your dream household, property by saving stipends daily, weekly and monthly without stress. You can also save with the cooperative and pick it monthly like the normal Ajor, Akawo or Esusu. You can also make as huge as 3 —100% when you save between 90days to 1,825 days. What are you waiting for? Savings can never be better.</p>
+          <?php
+          $sql = "SELECT `*` FROM `pageContent` WHERE `id` = 6;";
+          $result = mysqli_query($conn, $sql);
+          while ($contentRow = mysqli_fetch_assoc($result)) {
+              echo "<h3><strong>".$contentRow['heading']."</strong></h3>";
+              echo "<p>".$contentRow['body']."</p>";
+          }
+          ?>
       </div>
     </div>
   </div>
@@ -100,18 +122,42 @@
       <div class="col col-md-8">
         <h3><strong>Our Physical Offices</strong></h3>
         <div>
-          <p class="paragraph-8">Port Harcourt Head Office:</p>
-          <hr>
-          <p>11 Ogoloma Street, Off Emekuku  Dline, Port Harcourt, Rivers State, Nigeria.</p>
-          <p class="paragraph-8">Lagos office:</p>
-          <hr>
-          <p>Providence House, No 1 Babatunde Ladiga Street Omole.</p>
-          <p class="paragraph-8">Aba office:</p>
-          <hr>
-          <p>No 2 free Zone Road Ariaria, Beside AKTC park, Aba, Abia State.</p>
-          <p class="paragraph-8">REG NUMBER</p>
-          <hr>
-          <p>RS30366 | RS31904 | AK23813 | AB16307</p>
+            <?php
+            $sql = "SELECT `*` FROM `pageContent` WHERE `id` = 7;";
+            $result = mysqli_query($conn, $sql);
+            while ($contentRow = mysqli_fetch_assoc($result)) {
+                echo "<p class='paragraph-8'>".$contentRow['heading']."</p>";
+                echo "<hr>";
+                echo "<p>".$contentRow['body']."</p>";
+            }
+            ?>
+            <?php
+            $sql = "SELECT `*` FROM `pageContent` WHERE `id` = 8;";
+            $result = mysqli_query($conn, $sql);
+            while ($contentRow = mysqli_fetch_assoc($result)) {
+                echo "<p class='paragraph-8'>".$contentRow['heading']."</p>";
+                echo "<hr>";
+                echo "<p>".$contentRow['body']."</p>";
+            }
+            ?>
+            <?php
+            $sql = "SELECT `*` FROM `pageContent` WHERE `id` = 9;";
+            $result = mysqli_query($conn, $sql);
+            while ($contentRow = mysqli_fetch_assoc($result)) {
+                echo "<p class='paragraph-8'>".$contentRow['heading']."</p>";
+                echo "<hr>";
+                echo "<p>".$contentRow['body']."</p>";
+            }
+            ?>
+            <?php
+            $sql = "SELECT `*` FROM `pageContent` WHERE `id` = 10;";
+            $result = mysqli_query($conn, $sql);
+            while ($contentRow = mysqli_fetch_assoc($result)) {
+                echo "<p class='paragraph-8'>".$contentRow['heading']."</p>";
+                echo "<hr>";
+                echo "<p>".$contentRow['body']."</p>";
+            }
+            ?>
         </div>
       </div>
     </div>

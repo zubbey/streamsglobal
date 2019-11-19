@@ -203,7 +203,7 @@ function sendVerificationEmail($userEmail, $token){
   $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
   // More headers
-  $headers .= 'From: <zubyinnocent@gmail.com>' . "\r\n";
+  $headers .= 'From: <admin-panel@streamsglobal.com>' . "\r\n";
 
   mail($to,$subject,$message,$headers);
 }
@@ -487,7 +487,7 @@ function sendreferralEmail($userdata){
               <div class='card-title'><smail>Referral Code: </small><span class='h3 font-weight-normal'>".$userdata['referralcode']."</span></div>
               <p class='card-text text-muted'>please comfirm if ".$userdata['userfname']." is fully registered.</p>
               <div class='d-flex justify-content-between my-auto'>
-              <a href='http://streamsglobal.com/user/admin?users=all' class='btn btn-primary'>View Profile</a>
+              <a href='http://streamsglobal.com/user/admin-panel?users=all' class='btn btn-primary'>View Profile</a>
               <small class='text-muted'>".$userdata['datereferred'].".</small>
               </div>
             </div>
@@ -510,7 +510,7 @@ function sendreferralEmail($userdata){
   $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
   // More headers
-  $headers .= 'From: <zubyinnocent@gmail.com>' . "\r\n";
+  $headers .= 'From: <admin-panel@streamsglobal.com>' . "\r\n";
 
   mail($to,$subject,$message,$headers);
 }
@@ -719,7 +719,7 @@ function sendemailUpdate($newEmail, $token){
   $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
   // More headers
-  $headers .= 'From: <zubyinnocent@gmail.com>' . "\r\n";
+  $headers .= 'From: <admin-panel@streamsglobal.com>' . "\r\n";
 
   mail($to,$subject,$message,$headers);
 }
@@ -932,7 +932,7 @@ function sendresetpasswordLink($resetemail, $token){
   $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
   // More headers
-  $headers .= 'From: <zubyinnocent@gmail.com>' . "\r\n";
+  $headers .= 'From: <admin-panel@streamsglobal.com>' . "\r\n";
 
   mail($to,$subject,$message,$headers);
 }

@@ -5,7 +5,7 @@
         <h4 class="h4">Company</h4>
         <ul class="w-list-unstyled">
           <li class="list-item"><a href="about" class="p-footer">About Us</a></li>
-          <li class="list-item"><a href="about#Ads-Section" class="p-footer">Why Trust Us</a></li>
+          <li class="list-item"><a href="about" class="p-footer">Why Trust Us</a></li>
           <li class="list-item"><a href="about" class="p-footer">Meet Our Team</a></li>
           <li class="list-item"><a href="faqs" class="p-footer">FAQS</a></li>
         </ul>
@@ -13,18 +13,27 @@
       <div class="w-col w-col-2">
         <h4 class="h4">Features</h4>
         <ul class="w-list-unstyled">
-          <li class="list-item"><a href="start/saap" class="p-footer">SAAP</a></li>
-          <li class="list-item"><a href="start/piggy-wallet" class="p-footer">Piggy Wallet</a></li>
-          <li class="list-item"><a href="start/fixed-savings" class="p-footer">Fixed Savings</a></li>
-          <li class="list-item"><a href="start/buildings" class="p-footer">Land &amp; Building Savings</a></li>
-          <li class="list-item"><a href="start/cooperators" class="p-footer">Cooperators Bank</a></li>
-          <li class="list-item"><a href="#" class="p-footer">Diaspora Safe</a></li>
+            <?php
+
+            if ($_SESSION['verified'] == 0 || strlen($_SESSION['referralcode']) <= 0){
+                echo "<li onclick='verifyaccountMsg()' class='list-item'><a href='#' class='p-footer'>SAAP</a></li>";
+                echo "<li onclick='verifyaccountMsg()' class='list-item'><a href='#' class='p-footer'>Piggy Wallet</a></li>";
+                echo "<li onclick='verifyaccountMsg()' class='list-item'><a href='#' class='p-footer'>Fixed Savings</a></li>";
+                echo "<li onclick='verifyaccountMsg()' class='list-item'><a href='#' class='p-footer'>Cooperators Bank</a></li>";
+            } else{
+                echo "<li class='list-item'><a href='user/saap' class='p-footer'>SAAP</a></li>";
+                echo "<li class='list-item'><a href='user/piggy' class='p-footer'>Piggy Wallet</a></li>";
+                echo "<li class='list-item'><a href='user/fixed' class='p-footer'>Fixed Savings</a></li>";
+                echo "<li class='list-item'><a href='user/cooperators' class='p-footer'>Cooperators Bank</a></li>";
+            }
+            ?>
+
         </ul>
       </div>
       <div class="w-col w-col-2">
         <h4 class="h4">Legal</h4>
         <ul class="w-list-unstyled">
-          <li class="list-item"><a href="terms" class="p-footer">Terms of Service</a><br></li>
+          <li class="list-item"><a href="terms" class="p-footer">Terms of Use</a><br></li>
           <li class="list-item"><a href="privacy" class="p-footer">Privacy Policy</a></li>
         </ul>
       </div>
@@ -40,7 +49,7 @@
       </div>
       <div class="w-col w-col-3">
         <h4 class="h4">Streams Global</h4>
-        <p class="p-footer">Our investment professionals invest savers funds in agriculture and other cooperative society businesses and manage the investments to ensure optimum return. This agricultural product is ensured by Agricultural Insurance Commission.</p>
+        <span>Our investment professionals invest savers funds in agriculture and other cooperative society businesses and manage the investments to ensure optimum return. This agricultural product is ensured by Agricultural Insurance Commission.</span>
       </div>
     </div>
   </div>
@@ -58,7 +67,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/loader.js"></script>
+<script src="js/sweetalert2.all.js"></script>
 <script>
+
+$(".carousel-item h5").html(function(){
+  var text= $(this).text().trim().split(" ");
+  var last = text.pop();
+  return text.join(" ") + (text.length > 0 ? "<br> <span class='font-weight-bold b-last-word'>" + last + "</span>" : last);
+});
+
+
 function onReady(callback) {
   var intervalId = window.setInterval(function() {
     if (document.getElementsByTagName('body')[0] !== undefined) {
@@ -102,9 +120,57 @@ dropdown.on("click", function() {
     dropdown.blur();
   }, 0);
 });
+//################# CHECK URL PARAM FUNCTION ##################
+function queryParameters () {
+    var result = {};
+
+    var params = window.location.search.split(/\?|\&/);
+
+    params.forEach( function(it) {
+        if (it) {
+            var param = it.split("=");
+            result[param[0]] = param[1];
+        }
+    });
+
+    return result;
+}
+if (queryParameters().success === "loggedin"){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: 'Signed in successfully'
+    })
+}
 
 function verifyaccountMsg(){
-  $(".verifyMsg").animate({top: '180px'}).css('display','block');
+    Swal.fire({
+        icon: 'error',
+        title: 'Please Complete your Registration!',
+        text: 'You are not a member yet, Please verify your account<br> and pay a membership fee of N1,000 to continue',
+        footer: '<a href="http://streamsglobal.com/sign-up?success=step3">click here to complete your registration</a>'
+    })
+}
+
+function comingsoonMsg(){
+    Swal.fire({
+        icon: 'warning',
+        title: 'Coming Soon!',
+        showConfirmButton: false,
+        timer: 1000
+    })
+
 }
 </script>
 </body>

@@ -22,23 +22,23 @@
   <div class="loader-body" id="loader">
     <div class="loader"></div>
   </div>
-  <div class="header-section span">
+  <?php
+  if (isset($_SESSION['usersid'])) {
+    require ('./component/menu.home.php');
+  }
+  else {
+    require ('./component/menu.php');
+  }
+  ?>
+  <div class="header-section">
 
-    <?php
-    if (isset($_SESSION['usersid'])) {
-      require ('./component/menu.home.php');
-    }
-    else {
-      require ('./component/menu.php');
-    }
-    ?>
-
-    <div class="div_content">
-      <h1 class="heading-2 span">Privacy Policy</h1>
+    <div class="container py-2">
+      <h2 class="team_h1 my-5" style="color:seagreen;">Privacy policy</h2>
     </div>
 
-  </div>  <main>
-    <div class="div_content grid terms-section">
+  </div>
+  <main>
+    <div class="container">
       <div class="abt abt-terms">
         <div class="p-div terms-div">
           This privacy policy (this "Privacy Policy") explains how personal information is collected, used, stored, and disclosed by streams global multipurpose cooperative Limited, ("," "we," "us," and "our" the cooperative). This Privacy Policy applies to consumer users (individually referred to as "you" the cooperator) of our websites, applications, and other online services to which this Privacy Policy is posted (collectively, our "Services").

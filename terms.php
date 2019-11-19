@@ -23,25 +23,24 @@
   <div class="loader-body" id="loader">
     <div class="loader"></div>
   </div>
-  <div class="header-section span">
+  <?php
+  if (isset($_SESSION['usersid'])) {
+    require ('./component/menu.home.php');
+  }
+  else {
+    require ('./component/menu.php');
+  }
+  ?>
+  <div class="header-section">
 
-    <?php
-    if (isset($_SESSION['usersid'])) {
-      require ('./component/menu.home.php');
-    }
-    else {
-      require ('./component/menu.php');
-    }
-    ?>
-
-    <div class="div_content">
-      <h1 class="heading-2 span">Terms Of Use</h1>
+    <div class="container py-2">
+      <h2 class="team_h1 my-5" style="color:seagreen;">Terms Of Use</h2>
     </div>
 
   </div>
 
   <main>
-    <div class="div_content grid terms-section">
+    <div class="container">
       <div class="abt abt-terms">
         <p id="w-node-5fc5f41bd851-d3919dd7" class="paragraph-7">
           <strong class="">PLEASE NOTE THAT YOUR USE OF AND ACCESS TO THE SERVICES (AS DEFINED BELOW) ARE SUBJECT TO THE FOLLOWING TERMS; IF YOU DO NOT AGREE TO ALL OF THESE TERMS, YOU MAY NOT USE OR ACCESS THE SERVICES IN ANY MANNER.</strong>

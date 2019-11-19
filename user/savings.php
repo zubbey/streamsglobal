@@ -5,12 +5,15 @@ require_once ('../controllers/paymentController.php');
 if (isset($_SESSION['usersid']) && $_SESSION['verified'] == 0) {
   header("Location: ../login");
   exit();
+} else if (strlen($_SESSION['referralcode']) < 0){
+  header("Location; ../sign-up?success=step3");
+  exit();
 }
 
 // CALL THE FETCH CUSTOMER DATA FROM API
 if (isset($_GET['planCode']) && isset($_GET['cusCode'])) {
 
-  $_SESSION['createnewplan']= "You successfully created a new subscription plan.";
+  $_SESSION['createnewplan']= "You successfully created a new subscription plan, your plancode is ".$_GET['planCode'];
 
   $planCode = $_GET['planCode'];
   $cusCode = $_GET['cusCode'];
@@ -283,37 +286,6 @@ if (isset($_GET['success']) AND $_GET["success"]=='newplancreated') {
             //echo $_GET["amount_".$x];
             $amount = $_GET["amount_".$x];
             $x_planCode = $plandata['data'][$x]['plan_code'];
-
-            $result = array();
-            //Set other parameters as keys in the $postdata array
-            $postdata =  array(
-              'email' => $_SESSION['usersemail'],
-              'amount' => $amount,
-              'reference' => '7PVGX8MEk85tgeEpVDtD',
-              'plan' => $x_planCode,
-            );
-            $url = "https://api.paystack.co/transaction/initialize";
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL,$url);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($postdata));  //Post Fields
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-            $headers = [
-              'Authorization: Bearer sk_test_f89bb31f1bda1cdb1f77d255987843b82f1a8e56',
-              'Content-Type: application/json',
-
-            ];
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-            $request = curl_exec ($ch);
-
-            curl_close ($ch);
-
-            if ($request) {
-              $result = json_decode($request, true);
-            }
 
           }
         }
